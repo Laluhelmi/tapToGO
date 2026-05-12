@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { SCHEDULES } from "@/data/boats";
 import BoatCard from "./BoatCard";
 import type { SearchParams } from "@/app/page";
+import { useLang } from "@/contexts/LanguageContext";
 
 type SortKey = "departure" | "price";
 
@@ -16,6 +17,7 @@ function formatDate(dateStr: string) {
 }
 
 export default function ScheduleSection({ searchParams }: Props) {
+  const { t } = useLang();
   const [sort, setSort] = useState<SortKey>("departure");
   const [priceMax, setPriceMax] = useState(1000);
 
@@ -44,17 +46,17 @@ export default function ScheduleSection({ searchParams }: Props) {
         <div className="text-center mb-10">
           <span className="inline-block text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
             style={{ background: "#e0f2fe", color: "#0369a1" }}>
-            🗓️ Jadwal Tersedia
+            {t.scheduleSection.badge}
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold mb-3" style={{ color: "#0c4a6e" }}>
             {from && to ? (
               <>{from} <span style={{ color: "#0284c7" }}>→</span> {to}</>
-            ) : "Pilih Rute"}
+            ) : t.scheduleSection.pickRoute}
           </h2>
           <p style={{ color: "#64748b" }}>
-            <span className="font-bold" style={{ color: "#0369a1" }}>{results.length} jadwal</span>
+            <span className="font-bold" style={{ color: "#0369a1" }}>{results.length} {t.scheduleSection.schedules}</span>
             {date && ` · ${formatDate(date)}`}
-            {` · ${passengers} Penumpang`}
+            {` · ${passengers} ${t.scheduleSection.passenger}`}
             {results.length > 0 && ` · Mulai Rp ${minPrice}K`}
           </p>
         </div>
@@ -65,8 +67,8 @@ export default function ScheduleSection({ searchParams }: Props) {
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
             {/* Sort */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold" style={{ color: "#94a3b8" }}>Urutkan:</span>
-              {([{ k: "departure", l: "Waktu" }, { k: "price", l: "Harga" }] as { k: SortKey; l: string }[]).map(({ k, l }) => (
+              <span className="text-xs font-semibold" style={{ color: "#94a3b8" }}>{t.scheduleSection.sortBy}</span>
+              {([{ k: "departure", l: t.scheduleSection.time }, { k: "price", l: t.scheduleSection.price }] as { k: SortKey; l: string }[]).map(({ k, l }) => (
                 <button key={k} onClick={() => setSort(k)}
                   className="px-3 py-1 rounded-lg text-xs font-bold transition-all"
                   style={sort === k
@@ -81,7 +83,7 @@ export default function ScheduleSection({ searchParams }: Props) {
           {/* Price range */}
           <div className="mt-3 flex items-center gap-4">
             <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#64748b" }}>
-              Maks harga: <span className="font-bold" style={{ color: "#0369a1" }}>Rp {priceMax}K</span>
+              {t.scheduleSection.maxPrice} <span className="font-bold" style={{ color: "#0369a1" }}>Rp {priceMax}K</span>
             </span>
             <input type="range" min={300} max={1000} step={25} value={priceMax}
               onChange={e => setPriceMax(Number(e.target.value))}
@@ -94,7 +96,7 @@ export default function ScheduleSection({ searchParams }: Props) {
         </div>
 
         <p className="text-sm mb-4 px-1" style={{ color: "#64748b" }}>
-          Menampilkan <span className="font-bold" style={{ color: "#0369a1" }}>{results.length}</span> jadwal · Harga sudah termasuk terminal fee
+          {t.scheduleSection.showing} <span className="font-bold" style={{ color: "#0369a1" }}>{results.length}</span> {t.scheduleSection.schedules} · {t.scheduleSection.priceIncluded}
         </p>
 
         {/* Cards */}
@@ -105,15 +107,15 @@ export default function ScheduleSection({ searchParams }: Props) {
             <div className="col-span-3 bg-white rounded-3xl p-16 text-center"
               style={{ border: "1.5px solid #e0f2fe" }}>
               <div className="text-6xl mb-4">🔍</div>
-              <p className="text-xl font-bold mb-2" style={{ color: "#0c4a6e" }}>Tidak ada jadwal ditemukan</p>
+              <p className="text-xl font-bold mb-2" style={{ color: "#0c4a6e" }}>{t.scheduleSection.noSchedule}</p>
               <p className="text-sm mb-4" style={{ color: "#64748b" }}>
                 {!from || !to
-                  ? "Pilih pelabuhan keberangkatan dan tujuan di atas"
-                  : `Tidak ada jadwal ${from} → ${to} yang sesuai filter`}
+                  ? t.scheduleSection.pickPortHint
+                  : t.scheduleSection.noMatch}
               </p>
               <button onClick={() => setPriceMax(1000)}
                 className="px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
-                Reset Filter
+                {t.scheduleSection.resetFilter}
               </button>
             </div>
           )}

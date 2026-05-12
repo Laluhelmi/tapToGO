@@ -4,6 +4,7 @@ import { FROM_PORTS, TO_PORTS } from "@/data/boats";
 import { getTodayString } from "@/lib/utils";
 import type { Port } from "@/types";
 import type { SearchParams } from "@/app/page";
+import { useLang } from "@/contexts/LanguageContext";
 
 interface Props {
   onSearch: (params: SearchParams) => void;
@@ -18,6 +19,7 @@ const QUICK_ROUTES: { from: Port; to: Port; label: string }[] = [
 ];
 
 export default function SearchForm({ onSearch, initialValues }: Props) {
+  const { t } = useLang();
   const [from, setFrom] = useState<Port | "">(initialValues?.from ?? "Gili Trawangan");
   const [to, setTo] = useState<Port | "">(initialValues?.to ?? "Padang Bai");
   const [date, setDate] = useState(initialValues?.date ?? getTodayString());
@@ -55,7 +57,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-end">
         {/* From */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>Dari</label>
+          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>{t.search.from}</label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-base pointer-events-none">🛳️</span>
             <select value={from} onChange={e => setFrom(e.target.value as Port)}
@@ -63,7 +65,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
               style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: from ? "#0369a1" : "#94a3b8" }}
               onFocus={e => e.target.style.borderColor = "#38bdf8"}
               onBlur={e => e.target.style.borderColor = "#e2e8f0"}>
-              <option value="">Pilih Pelabuhan</option>
+              <option value="">{t.search.selectPort}</option>
               {FROM_PORTS.map(p => <option key={p} value={p}>{p}</option>)}
             </select>
           </div>
@@ -71,7 +73,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
 
         {/* To */}
         <div className="relative">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>Ke</label>
+          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>{t.search.to}</label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-base pointer-events-none">⚓</span>
             <select value={to} onChange={e => setTo(e.target.value as Port)}
@@ -79,7 +81,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
               style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: to ? "#0369a1" : "#94a3b8" }}
               onFocus={e => e.target.style.borderColor = "#38bdf8"}
               onBlur={e => e.target.style.borderColor = "#e2e8f0"}>
-              <option value="">Pilih Tujuan</option>
+              <option value="">{t.search.selectDestination}</option>
               {TO_PORTS.map(p => <option key={p} value={p}>{p}</option>)}
             </select>
           </div>
@@ -87,7 +89,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
 
         {/* Date */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>Tanggal</label>
+          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>{t.search.date}</label>
           <input type="date" value={date} min={getTodayString()} onChange={e => setDate(e.target.value)}
             className="w-full rounded-2xl px-4 py-3.5 text-sm font-semibold focus:outline-none transition-all [color-scheme:light] cursor-pointer"
             style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1" }}
@@ -97,14 +99,14 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
 
         {/* Passengers */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>Penumpang</label>
+          <label className="block text-xs font-bold uppercase tracking-widest mb-2 ml-1" style={{ color: "#0369a1" }}>{t.search.passengers}</label>
           <div className="flex items-center gap-2 rounded-2xl px-3 py-2.5" style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0" }}>
             <button onClick={() => setPassengers(Math.max(1, passengers - 1))}
               className="w-9 h-9 rounded-xl text-xl font-bold flex items-center justify-center transition-all hover:scale-110"
               style={{ background: "#eff6ff", color: "#0284c7" }}>−</button>
             <div className="flex-1 text-center">
               <p className="text-lg font-extrabold" style={{ color: "#0369a1" }}>{passengers}</p>
-              <p className="text-xs" style={{ color: "#94a3b8" }}>pax</p>
+              <p className="text-xs" style={{ color: "#94a3b8" }}>{t.search.pax}</p>
             </div>
             <button onClick={() => setPassengers(Math.min(20, passengers + 1))}
               className="w-9 h-9 rounded-xl text-xl font-bold flex items-center justify-center transition-all hover:scale-110"
@@ -118,12 +120,12 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
         className="mt-4 w-full py-4 rounded-2xl text-white text-base font-extrabold tracking-wide btn-ocean flex items-center justify-center gap-2.5 disabled:opacity-50"
         disabled={!from || !to}>
         <span className="text-xl">🔍</span>
-        Cari Tiket Fastboat Sekarang
+        {t.search.searchBtn}
       </button>
 
       {/* Popular routes */}
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="text-xs font-semibold" style={{ color: "#94a3b8" }}>Populer:</span>
+        <span className="text-xs font-semibold" style={{ color: "#94a3b8" }}>{t.search.popular}</span>
         {QUICK_ROUTES.map(r => (
           <button key={r.label} onClick={() => selectRoute(r.from, r.to)}
             className="text-xs px-3 py-1.5 rounded-full font-semibold transition-all hover:scale-105"

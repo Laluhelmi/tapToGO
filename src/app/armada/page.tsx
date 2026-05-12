@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { SCHEDULES, AMENITY_ICONS } from "@/data/boats";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { useLang } from "@/contexts/LanguageContext";
 
 interface OperatorInfo {
   name: string;
@@ -16,6 +17,7 @@ interface OperatorInfo {
 }
 
 export default function ArmadaPage() {
+  const { t } = useLang();
   const [search, setSearch] = useState("");
 
   const operators = useMemo<OperatorInfo[]>(() => {
@@ -59,10 +61,10 @@ export default function ArmadaPage() {
       <div className="pt-16" style={{ background: "linear-gradient(135deg,#0c4a6e,#0369a1)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <Link href="/" className="inline-flex items-center gap-1 text-sm font-semibold mb-4 transition-opacity hover:opacity-80"
-            style={{ color: "#bae6fd" }}>← Beranda</Link>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-1">Armada Resmi</h1>
+            style={{ color: "#bae6fd" }}>{t.armada.backHome}</Link>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-1">{t.armada.title}</h1>
           <p style={{ color: "#bae6fd" }}>
-            {operators.length} operator resmi berizin dengan standar keselamatan internasional
+            {operators.length} {t.armada.subtitle}
           </p>
         </div>
         <div style={{ lineHeight: 0 }}>
@@ -81,7 +83,7 @@ export default function ArmadaPage() {
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Cari nama operator atau tujuan..."
+            placeholder={t.armada.searchPlaceholder}
             className="flex-1 text-sm font-medium focus:outline-none"
             style={{ color: "#334155", background: "transparent" }}
           />
@@ -89,11 +91,11 @@ export default function ArmadaPage() {
             <button onClick={() => setSearch("")}
               className="text-xs font-bold px-3 py-1 rounded-lg"
               style={{ background: "#fee2e2", color: "#dc2626" }}>
-              ✕ Reset
+              {t.armada.reset}
             </button>
           )}
           <span className="text-sm font-semibold" style={{ color: "#0369a1" }}>
-            {filtered.length} operator
+            {filtered.length} {t.armada.operators}
           </span>
         </div>
 
@@ -122,7 +124,7 @@ export default function ArmadaPage() {
                 {/* Rating */}
                 <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold"
                   style={{ background: "rgba(255,255,255,0.95)", color: "#0369a1" }}>
-                  ✓ Resmi
+                  {t.armada.official}
                 </div>
 
                 {/* Operator name overlay */}
@@ -138,17 +140,17 @@ export default function ArmadaPage() {
                 <div className="grid grid-cols-2 gap-2 text-center">
                   <div className="rounded-xl py-2" style={{ background: "#f0f9ff" }}>
                     <p className="text-base font-extrabold" style={{ color: "#0369a1" }}>{op.scheduleCount}</p>
-                    <p className="text-xs" style={{ color: "#94a3b8" }}>Jadwal</p>
+                    <p className="text-xs" style={{ color: "#94a3b8" }}>{t.armada.schedules}</p>
                   </div>
                   <div className="rounded-xl py-2" style={{ background: "#f0f9ff" }}>
                     <p className="text-base font-extrabold" style={{ color: "#0369a1" }}>{op.destinations.length}</p>
-                    <p className="text-xs" style={{ color: "#94a3b8" }}>Rute</p>
+                    <p className="text-xs" style={{ color: "#94a3b8" }}>{t.armada.routes}</p>
                   </div>
                 </div>
 
                 {/* Destinations */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#94a3b8" }}>Tujuan</p>
+                  <p className="text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#94a3b8" }}>{t.armada.destinations}</p>
                   <div className="flex flex-wrap gap-1">
                     {op.destinations.map(d => (
                       <span key={d} className="text-xs px-2 py-0.5 rounded-full font-semibold"
@@ -173,7 +175,7 @@ export default function ArmadaPage() {
                 <div className="flex items-center justify-between mt-auto pt-2"
                   style={{ borderTop: "1px solid #f0f9ff" }}>
                   <div>
-                    <p className="text-xs" style={{ color: "#94a3b8" }}>Harga tiket</p>
+                    <p className="text-xs" style={{ color: "#94a3b8" }}>{t.armada.ticketPrice}</p>
                     <p className="text-sm font-extrabold" style={{ color: "#0369a1" }}>
                       Rp {op.minPrice}K
                       {op.maxPrice !== op.minPrice && <span style={{ color: "#94a3b8" }}> – {op.maxPrice}K</span>}
@@ -181,7 +183,7 @@ export default function ArmadaPage() {
                   </div>
                   <Link href={`/jadwal?operator=${encodeURIComponent(op.name)}`}
                     className="text-xs px-3 py-1.5 rounded-xl font-bold text-white btn-ocean transition-all hover:scale-105">
-                    Lihat Jadwal →
+                    {t.armada.viewSchedule}
                   </Link>
                 </div>
               </div>
@@ -193,16 +195,16 @@ export default function ArmadaPage() {
           <div className="bg-white rounded-2xl py-20 text-center"
             style={{ border: "1.5px solid #e0f2fe" }}>
             <div className="text-5xl mb-3">🚢</div>
-            <p className="font-bold text-lg mb-1" style={{ color: "#0c4a6e" }}>Operator tidak ditemukan</p>
-            <p className="text-sm mb-4" style={{ color: "#64748b" }}>Coba kata kunci lain</p>
+            <p className="font-bold text-lg mb-1" style={{ color: "#0c4a6e" }}>{t.armada.notFound}</p>
+            <p className="text-sm mb-4" style={{ color: "#64748b" }}>{t.armada.tryOther}</p>
             <button onClick={() => setSearch("")} className="px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
-              Reset
+              {t.armada.reset}
             </button>
           </div>
         )}
 
         <p className="text-center text-xs mt-6" style={{ color: "#94a3b8" }}>
-          Semua operator telah terverifikasi dan berizin resmi · Diperbarui berkala
+          {t.armada.verified}
         </p>
       </div>
     </div>

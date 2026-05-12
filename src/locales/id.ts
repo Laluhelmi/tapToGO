@@ -1,0 +1,228 @@
+const id = {
+  // Navbar
+  nav: {
+    home: "Beranda",
+    schedule: "Jadwal",
+    fleet: "Armada",
+    help: "Bantuan",
+  },
+
+  // Search Form
+  search: {
+    from: "Dari",
+    to: "Ke",
+    date: "Tanggal",
+    passengers: "Penumpang",
+    selectPort: "Pilih Pelabuhan",
+    selectDestination: "Pilih Tujuan",
+    searchBtn: "Cari Tiket Fastboat Sekarang",
+    popular: "Populer:",
+    pax: "pax",
+  },
+
+  // Schedule Section
+  scheduleSection: {
+    badge: "🗓️ Jadwal Tersedia",
+    pickRoute: "Pilih Rute",
+    schedules: "jadwal",
+    passenger: "Penumpang",
+    startFrom: "Mulai Rp",
+    showing: "Menampilkan",
+    priceIncluded: "Harga sudah termasuk terminal fee",
+    sortBy: "Urutkan:",
+    time: "Waktu",
+    price: "Harga",
+    maxPrice: "Maks harga:",
+    noSchedule: "Tidak ada jadwal ditemukan",
+    pickPortHint: "Pilih pelabuhan keberangkatan dan tujuan di atas",
+    noMatch: "Tidak ada jadwal yang sesuai filter",
+    resetFilter: "Reset Filter",
+    direct: "Langsung",
+    seatsLeft: "kursi tersedia",
+    almostFull: "kursi sisa!",
+    select: "Pilih →",
+  },
+
+  // Boat Card
+  boatCard: {
+    select: "Pilih →",
+    seatsLeft: "kursi tersedia",
+    almostFull: "kursi sisa!",
+  },
+
+  // Jadwal Page
+  jadwal: {
+    title: "Semua Jadwal",
+    subtitle: "jadwal tersedia dari",
+    officialOp: "operator resmi",
+    searchPlaceholder: "Cari operator / rute...",
+    allDepartures: "Semua Keberangkatan",
+    allDestinations: "Semua Tujuan",
+    allOperators: "Semua Operator",
+    sortTime: "⏰ Waktu",
+    sortPrice: "💰 Harga",
+    sortOperator: "🚢 Operator",
+    schedules: "jadwal",
+    resetFilter: "✕ Reset Filter",
+    from: "Dari",
+    to: "Ke",
+    duration: "Durasi",
+    seats: "kursi",
+    perPax: "/pax",
+    select: "Pilih →",
+    noSchedule: "Tidak ada jadwal",
+    tryFilter: "Coba ubah filter pencarian",
+    backHome: "← Beranda",
+    sortBy: "Urutkan:",
+    time: "Waktu",
+    price: "Harga",
+    operator: "Operator",
+    realData: "Data jadwal real dari operator resmi · Diperbarui berkala",
+  },
+
+  // Armada Page
+  armada: {
+    title: "Armada Resmi",
+    subtitle: "operator resmi berizin dengan standar keselamatan internasional",
+    backHome: "← Beranda",
+    searchPlaceholder: "Cari nama operator atau tujuan...",
+    reset: "✕ Reset",
+    operators: "operator",
+    schedules: "Jadwal",
+    routes: "Rute",
+    destinations: "Tujuan",
+    ticketPrice: "Harga tiket",
+    viewSchedule: "Lihat Jadwal →",
+    official: "✓ Resmi",
+    notFound: "Operator tidak ditemukan",
+    tryOther: "Coba kata kunci lain",
+    verified: "Semua operator telah terverifikasi dan berizin resmi · Diperbarui berkala",
+  },
+
+  // Bantuan Page
+  bantuan: {
+    title: "Pusat Bantuan",
+    subtitle: "Ada pertanyaan? Kami siap membantu 24/7",
+    backHome: "← Beranda",
+    faqTitle: "Pertanyaan yang Sering Ditanyakan",
+    stillNeedHelp: "Masih butuh bantuan?",
+    helpDesc: "Tim support kami siap menjawab pertanyaanmu via WhatsApp setiap hari pukul 07.00–22.00 WITA.",
+    chatWa: "💬 Chat WhatsApp Sekarang",
+    serviceHours: "tapToGo · Layanan pelanggan 07.00–22.00 WITA",
+    faqs: [
+      {
+        q: "Bagaimana cara memesan tiket fastboat?",
+        a: "Pilih rute keberangkatan dan tujuan, lalu klik 'Cari Tiket'. Pilih jadwal yang sesuai, isi data penumpang, dan konfirmasi pesanan. Tim kami akan menghubungi kamu via WhatsApp untuk instruksi pembayaran.",
+      },
+      {
+        q: "Berapa lama konfirmasi booking setelah memesan?",
+        a: "Tim kami akan menghubungi kamu via WhatsApp dalam 15–30 menit setelah pemesanan. Pastikan nomor WhatsApp yang kamu masukkan aktif.",
+      },
+      {
+        q: "Metode pembayaran apa yang tersedia?",
+        a: "Saat ini kami mendukung transfer bank, kartu kredit/debit, dan e-wallet (GoPay, OVO, Dana). Untuk wisatawan mancanegara, tersedia pembayaran via kartu internasional.",
+      },
+      {
+        q: "Bisakah saya membatalkan atau mengubah jadwal?",
+        a: "Pembatalan atau perubahan jadwal bisa dilakukan minimal 24 jam sebelum keberangkatan. Hubungi kami via WhatsApp dengan menyertakan kode booking kamu.",
+      },
+      {
+        q: "Apakah ada biaya bagasi?",
+        a: "Setiap penumpang mendapat jatah bagasi gratis 15 kg. Kelebihan bagasi dikenakan biaya sesuai kebijakan masing-masing operator.",
+      },
+      {
+        q: "Bagaimana jika kapal dibatalkan karena cuaca buruk?",
+        a: "Jika perjalanan dibatalkan oleh operator karena kondisi cuaca atau keadaan darurat, kamu akan mendapatkan refund penuh atau penjadwalan ulang tanpa biaya tambahan.",
+      },
+      {
+        q: "Apakah tiket bisa digunakan untuk penumpang anak-anak?",
+        a: "Anak usia di bawah 2 tahun biasanya gratis (duduk di pangkuan orang tua). Anak usia 2–12 tahun dikenakan 50–75% dari harga tiket dewasa tergantung operator.",
+      },
+      {
+        q: "Di mana saya bisa melihat e-tiket setelah booking?",
+        a: "E-tiket akan dikirimkan ke alamat email yang kamu daftarkan. Cek juga folder spam jika tidak muncul di inbox.",
+      },
+    ],
+  },
+
+  // Booking Page
+  booking: {
+    title: "Isi Data Penumpang",
+    subtitle: "Pastikan data sesuai dengan dokumen perjalanan",
+    backToSchedule: "← Kembali ke Jadwal",
+    notFound: "Jadwal tidak ditemukan",
+    backBtn: "← Kembali ke Jadwal",
+    passengerData: "Data Penumpang Utama",
+    fullName: "Nama Lengkap",
+    namePlaceholder: "Sesuai paspor / KTP",
+    email: "Email",
+    emailPlaceholder: "email@contoh.com",
+    whatsapp: "Nomor WhatsApp",
+    waPlaceholder: "+62 812 xxxx xxxx",
+    nationality: "Kewarganegaraan",
+    natPlaceholder: "Indonesia / Australia / dll",
+    idNumber: "No. Paspor / KTP",
+    idPlaceholder: "Opsional",
+    nextBtn: "Lanjut ke Konfirmasi →",
+    required: "*",
+    errorName: "Nama wajib diisi",
+    errorEmail: "Email tidak valid",
+    errorWa: "Nomor WhatsApp wajib diisi",
+    errorNat: "Kewarganegaraan wajib diisi",
+    orderSummary: "Ringkasan Pesanan",
+    from: "Dari",
+    to: "Ke",
+    departs: "Berangkat",
+    duration: "Durasi",
+    passengersLabel: "Penumpang",
+    dateLabel: "Tanggal",
+    total: "Total",
+    facilities: "Fasilitas",
+    confirmTitle: "Konfirmasi Booking",
+    passengerSummary: "Data Penumpang",
+    name: "Nama",
+    ticketPrice: "Harga tiket",
+    totalPayment: "Total Pembayaran",
+    editData: "← Edit Data",
+    confirmBtn: "✓ Konfirmasi & Pesan",
+    successTitle: "Booking Berhasil!",
+    successDesc: "Cek email kamu untuk e-tiket dan instruksi pembayaran.",
+    bookingDetail: "Detail Booking",
+    bookingCode: "Kode Booking",
+    route: "Rute",
+    departure: "Keberangkatan",
+    waNotif: "Tim kami akan menghubungi kamu via WhatsApp ke",
+    waTime: "dalam 15 menit.",
+    backHome: "Kembali ke Beranda",
+    loading: "Memuat...",
+    boatType: "Fastboat",
+  },
+
+  // Footer
+  footer: {
+    desc: "Platform pemesanan tiket fastboat terpercaya untuk rute Bali, Lombok, Gili Island, dan Nusa Penida.",
+    popularRoutes: "Rute Populer",
+    company: "Perusahaan",
+    help: "Bantuan",
+    companyLinks: ["Tentang Kami", "Karir", "Blog", "Press Kit", "Hubungi Kami"],
+    helpLinks: ["FAQ", "Panduan Booking", "Kebijakan Refund", "Syarat Layanan", "Privasi"],
+    copyright: "© 2026 tapToGo. All rights reserved.",
+  },
+
+  // HowItWorks
+  howItWorks: {
+    badge: "✨ Cara Pesan",
+    title: "4 Langkah",
+    titleHighlight: "Menuju Laut",
+    subtitle: "Dari cari tiket hingga boarding — semua selesai dalam hitungan menit.",
+    steps: [
+      { n: "01", icon: "🔍", title: "Cari Rute", desc: "Pilih pelabuhan asal & tujuan, tanggal, dan jumlah penumpang." },
+      { n: "02", icon: "⛵", title: "Pilih Fastboat", desc: "Bandingkan harga, jadwal, fasilitas & rating operator resmi." },
+      { n: "03", icon: "💳", title: "Bayar Aman", desc: "Bayar via kartu, transfer, atau e-wallet. Semua terenkripsi." },
+      { n: "04", icon: "🎟️", title: "E-Tiket Siap", desc: "E-tiket langsung ke email. Tunjukkan QR saat boarding!" },
+    ],
+  },
+};
+
+export default id;
+export type Translations = typeof id;

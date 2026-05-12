@@ -2,6 +2,7 @@
 import type { BoatSchedule } from "@/types";
 import { AMENITY_ICONS } from "@/data/boats";
 import { useRouter } from "next/navigation";
+import { useLang } from "@/contexts/LanguageContext";
 
 const BADGE_STYLES = {
   "Best Price":    { bg: "#dcfce7", text: "#15803d", icon: "💚" },
@@ -12,6 +13,7 @@ const BADGE_STYLES = {
 
 export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSchedule; index?: number; date?: string; passengers?: number }) {
   const router = useRouter();
+  const { t } = useLang();
   const badge = boat.badge ? BADGE_STYLES[boat.badge] : null;
   const seatPct = boat.availableSeats / boat.seats;
   const almostFull = boat.availableSeats <= 5;
@@ -79,7 +81,7 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
               <div className="flex-1 h-0.5 rounded-full" style={{ background: "linear-gradient(90deg,#0284c7,#0ea5e9)" }} />
               <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#0ea5e9" }} />
             </div>
-            <p className="text-xs mt-1 font-semibold" style={{ color: "#0284c7" }}>Langsung</p>
+            <p className="text-xs mt-1 font-semibold" style={{ color: "#0284c7" }}>{t.scheduleSection.direct}</p>
           </div>
           <div className="text-center">
             <p className="text-xl font-extrabold tabular-nums" style={{ color: "#0369a1" }}>{boat.arrivalTime}</p>
@@ -100,7 +102,7 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
         {/* Seats bar */}
         <div>
           <p className="text-xs font-semibold mb-1" style={{ color: almostFull ? "#ef4444" : "#64748b" }}>
-            {almostFull ? `⚠ ${boat.availableSeats} kursi sisa!` : `${boat.availableSeats} kursi tersedia`}
+            {almostFull ? `⚠ ${boat.availableSeats} ${t.boatCard.almostFull}` : `${boat.availableSeats} ${t.boatCard.seatsLeft}`}
           </p>
           <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#e2e8f0" }}>
             <div className="h-full rounded-full transition-all duration-500"
@@ -120,7 +122,7 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
             <p className="text-xs" style={{ color: "#94a3b8" }}>/pax</p>
           </div>
           <button onClick={goToBooking} className="px-5 py-2.5 rounded-2xl text-sm font-extrabold text-white transition-all hover:scale-105 btn-ocean">
-            Pilih →
+            {t.boatCard.select}
           </button>
         </div>
       </div>

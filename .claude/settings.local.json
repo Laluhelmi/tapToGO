@@ -52,7 +52,9 @@
       "Bash(git commit -m 'fix: relax build constraints for Vercel *)",
       "Bash(git commit -m 'fix: use next.config.mjs for better Vercel compatibility *)",
       "Bash(/Users/laluhilmi/.nvm/versions/node/v20.20.2/bin/node node_modules/.bin/next build)",
-      "Bash(git commit -m 'fix: remove .npmrc and fix next config for Vercel *)"
+      "Bash(git commit -m 'fix: remove .npmrc and fix next config for Vercel *)",
+      "Bash(npx tsc *)",
+      "Bash(git commit -m 'feat: multi-language support \\(Indonesian & English\\) *)"
     ]
   }
 }

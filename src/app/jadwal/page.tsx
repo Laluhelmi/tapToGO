@@ -5,11 +5,13 @@ import type { Port } from "@/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
+import { useLang } from "@/contexts/LanguageContext";
 
 type SortKey = "time" | "price" | "operator";
 
 export default function JadwalPage() {
   const router = useRouter();
+  const { t } = useLang();
   const [from, setFrom] = useState<Port | "">("");
   const [to, setTo] = useState<Port | "">("");
   const [operator, setOperator] = useState("");
@@ -49,10 +51,10 @@ export default function JadwalPage() {
       <div className="pt-16" style={{ background: "linear-gradient(135deg,#0c4a6e,#0369a1)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <Link href="/" className="inline-flex items-center gap-1 text-sm font-semibold mb-4 transition-opacity hover:opacity-80"
-            style={{ color: "#bae6fd" }}>← Beranda</Link>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-1">Semua Jadwal</h1>
+            style={{ color: "#bae6fd" }}>{t.jadwal.backHome}</Link>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-1">{t.jadwal.title}</h1>
           <p style={{ color: "#bae6fd" }}>
-            {SCHEDULES.length} jadwal tersedia dari {operators.length} operator resmi
+            {SCHEDULES.length} {t.jadwal.subtitle} {operators.length} {t.jadwal.officialOp}
           </p>
         </div>
         {/* Wave — sama seperti HeroSection */}
@@ -74,7 +76,7 @@ export default function JadwalPage() {
             <div className="relative lg:col-span-1">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm">🔍</span>
               <input value={search} onChange={e => setSearch(e.target.value)}
-                placeholder="Cari operator / rute..."
+                placeholder={t.jadwal.searchPlaceholder}
                 className="w-full rounded-xl pl-9 pr-4 py-2.5 text-sm font-medium focus:outline-none"
                 style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#334155" }}
                 onFocus={e => e.target.style.borderColor = "#38bdf8"}
@@ -85,7 +87,7 @@ export default function JadwalPage() {
             <select value={from} onChange={e => setFrom(e.target.value as Port | "")}
               className="rounded-xl px-3 py-2.5 text-sm font-semibold appearance-none cursor-pointer focus:outline-none"
               style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: from ? "#0369a1" : "#94a3b8" }}>
-              <option value="">Semua Keberangkatan</option>
+              <option value="">{t.jadwal.allDepartures}</option>
               {FROM_PORTS.map(p => <option key={p} value={p}>{p}</option>)}
             </select>
 
@@ -93,7 +95,7 @@ export default function JadwalPage() {
             <select value={to} onChange={e => setTo(e.target.value as Port | "")}
               className="rounded-xl px-3 py-2.5 text-sm font-semibold appearance-none cursor-pointer focus:outline-none"
               style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: to ? "#0369a1" : "#94a3b8" }}>
-              <option value="">Semua Tujuan</option>
+              <option value="">{t.jadwal.allDestinations}</option>
               {TO_PORTS.map(p => <option key={p} value={p}>{p}</option>)}
             </select>
 
@@ -101,7 +103,7 @@ export default function JadwalPage() {
             <select value={operator} onChange={e => setOperator(e.target.value)}
               className="rounded-xl px-3 py-2.5 text-sm font-semibold appearance-none cursor-pointer focus:outline-none"
               style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: operator ? "#0369a1" : "#94a3b8" }}>
-              <option value="">Semua Operator</option>
+              <option value="">{t.jadwal.allOperators}</option>
               {operators.map(o => <option key={o} value={o}>{o}</option>)}
             </select>
           </div>
@@ -109,11 +111,11 @@ export default function JadwalPage() {
           <div className="flex items-center justify-between flex-wrap gap-3">
             {/* Sort */}
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-bold" style={{ color: "#94a3b8" }}>Urutkan:</span>
+              <span className="text-xs font-bold" style={{ color: "#94a3b8" }}>{t.jadwal.sortBy}</span>
               {([
-                { k: "time", l: "⏰ Waktu" },
-                { k: "price", l: "💰 Harga" },
-                { k: "operator", l: "🚢 Operator" },
+                { k: "time", l: t.jadwal.sortTime },
+                { k: "price", l: t.jadwal.sortPrice },
+                { k: "operator", l: t.jadwal.sortOperator },
               ] as { k: SortKey; l: string }[]).map(({ k, l }) => (
                 <button key={k} onClick={() => setSortKey(k)}
                   className="px-3 py-1 rounded-lg text-xs font-bold transition-all"
@@ -127,12 +129,12 @@ export default function JadwalPage() {
 
             <div className="flex items-center gap-3">
               <span className="text-sm font-semibold" style={{ color: "#0369a1" }}>
-                {filtered.length} jadwal
+                {filtered.length} {t.jadwal.schedules}
               </span>
               {(from || to || operator || search) && (
                 <button onClick={reset} className="text-xs font-bold px-3 py-1.5 rounded-lg transition-all"
                   style={{ background: "#fee2e2", color: "#dc2626" }}>
-                  ✕ Reset Filter
+                  {t.jadwal.resetFilter}
                 </button>
               )}
             </div>
@@ -171,12 +173,12 @@ export default function JadwalPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>Dari</p>
+                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.from}</p>
                         <p className="text-sm font-semibold" style={{ color: "#334155" }}>{s.from}</p>
                       </div>
                       <span style={{ color: "#bae6fd" }}>→</span>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>Ke</p>
+                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.to}</p>
                         <p className="text-sm font-semibold" style={{ color: "#334155" }}>{s.to}</p>
                       </div>
                       <div>
@@ -184,7 +186,7 @@ export default function JadwalPage() {
                         <p className="text-sm font-semibold tabular-nums" style={{ color: "#0369a1" }}>{s.departureTime}</p>
                       </div>
                     </div>
-                    <button onClick={() => goToBooking(s.id)} className="px-4 py-2 rounded-xl text-xs font-extrabold text-white btn-ocean">Pilih →</button>
+                    <button onClick={() => goToBooking(s.id)} className="px-4 py-2 rounded-xl text-xs font-extrabold text-white btn-ocean">{t.jadwal.select}</button>
                   </div>
                 </div>
 
@@ -231,10 +233,10 @@ export default function JadwalPage() {
 
                   {/* Duration — 100px */}
                   <div className="shrink-0 w-[100px]">
-                    <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>Durasi</p>
+                    <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.duration}</p>
                     <p className="text-sm font-semibold" style={{ color: "#64748b" }}>{s.duration}</p>
                     <span className="text-xs px-1.5 py-0.5 rounded-md inline-block mt-0.5"
-                      style={{ background: "#f0f9ff", color: "#0369a1" }}>{s.availableSeats} kursi</span>
+                      style={{ background: "#f0f9ff", color: "#0369a1" }}>{s.availableSeats} {t.jadwal.seats}</span>
                   </div>
 
                   <div className="shrink-0 w-px self-stretch mx-4" style={{ background: "#e0f2fe" }} />
@@ -243,10 +245,10 @@ export default function JadwalPage() {
                   <div className="shrink-0 w-[160px] flex items-center justify-between gap-3">
                     <div>
                       <p className="text-xl font-extrabold leading-none" style={{ color: "#0369a1" }}>Rp {s.price}K</p>
-                      <p className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>/pax</p>
+                      <p className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>{t.jadwal.perPax}</p>
                     </div>
                     <button onClick={() => goToBooking(s.id)} className="px-4 py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean transition-all hover:scale-105 whitespace-nowrap">
-                      Pilih →
+                      {t.jadwal.select}
                     </button>
                   </div>
 
@@ -258,16 +260,16 @@ export default function JadwalPage() {
           <div className="bg-white rounded-2xl py-20 text-center"
             style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
             <div className="text-5xl mb-3">🔍</div>
-            <p className="font-bold text-lg mb-1" style={{ color: "#0c4a6e" }}>Tidak ada jadwal</p>
-            <p className="text-sm mb-4" style={{ color: "#64748b" }}>Coba ubah filter pencarian</p>
+            <p className="font-bold text-lg mb-1" style={{ color: "#0c4a6e" }}>{t.jadwal.noSchedule}</p>
+            <p className="text-sm mb-4" style={{ color: "#64748b" }}>{t.jadwal.tryFilter}</p>
             <button onClick={reset} className="px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
-              Reset Filter
+              {t.jadwal.resetFilter}
             </button>
           </div>
         )}
 
         <p className="text-center text-xs mt-4" style={{ color: "#94a3b8" }}>
-          Data jadwal real dari operator resmi · Diperbarui berkala
+          {t.jadwal.realData}
         </p>
       </div>
     </div>

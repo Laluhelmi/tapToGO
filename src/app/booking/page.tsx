@@ -4,8 +4,10 @@ import { useSearchParams } from "next/navigation";
 import { SCHEDULES } from "@/data/boats";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { useLang } from "@/contexts/LanguageContext";
 
 function BookingContent() {
+  const { t } = useLang();
   const params = useSearchParams();
   const id = params.get("id");
   const date = params.get("date") ?? "";
@@ -28,9 +30,9 @@ function BookingContent() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: "#f0f9ff" }}>
         <div className="text-5xl mb-4">⚠️</div>
-        <p className="font-bold text-lg mb-2" style={{ color: "#0c4a6e" }}>Jadwal tidak ditemukan</p>
+        <p className="font-bold text-lg mb-2" style={{ color: "#0c4a6e" }}>{t.booking.notFound}</p>
         <Link href="/jadwal" className="mt-4 px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
-          ← Kembali ke Jadwal
+          {t.booking.backBtn}
         </Link>
       </div>
     );
@@ -41,10 +43,10 @@ function BookingContent() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = "Nama wajib diisi";
-    if (!form.email.trim() || !form.email.includes("@")) e.email = "Email tidak valid";
-    if (!form.whatsapp.trim()) e.whatsapp = "Nomor WhatsApp wajib diisi";
-    if (!form.nationality.trim()) e.nationality = "Kewarganegaraan wajib diisi";
+    if (!form.name.trim()) e.name = t.booking.errorName;
+    if (!form.email.trim() || !form.email.includes("@")) e.email = t.booking.errorEmail;
+    if (!form.whatsapp.trim()) e.whatsapp = t.booking.errorWa;
+    if (!form.nationality.trim()) e.nationality = t.booking.errorNat;
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -68,45 +70,45 @@ function BookingContent() {
             style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 8px 40px rgba(2,132,199,0.1)" }}>
             <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl mx-auto mb-4"
               style={{ background: "#dcfce7" }}>✓</div>
-            <h2 className="text-2xl font-extrabold mb-1" style={{ color: "#0c4a6e" }}>Booking Berhasil!</h2>
-            <p className="text-sm mb-6" style={{ color: "#64748b" }}>Cek email kamu untuk e-tiket dan instruksi pembayaran.</p>
+            <h2 className="text-2xl font-extrabold mb-1" style={{ color: "#0c4a6e" }}>{t.booking.successTitle}</h2>
+            <p className="text-sm mb-6" style={{ color: "#64748b" }}>{t.booking.successDesc}</p>
 
             <div className="rounded-2xl p-4 mb-6 text-left" style={{ background: "#f0f9ff" }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: "#94a3b8" }}>Detail Booking</p>
+              <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: "#94a3b8" }}>{t.booking.bookingDetail}</p>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm" style={{ color: "#64748b" }}>Kode Booking</span>
+                  <span className="text-sm" style={{ color: "#64748b" }}>{t.booking.bookingCode}</span>
                   <span className="text-sm font-extrabold" style={{ color: "#0369a1" }}>{orderCode}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm" style={{ color: "#64748b" }}>Rute</span>
+                  <span className="text-sm" style={{ color: "#64748b" }}>{t.booking.route}</span>
                   <span className="text-sm font-semibold" style={{ color: "#334155" }}>{schedule.from} → {schedule.to}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm" style={{ color: "#64748b" }}>Tanggal</span>
+                  <span className="text-sm" style={{ color: "#64748b" }}>{t.booking.dateLabel}</span>
                   <span className="text-sm font-semibold" style={{ color: "#334155" }}>{date || "—"}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm" style={{ color: "#64748b" }}>Keberangkatan</span>
+                  <span className="text-sm" style={{ color: "#64748b" }}>{t.booking.departure}</span>
                   <span className="text-sm font-semibold" style={{ color: "#334155" }}>{schedule.departureTime}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm" style={{ color: "#64748b" }}>Penumpang</span>
-                  <span className="text-sm font-semibold" style={{ color: "#334155" }}>{passengers} pax</span>
+                  <span className="text-sm" style={{ color: "#64748b" }}>{t.booking.passengersLabel}</span>
+                  <span className="text-sm font-semibold" style={{ color: "#334155" }}>{passengers} {t.search.pax}</span>
                 </div>
                 <div className="flex justify-between pt-2" style={{ borderTop: "1px solid #e0f2fe" }}>
-                  <span className="text-sm font-bold" style={{ color: "#0c4a6e" }}>Total</span>
+                  <span className="text-sm font-bold" style={{ color: "#0c4a6e" }}>{t.booking.total}</span>
                   <span className="text-base font-extrabold" style={{ color: "#0369a1" }}>Rp {totalPrice}K</span>
                 </div>
               </div>
             </div>
 
             <p className="text-xs mb-6" style={{ color: "#64748b" }}>
-              Tim kami akan menghubungi kamu via WhatsApp ke <strong>{form.whatsapp}</strong> dalam 15 menit.
+              {t.booking.waNotif} <strong>{form.whatsapp}</strong> {t.booking.waTime}
             </p>
 
             <Link href="/" className="block w-full py-3 rounded-2xl text-sm font-extrabold text-white btn-ocean text-center">
-              Kembali ke Beranda
+              {t.booking.backHome}
             </Link>
           </div>
         </div>
@@ -121,8 +123,8 @@ function BookingContent() {
         <Navbar />
         <div className="pt-24 pb-16 max-w-2xl mx-auto px-4">
           <Link href="/jadwal" className="inline-flex items-center gap-1 text-sm font-semibold mb-6"
-            style={{ color: "#0369a1" }}>← Kembali</Link>
-          <h1 className="text-2xl font-extrabold mb-6" style={{ color: "#0c4a6e" }}>Konfirmasi Booking</h1>
+            style={{ color: "#0369a1" }}>{t.booking.editData}</Link>
+          <h1 className="text-2xl font-extrabold mb-6" style={{ color: "#0c4a6e" }}>{t.booking.confirmTitle}</h1>
 
           {/* Schedule summary */}
           <div className="bg-white rounded-2xl p-5 mb-4"
@@ -138,10 +140,10 @@ function BookingContent() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[
-                { label: "Dari", value: schedule.from },
-                { label: "Ke", value: schedule.to },
-                { label: "Jam", value: schedule.departureTime },
-                { label: "Durasi", value: schedule.duration },
+                { label: t.booking.from, value: schedule.from },
+                { label: t.booking.to, value: schedule.to },
+                { label: t.booking.departs, value: schedule.departureTime },
+                { label: t.booking.duration, value: schedule.duration },
               ].map(({ label, value }) => (
                 <div key={label} className="rounded-xl p-3" style={{ background: "#f0f9ff" }}>
                   <p className="text-xs font-bold uppercase tracking-wide mb-0.5" style={{ color: "#94a3b8" }}>{label}</p>
@@ -154,14 +156,14 @@ function BookingContent() {
           {/* Passenger summary */}
           <div className="bg-white rounded-2xl p-5 mb-4"
             style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
-            <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: "#94a3b8" }}>Data Penumpang</p>
+            <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: "#94a3b8" }}>{t.booking.passengerSummary}</p>
             <div className="space-y-2">
               {[
-                { label: "Nama", value: form.name },
-                { label: "Email", value: form.email },
-                { label: "WhatsApp", value: form.whatsapp },
-                { label: "Kewarganegaraan", value: form.nationality },
-                { label: "No. Paspor / KTP", value: form.idNumber || "—" },
+                { label: t.booking.name, value: form.name },
+                { label: t.booking.email, value: form.email },
+                { label: t.booking.whatsapp, value: form.whatsapp },
+                { label: t.booking.nationality, value: form.nationality },
+                { label: t.booking.idNumber, value: form.idNumber || "—" },
               ].map(({ label, value }) => (
                 <div key={label} className="flex justify-between items-center py-1.5"
                   style={{ borderBottom: "1px solid #f0f9ff" }}>
@@ -176,11 +178,11 @@ function BookingContent() {
           <div className="bg-white rounded-2xl p-5 mb-6"
             style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm" style={{ color: "#64748b" }}>Harga tiket</span>
+              <span className="text-sm" style={{ color: "#64748b" }}>{t.booking.ticketPrice}</span>
               <span className="text-sm font-semibold" style={{ color: "#334155" }}>Rp {schedule.price}K × {passengers}</span>
             </div>
             <div className="flex justify-between items-center pt-3" style={{ borderTop: "1.5px solid #e0f2fe" }}>
-              <span className="font-bold" style={{ color: "#0c4a6e" }}>Total Pembayaran</span>
+              <span className="font-bold" style={{ color: "#0c4a6e" }}>{t.booking.totalPayment}</span>
               <span className="text-2xl font-extrabold" style={{ color: "#0369a1" }}>Rp {totalPrice}K</span>
             </div>
           </div>
@@ -189,11 +191,11 @@ function BookingContent() {
             <button onClick={() => setStep("form")}
               className="flex-1 py-3.5 rounded-2xl text-sm font-bold border-2 transition-all"
               style={{ borderColor: "#e0f2fe", color: "#64748b" }}>
-              ← Edit Data
+              {t.booking.editData}
             </button>
             <button onClick={handleConfirm}
               className="flex-[2] py-3.5 rounded-2xl text-sm font-extrabold text-white btn-ocean transition-all hover:scale-[1.02]">
-              ✓ Konfirmasi & Pesan
+              {t.booking.confirmBtn}
             </button>
           </div>
         </div>
@@ -210,9 +212,9 @@ function BookingContent() {
       <div className="pt-16" style={{ background: "linear-gradient(135deg,#0c4a6e,#0369a1)" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
           <Link href="/jadwal" className="inline-flex items-center gap-1 text-sm font-semibold mb-4 hover:opacity-80"
-            style={{ color: "#bae6fd" }}>← Kembali ke Jadwal</Link>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-1">Isi Data Penumpang</h1>
-          <p style={{ color: "#bae6fd" }}>Pastikan data sesuai dengan dokumen perjalanan</p>
+            style={{ color: "#bae6fd" }}>{t.booking.backToSchedule}</Link>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-1">{t.booking.title}</h1>
+          <p style={{ color: "#bae6fd" }}>{t.booking.subtitle}</p>
         </div>
         <div style={{ lineHeight: 0 }}>
           <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" style={{ width: "100%", height: 40 }}>
@@ -228,17 +230,17 @@ function BookingContent() {
           <div className="bg-white rounded-2xl p-6"
             style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
             <p className="text-sm font-bold uppercase tracking-wide mb-5" style={{ color: "#0369a1" }}>
-              Data Penumpang Utama
+              {t.booking.passengerData}
             </p>
 
             <div className="space-y-4">
               {/* Name */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
-                  Nama Lengkap <span style={{ color: "#dc2626" }}>*</span>
+                  {t.booking.fullName} <span style={{ color: "#dc2626" }}>{t.booking.required}</span>
                 </label>
                 <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-                  placeholder="Sesuai paspor / KTP"
+                  placeholder={t.booking.namePlaceholder}
                   className="w-full rounded-xl px-4 py-3 text-sm font-medium focus:outline-none transition-all"
                   style={{ background: "#f8fafc", border: `1.5px solid ${errors.name ? "#fca5a5" : "#e2e8f0"}`, color: "#334155" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
@@ -249,10 +251,10 @@ function BookingContent() {
               {/* Email */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
-                  Email <span style={{ color: "#dc2626" }}>*</span>
+                  {t.booking.email} <span style={{ color: "#dc2626" }}>{t.booking.required}</span>
                 </label>
                 <input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
-                  placeholder="email@contoh.com"
+                  placeholder={t.booking.emailPlaceholder}
                   className="w-full rounded-xl px-4 py-3 text-sm font-medium focus:outline-none transition-all"
                   style={{ background: "#f8fafc", border: `1.5px solid ${errors.email ? "#fca5a5" : "#e2e8f0"}`, color: "#334155" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
@@ -263,10 +265,10 @@ function BookingContent() {
               {/* WhatsApp */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
-                  Nomor WhatsApp <span style={{ color: "#dc2626" }}>*</span>
+                  {t.booking.whatsapp} <span style={{ color: "#dc2626" }}>{t.booking.required}</span>
                 </label>
                 <input type="tel" value={form.whatsapp} onChange={e => setForm({ ...form, whatsapp: e.target.value })}
-                  placeholder="+62 812 xxxx xxxx"
+                  placeholder={t.booking.waPlaceholder}
                   className="w-full rounded-xl px-4 py-3 text-sm font-medium focus:outline-none transition-all"
                   style={{ background: "#f8fafc", border: `1.5px solid ${errors.whatsapp ? "#fca5a5" : "#e2e8f0"}`, color: "#334155" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
@@ -277,10 +279,10 @@ function BookingContent() {
               {/* Nationality */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
-                  Kewarganegaraan <span style={{ color: "#dc2626" }}>*</span>
+                  {t.booking.nationality} <span style={{ color: "#dc2626" }}>{t.booking.required}</span>
                 </label>
                 <input value={form.nationality} onChange={e => setForm({ ...form, nationality: e.target.value })}
-                  placeholder="Indonesia / Australia / dll"
+                  placeholder={t.booking.natPlaceholder}
                   className="w-full rounded-xl px-4 py-3 text-sm font-medium focus:outline-none transition-all"
                   style={{ background: "#f8fafc", border: `1.5px solid ${errors.nationality ? "#fca5a5" : "#e2e8f0"}`, color: "#334155" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
@@ -291,10 +293,10 @@ function BookingContent() {
               {/* ID Number */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
-                  No. Paspor / KTP
+                  {t.booking.idNumber}
                 </label>
                 <input value={form.idNumber} onChange={e => setForm({ ...form, idNumber: e.target.value })}
-                  placeholder="Opsional"
+                  placeholder={t.booking.idPlaceholder}
                   className="w-full rounded-xl px-4 py-3 text-sm font-medium focus:outline-none transition-all"
                   style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#334155" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
@@ -304,7 +306,7 @@ function BookingContent() {
 
             <button onClick={handleSubmit}
               className="mt-6 w-full py-4 rounded-2xl text-white text-sm font-extrabold btn-ocean transition-all hover:scale-[1.01]">
-              Lanjut ke Konfirmasi →
+              {t.booking.nextBtn}
             </button>
           </div>
 
@@ -312,7 +314,7 @@ function BookingContent() {
           <div className="space-y-4">
             <div className="bg-white rounded-2xl p-5"
               style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: "#94a3b8" }}>Ringkasan Pesanan</p>
+              <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: "#94a3b8" }}>{t.booking.orderSummary}</p>
 
               {/* Operator */}
               <div className="flex items-center gap-3 mb-4 pb-4" style={{ borderBottom: "1px solid #f0f9ff" }}>
@@ -327,11 +329,11 @@ function BookingContent() {
 
               <div className="space-y-2.5">
                 {[
-                  { icon: "📍", label: "Dari", value: schedule.from },
-                  { icon: "🏁", label: "Ke", value: schedule.to },
-                  { icon: "🕐", label: "Berangkat", value: schedule.departureTime },
-                  { icon: "⏱️", label: "Durasi", value: schedule.duration },
-                  { icon: "📅", label: "Tanggal", value: date || "—" },
+                  { icon: "📍", label: t.booking.from, value: schedule.from },
+                  { icon: "🏁", label: t.booking.to, value: schedule.to },
+                  { icon: "🕐", label: t.booking.departs, value: schedule.departureTime },
+                  { icon: "⏱️", label: t.booking.duration, value: schedule.duration },
+                  { icon: "📅", label: t.booking.dateLabel, value: date || "—" },
                 ].map(({ icon, label, value }) => (
                   <div key={label} className="flex items-center justify-between">
                     <span className="text-xs" style={{ color: "#94a3b8" }}>{icon} {label}</span>
@@ -341,7 +343,7 @@ function BookingContent() {
 
                 {/* Passengers — editable */}
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-xs" style={{ color: "#94a3b8" }}>👤 Penumpang</span>
+                  <span className="text-xs" style={{ color: "#94a3b8" }}>👤 {t.booking.passengersLabel}</span>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => setPassengers(p => Math.max(1, p - 1))}
@@ -357,7 +359,7 @@ function BookingContent() {
               </div>
 
               <div className="mt-4 pt-4 flex justify-between items-center" style={{ borderTop: "1.5px solid #e0f2fe" }}>
-                <span className="text-sm font-bold" style={{ color: "#0c4a6e" }}>Total</span>
+                <span className="text-sm font-bold" style={{ color: "#0c4a6e" }}>{t.booking.total}</span>
                 <span className="text-xl font-extrabold" style={{ color: "#0369a1" }}>Rp {totalPrice}K</span>
               </div>
             </div>
@@ -365,7 +367,7 @@ function BookingContent() {
             {/* Amenities */}
             <div className="bg-white rounded-2xl p-5"
               style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: "#94a3b8" }}>Fasilitas</p>
+              <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: "#94a3b8" }}>{t.booking.facilities}</p>
               <div className="flex flex-wrap gap-1.5">
                 {schedule.amenities.map(a => (
                   <span key={a} className="text-xs px-2.5 py-1 rounded-lg font-medium"
@@ -386,7 +388,7 @@ function BookingContent() {
 export default function BookingPage() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center" style={{ background: "#f0f9ff" }}>
-      <p style={{ color: "#0369a1" }}>Memuat...</p>
+      <p style={{ color: "#0369a1" }}>...</p>
     </div>}>
       <BookingContent />
     </Suspense>

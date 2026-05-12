@@ -1,9 +1,12 @@
 "use client";
+import { useLang } from "@/contexts/LanguageContext";
+
 export default function Footer() {
-  const links = {
-    "Rute Populer": ["Sanur → Nusa Penida", "Bangsal → Padang Bai", "Padang Bai → Gili T", "Sanur → Lembongan", "Amed → Nusa Penida"],
-    "Perusahaan": ["Tentang Kami", "Karir", "Blog", "Press Kit", "Hubungi Kami"],
-    "Bantuan": ["FAQ", "Panduan Booking", "Kebijakan Refund", "Syarat Layanan", "Privasi"],
+  const { t } = useLang();
+  const links: Record<string, string[]> = {
+    [t.footer.popularRoutes]: ["Sanur → Nusa Penida", "Bangsal → Padang Bai", "Padang Bai → Gili T", "Sanur → Lembongan", "Amed → Nusa Penida"],
+    [t.footer.company]: t.footer.companyLinks,
+    [t.footer.help]: t.footer.helpLinks,
   };
 
   return (
@@ -35,7 +38,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm leading-relaxed mb-5" style={{ color: "#7dd3fc", maxWidth: 280 }}>
-              Platform pemesanan tiket fastboat terpercaya untuk rute Bali, Lombok, Gili Island, dan Nusa Penida.
+              {t.footer.desc}
             </p>
             <div className="flex gap-3">
               {["𝕏", "📸", "💼", "▶️"].map((icon, i) => (
@@ -66,7 +69,7 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
           style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <p className="text-sm" style={{ color: "#38bdf8", opacity: 0.6 }}>© 2026 tapToGo. All rights reserved.</p>
+          <p className="text-sm" style={{ color: "#38bdf8", opacity: 0.6 }}>{t.footer.copyright}</p>
           <div className="flex items-center gap-4 text-sm" style={{ color: "#38bdf8", opacity: 0.6 }}>
             <span>🇮🇩 Indonesia</span>
             <span>·</span>

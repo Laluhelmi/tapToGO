@@ -1,27 +1,33 @@
-const STEPS = [
-  { n: "01", icon: "🔍", title: "Cari Rute", desc: "Pilih pelabuhan asal & tujuan, tanggal, dan jumlah penumpang.", color: "#f0f9ff", border: "#bbf7d0", num: "#0369a1" },
-  { n: "02", icon: "⛵", title: "Pilih Fastboat", desc: "Bandingkan harga, jadwal, fasilitas & rating operator resmi.", color: "#f0fdfa", border: "#bae6fd", num: "#0284c7" },
-  { n: "03", icon: "💳", title: "Bayar Aman", desc: "Bayar via kartu, transfer, atau e-wallet. Semua terenkripsi.", color: "#fff7ed", border: "#fed7aa", num: "#ea580c" },
-  { n: "04", icon: "🎟️", title: "E-Tiket Siap", desc: "E-tiket langsung ke email. Tunjukkan QR saat boarding!", color: "#fdf4ff", border: "#e9d5ff", num: "#7c3aed" },
+"use client";
+import { useLang } from "@/contexts/LanguageContext";
+
+const STEP_STYLES = [
+  { color: "#f0f9ff", border: "#bbf7d0", num: "#0369a1" },
+  { color: "#f0fdfa", border: "#bae6fd", num: "#0284c7" },
+  { color: "#fff7ed", border: "#fed7aa", num: "#ea580c" },
+  { color: "#fdf4ff", border: "#e9d5ff", num: "#7c3aed" },
 ];
 
 export default function HowItWorks() {
+  const { t } = useLang();
+  const steps = t.howItWorks.steps.map((s, i) => ({ ...s, ...STEP_STYLES[i] }));
+
   return (
     <section id="cara-pesan" className="py-20 px-4 sm:px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <span className="inline-block text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
             style={{ background: "#f0f9ff", color: "#0369a1" }}>
-            ✨ Cara Pesan
+            {t.howItWorks.badge}
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold mb-4" style={{ color: "#0c4a6e" }}>
-            4 Langkah{" "}
+            {t.howItWorks.title}{" "}
             <span style={{ background: "linear-gradient(135deg,#0284c7,#0ea5e9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Menuju Laut
+              {t.howItWorks.titleHighlight}
             </span>
           </h2>
           <p style={{ color: "#64748b", maxWidth: 480, margin: "0 auto" }}>
-            Dari cari tiket hingga boarding — semua selesai dalam hitungan menit.
+            {t.howItWorks.subtitle}
           </p>
         </div>
 
@@ -30,7 +36,7 @@ export default function HowItWorks() {
           <div className="hidden lg:block absolute top-16 left-[12.5%] right-[12.5%] h-0.5"
             style={{ background: "linear-gradient(90deg,#bbf7d0,#bae6fd,#fed7aa,#e9d5ff)" }} />
 
-          {STEPS.map((s, i) => (
+          {steps.map((s, i) => (
             <div key={i} className="relative rounded-3xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               style={{ background: s.color, border: `1.5px solid ${s.border}`, boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-extrabold mb-4 relative z-10"
