@@ -50,7 +50,9 @@
       "Bash(git commit -m 'fix: remove platform-specific deps for Vercel deployment *)",
       "Bash(git commit -m 'fix: set Node 20 for Vercel deployment *)",
       "Bash(git commit -m 'fix: relax build constraints for Vercel *)",
-      "Bash(git commit -m 'fix: use next.config.mjs for better Vercel compatibility *)"
+      "Bash(git commit -m 'fix: use next.config.mjs for better Vercel compatibility *)",
+      "Bash(/Users/laluhilmi/.nvm/versions/node/v20.20.2/bin/node node_modules/.bin/next build)",
+      "Bash(git commit -m 'fix: remove .npmrc and fix next config for Vercel *)"
     ]
   }
 }
