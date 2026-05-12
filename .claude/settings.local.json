@@ -48,7 +48,8 @@
       "Bash(/Users/laluhilmi/.nvm/versions/node/v20.20.2/bin/npm install *)",
       "Bash(find /Users/laluhilmi/.nvm -name \"vercel\" 2>/dev/null)",
       "Bash(git commit -m 'fix: remove platform-specific deps for Vercel deployment *)",
-      "Bash(git commit -m 'fix: set Node 20 for Vercel deployment *)"
+      "Bash(git commit -m 'fix: set Node 20 for Vercel deployment *)",
+      "Bash(git commit -m 'fix: relax build constraints for Vercel *)"
     ]
   }
 }
