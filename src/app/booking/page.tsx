@@ -675,9 +675,32 @@ function BookingContent() {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white text-center mb-1">
             {schedule.from} <span style={{ color: "#7dd3fc" }}>→</span> {schedule.to}
           </h1>
-          <p className="text-center text-sm sm:text-base" style={{ color: "#e0f2fe" }}>
-            {formatDateLong(date, lang)} · {schedule.departureTime} · {passengers} {t.search.pax}
+          <p className="text-center text-sm sm:text-base mb-4" style={{ color: "#e0f2fe" }}>
+            {formatDateLong(date, lang)} · {schedule.departureTime} → {schedule.arrivalTime} ({schedule.duration}) · {passengers} {t.search.pax}
           </p>
+
+          {/* Mini trip card */}
+          <div className="max-w-md mx-auto rounded-2xl px-3 py-2.5 flex items-center gap-3"
+            style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.18)" }}>
+            <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0" style={{ background: "rgba(255,255,255,0.1)" }}>
+              {schedule.image ? (
+                <img src={schedule.image} alt={schedule.operator} className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-xs font-extrabold text-white"
+                  style={{ background: "linear-gradient(135deg,#0284c7,#0369a1)" }}>{schedule.logo}</div>
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-white font-bold text-sm leading-tight truncate">{schedule.operator}</p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full font-bold whitespace-nowrap"
+                  style={{ background: "rgba(255,255,255,0.18)", color: "white" }}>{schedule.boatType}</span>
+                <span className="text-[10px] font-semibold" style={{ color: "#bae6fd" }}>
+                  ⏱ {schedule.duration} · {schedule.availableSeats} {t.jadwal.seats}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
         <div style={{ lineHeight: 0 }}>
           <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" style={{ width: "100%", height: 40 }}>
@@ -931,9 +954,14 @@ function BookingContent() {
         </div>
         {/* Compact bar */}
         <div className="px-4 py-3 flex items-center gap-3">
-          <button onClick={() => setMobileSummaryOpen(o => !o)} className="flex-1 text-left">
-            <p className="text-xs" style={{ color: "#94a3b8" }}>{t.booking.total}</p>
-            <p className="text-lg font-extrabold flex items-center gap-1" style={{ color: "#0369a1" }}>
+          <button onClick={() => setMobileSummaryOpen(o => !o)} className="flex-1 text-left min-w-0">
+            <p className="text-[10px] font-semibold truncate" style={{ color: "#64748b" }}>
+              <span className="tabular-nums">Rp {schedule.price}K × {passengers}</span>
+              {payTaxInApp && (
+                <> + <span style={{ color: "#0369a1" }}>⚓ {HARBOUR_TAX_PER_PAX}K</span></>
+              )}
+            </p>
+            <p className="text-lg font-extrabold flex items-center gap-1 leading-tight" style={{ color: "#0369a1" }}>
               {formatRupiah(totalPrice)}
               <Icon.ChevronDown width={14} height={14} style={{ transform: mobileSummaryOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s cubic-bezier(0.32,0.72,0.24,1)" }} />
             </p>
