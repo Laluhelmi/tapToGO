@@ -60,12 +60,9 @@ const QUICK_ROUTES: { from: Port; to: Port; label: string }[] = [
   { from: "Gili Trawangan", to: "Sanur", label: "Gili T → Sanur" },
 ];
 
-// Rental locations (Bali popular pickup spots)
-const RENTAL_LOCATIONS = [
-  "Kuta", "Seminyak", "Canggu", "Ubud", "Sanur",
-  "Denpasar", "Nusa Dua", "Jimbaran", "Gili Trawangan", "Senggigi",
-];
-const POPULAR_RENTAL_LOCATIONS = ["Kuta", "Canggu", "Ubud", "Gili Trawangan"];
+// Rental pickup locations (Lombok)
+const RENTAL_LOCATIONS = ["Bangsal", "Senggigi"];
+const POPULAR_RENTAL_LOCATIONS = ["Bangsal", "Senggigi"];
 
 // Tour destinations
 const TOUR_DESTINATIONS = [
@@ -86,7 +83,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
   const [passengers, setPassengers] = useState(initialValues?.passengers ?? 1);
 
   // ── Rental state ──
-  const [rentalLoc, setRentalLoc] = useState("Kuta");
+  const [rentalLoc, setRentalLoc] = useState("Bangsal");
   const [rentalStart, setRentalStart] = useState(getTodayString());
   const [rentalDays, setRentalDays] = useState(1);
   const [rentalType, setRentalType] = useState<"any" | "matic" | "manual" | "bigbike" | "car">("any");
