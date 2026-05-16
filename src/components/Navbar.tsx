@@ -17,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { lang, setLang, t } = useLang();
 
@@ -157,20 +158,33 @@ export default function Navbar() {
           {navLinks.map((item) =>
             item.children ? (
               <div key={item.label}>
-                <div className="block py-2.5 px-3 text-sm font-extrabold uppercase tracking-wide mt-2"
-                  style={{ color: "#0369a1" }}>
-                  {item.label}
+                <button
+                  onClick={() => setMobileDropdown(mobileDropdown === item.label ? null : item.label)}
+                  className="w-full flex items-center justify-between py-2.5 px-3 text-sm font-semibold rounded-lg mb-1 transition-all duration-200"
+                  style={{ color: mobileDropdown === item.label ? "#0369a1" : "#334155", background: mobileDropdown === item.label ? "#f0f9ff" : "transparent" }}>
+                  <span>{item.label}</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    style={{ transform: mobileDropdown === item.label ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.25s cubic-bezier(0.32,0.72,0.24,1)" }}>
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+                <div className="overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0.24,1)]"
+                  style={{
+                    maxHeight: mobileDropdown === item.label ? `${item.children.length * 48}px` : "0px",
+                    opacity: mobileDropdown === item.label ? 1 : 0,
+                  }}>
+                  {item.children.map(c => (
+                    <a key={c.href} href={c.href}
+                      className="block py-2.5 pl-7 pr-3 text-sm font-semibold rounded-lg mb-1 transition-all duration-200"
+                      style={{ color: "#334155" }}
+                      onClick={() => setMobileOpen(false)}
+                      onMouseEnter={e => { e.currentTarget.style.background = "#f0f9ff"; e.currentTarget.style.color = "#0369a1"; }}
+                      onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#334155"; }}>
+                      {c.label}
+                    </a>
+                  ))}
                 </div>
-                {item.children.map(c => (
-                  <a key={c.href} href={c.href}
-                    className="block py-2.5 pl-7 pr-3 text-sm font-semibold rounded-lg mb-1 transition-all duration-200"
-                    style={{ color: "#334155" }}
-                    onClick={() => setMobileOpen(false)}
-                    onMouseEnter={e => { e.currentTarget.style.background = "#f0f9ff"; e.currentTarget.style.color = "#0369a1"; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#334155"; }}>
-                    {c.label}
-                  </a>
-                ))}
               </div>
             ) : (
               <a key={item.href} href={item.href!}
