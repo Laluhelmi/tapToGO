@@ -481,16 +481,8 @@ function BookingContent() {
       <div className="min-h-screen" style={{ background: "#f0f9ff" }}>
         <Navbar />
         <div className="pt-16 print:hidden" style={{ background: "linear-gradient(135deg,#0c4a6e,#0369a1)" }}>
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6">
             <Stepper current={2} t={t} />
-            <div className="flex flex-col items-center mt-2">
-              <div className="w-14 h-14 rounded-full flex items-center justify-center mb-3"
-                style={{ background: "#22c55e", color: "white" }}>
-                <Icon.Check width={28} height={28} />
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-1">{t.booking.successTitle}</h1>
-              <p className="text-sm text-center" style={{ color: "#e0f2fe" }}>{t.booking.successDesc}</p>
-            </div>
           </div>
           <div style={{ lineHeight: 0 }}>
             <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" style={{ width: "100%", height: 40 }}>
