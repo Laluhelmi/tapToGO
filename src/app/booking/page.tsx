@@ -450,33 +450,6 @@ function BookingContent() {
 
   // ── DONE ──
   if (step === "done") {
-    const handlePrint = () => window.print();
-
-    const waMessage = encodeURIComponent(
-      `🎫 *${t.eticket.title} ${schedule.operator}*\n\n` +
-      `📋 *${t.eticket.bookingCode}:* ${orderCode}\n` +
-      `🚤 ${schedule.from} → ${schedule.to}\n` +
-      `📅 ${formatDateLong(date, lang)}\n` +
-      `🕐 ${schedule.departureTime} (${schedule.duration})\n` +
-      `👤 ${form.name} · ${passengers} ${t.search.pax}\n` +
-      `💰 ${formatRupiah(totalPrice)}\n\n` +
-      `${t.eticket.qrInfo}`
-    );
-
-    const emailSubject = encodeURIComponent(`${t.eticket.title} ${orderCode} — tapToGo`);
-    const emailBody = encodeURIComponent(
-      `Halo ${form.name},\n\n` +
-      `Berikut detail tiket Anda:\n\n` +
-      `Kode Booking: ${orderCode}\n` +
-      `Rute: ${schedule.from} → ${schedule.to}\n` +
-      `Tanggal: ${formatDateLong(date, lang)}\n` +
-      `Waktu: ${schedule.departureTime} (${schedule.duration})\n` +
-      `Penumpang: ${passengers} ${t.search.pax}\n` +
-      `Total: ${formatRupiah(totalPrice)}\n\n` +
-      `Tunjukkan tiket di taptogo.id atau cetak halaman ini.\n\n` +
-      `tapToGo`
-    );
-
     return (
       <div className="min-h-screen" style={{ background: "#f0f9ff" }}>
         <Navbar />
@@ -505,29 +478,6 @@ function BookingContent() {
             payTaxInApp={payTaxInApp}
             taxAmount={taxAmount}
           />
-
-          {/* Actions */}
-          <div className="print:hidden mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-[720px] mx-auto">
-            <button onClick={handlePrint}
-              className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-extrabold text-white btn-ocean transition-all hover:scale-105">
-              <Icon.Download width={16} height={16} /> {t.eticket.download}
-            </button>
-            <button onClick={handlePrint}
-              className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all hover:scale-105"
-              style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
-              <Icon.Print width={16} height={16} /> {t.eticket.print}
-            </button>
-            <a href={`https://wa.me/?text=${waMessage}`} target="_blank" rel="noreferrer"
-              className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all hover:scale-105"
-              style={{ background: "#dcfce7", color: "#15803d", border: "1.5px solid #86efac" }}>
-              💬 WhatsApp
-            </a>
-            <a href={`mailto:${form.email}?subject=${emailSubject}&body=${emailBody}`}
-              className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all hover:scale-105"
-              style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
-              📧 Email
-            </a>
-          </div>
 
           <p className="print:hidden text-xs mt-4 text-center" style={{ color: "#64748b" }}>
             {t.booking.waNotif} <strong>{form.whatsapp}</strong> {t.booking.waTime}

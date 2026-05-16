@@ -47,19 +47,6 @@ export default function ETicket({
 }: Props) {
   const { t, lang } = useLang();
 
-  // QR encodes booking code (in real app, would be a signed URL/JWT)
-  const qrData = encodeURIComponent(
-    JSON.stringify({
-      code: bookingCode,
-      route: `${schedule.from}->${schedule.to}`,
-      date,
-      time: schedule.departureTime,
-      pax: passengers,
-      name: passengerName,
-    })
-  );
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${qrData}&margin=8&color=0c4a6e&bgcolor=ffffff`;
-
   return (
     <div className="eticket-printable bg-white rounded-3xl overflow-hidden mx-auto"
       style={{
@@ -143,82 +130,50 @@ export default function ETicket({
         <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-px border-t border-dashed" style={{ borderColor: "#cbd5e1" }} />
       </div>
 
-      {/* Body: details + QR */}
-      <div className="px-6 py-5 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-5">
-        {/* Details */}
-        <div>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-            <Field label={t.eticket.passenger} value={passengerName} />
-            <Field label={t.booking.passengersLabel} value={`${passengers} ${t.search.pax}`} />
-            <Field label={t.compare.operator} value={schedule.operator} />
-            <Field label={t.compare.type} value={schedule.boatType} />
-            <Field label={t.booking.email} value={email} small />
-            <Field label={t.booking.whatsapp} value={whatsapp} small />
-          </div>
-
-          <div className="mt-4 pt-4 flex items-center justify-between" style={{ borderTop: "1px dashed #cbd5e1" }}>
-            <span className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>
-              {t.booking.totalPayment}
-            </span>
-            <span className="text-xl font-extrabold" style={{ color: "#0369a1" }}>
-              {formatRupiah(totalPrice)}
-            </span>
-          </div>
-
-          {/* Harbour Tax status */}
-          {taxAmount > 0 && (
-            <div className="mt-2 rounded-lg p-2 flex items-center justify-between gap-2"
-              style={{
-                background: payTaxInApp ? "#dcfce7" : "#fef3c7",
-                border: `1px solid ${payTaxInApp ? "#86efac" : "#fde047"}`,
-              }}>
-              <span className="text-[11px] font-bold flex items-center gap-1.5"
-                style={{ color: payTaxInApp ? "#15803d" : "#854d0e" }}>
-                <span>⚓</span>
-                {payTaxInApp ? `✓ ${t.booking.taxPaid}` : `⚠️ ${t.booking.harbourTax}: ${t.booking.taxPayAtPort}`}
-              </span>
-              <span className="text-[11px] font-extrabold tabular-nums"
-                style={{ color: payTaxInApp ? "#15803d" : "#854d0e" }}>
-                {formatRupiah(taxAmount)}
-              </span>
-            </div>
-          )}
+      {/* Body: details */}
+      <div className="px-6 py-5">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+          <Field label={t.eticket.passenger} value={passengerName} />
+          <Field label={t.booking.passengersLabel} value={`${passengers} ${t.search.pax}`} />
+          <Field label={t.compare.operator} value={schedule.operator} />
+          <Field label={t.compare.type} value={schedule.boatType} />
+          <Field label={t.booking.email} value={email} small />
+          <Field label={t.booking.whatsapp} value={whatsapp} small />
         </div>
 
-        {/* QR */}
-        <div className="flex flex-col items-center sm:items-end gap-2">
-          <div className="rounded-xl p-2"
-            style={{ background: "white", border: "2px solid #0c4a6e", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
-            <img src={qrUrl} alt="QR Code" width="140" height="140" style={{ display: "block" }} />
-          </div>
-          <p className="text-[10px] text-center max-w-[160px]" style={{ color: "#64748b" }}>
-            {t.eticket.qrInfo}
-          </p>
+        <div className="mt-4 pt-4 flex items-center justify-between" style={{ borderTop: "1px dashed #cbd5e1" }}>
+          <span className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>
+            {t.booking.totalPayment}
+          </span>
+          <span className="text-xl font-extrabold" style={{ color: "#0369a1" }}>
+            {formatRupiah(totalPrice)}
+          </span>
         </div>
+
+        {/* Harbour Tax status */}
+        {taxAmount > 0 && (
+          <div className="mt-2 rounded-lg p-2 flex items-center justify-between gap-2"
+            style={{
+              background: payTaxInApp ? "#dcfce7" : "#fef3c7",
+              border: `1px solid ${payTaxInApp ? "#86efac" : "#fde047"}`,
+            }}>
+            <span className="text-[11px] font-bold flex items-center gap-1.5"
+              style={{ color: payTaxInApp ? "#15803d" : "#854d0e" }}>
+              <span>⚓</span>
+              {payTaxInApp ? `✓ ${t.booking.taxPaid}` : `⚠️ ${t.booking.harbourTax}: ${t.booking.taxPayAtPort}`}
+            </span>
+            <span className="text-[11px] font-extrabold tabular-nums"
+              style={{ color: payTaxInApp ? "#15803d" : "#854d0e" }}>
+              {formatRupiah(taxAmount)}
+            </span>
+          </div>
+        )}
       </div>
 
-      {/* Instructions */}
-      <div className="px-6 py-4" style={{ background: "#f8fafc", borderTop: "1px solid #e2e8f0" }}>
-        <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: "#0369a1" }}>
-          {t.eticket.instructions}
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5">
-          {[t.eticket.inst1, t.eticket.inst2, t.eticket.inst3, t.eticket.inst4].map((inst, i) => (
-            <p key={i} className="text-xs flex gap-2" style={{ color: "#475569" }}>
-              <span className="font-bold" style={{ color: "#0284c7" }}>{i + 1}.</span>
-              <span>{inst}</span>
-            </p>
-          ))}
-        </div>
-      </div>
-
-      {/* Important + footer */}
-      <div className="px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1"
+      {/* Footer */}
+      <div className="px-6 py-3 text-center"
         style={{ background: "#0c4a6e", color: "#bae6fd" }}>
-        <p className="text-[10px]">
-          <strong style={{ color: "#fbbf24" }}>⚠ {t.eticket.important}:</strong> {t.eticket.importantDesc}
-        </p>
-        <p className="text-[10px] font-bold whitespace-nowrap" style={{ color: "white" }}>
+        <p className="text-[10px] font-bold" style={{ color: "white" }}>
           {t.eticket.poweredBy}
         </p>
       </div>
