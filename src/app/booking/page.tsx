@@ -359,7 +359,6 @@ function BookingContent() {
     nationality: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [mobileSummaryOpen, setMobileSummaryOpen] = useState(false);
   const [orderCode] = useState(() => `TG-${Date.now().toString(36).toUpperCase()}`);
   const [issuedAt] = useState(() => new Date());
   const [payTaxInApp, setPayTaxInApp] = useState(true);
@@ -772,9 +771,9 @@ function BookingContent() {
             </button>
           </div>
 
-          {/* Order summary (desktop sidebar) */}
-          <div className="hidden lg:block space-y-4">
-            <div className="bg-white rounded-2xl p-5 sticky top-20"
+          {/* Order summary — visible on all screens */}
+          <div className="space-y-4">
+            <div className="bg-white rounded-2xl p-5 lg:sticky lg:top-20"
               style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
               <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: "#94a3b8" }}>{t.booking.orderSummary}</p>
 
@@ -875,97 +874,21 @@ function BookingContent() {
         </div>
       </div>
 
-      {/* Mobile sticky bottom bar */}
+      {/* Mobile sticky bottom bar — compact CTA only (summary now visible inline below form) */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40"
         style={{ background: "white", borderTop: "1.5px solid #e0f2fe", boxShadow: "0 -4px 20px rgba(2,132,199,0.08)" }}>
-        {/* Expandable summary panel — animated slide-up */}
-        <div
-          aria-hidden={!mobileSummaryOpen}
-          className="overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0.24,1)]"
-          style={{
-            maxHeight: mobileSummaryOpen ? "60vh" : "0px",
-            opacity: mobileSummaryOpen ? 1 : 0,
-            borderBottom: mobileSummaryOpen ? "1px solid #f0f9ff" : "1px solid transparent",
-          }}>
-          <div className="px-4 pt-4 pb-2"
-            style={{ maxHeight: "60vh", overflowY: "auto",
-              transform: mobileSummaryOpen ? "translateY(0)" : "translateY(8px)",
-              transition: "transform 0.3s cubic-bezier(0.32,0.72,0.24,1)",
-            }}>
-            <div className="flex items-center gap-3 mb-3 pb-3" style={{ borderBottom: "1px solid #f0f9ff" }}>
-              <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0" style={{ background: "#e0f2fe" }}>
-                {schedule.image ? (
-                  <img src={schedule.image} alt={schedule.operator} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-sm font-extrabold text-white"
-                    style={{ background: "linear-gradient(135deg,#0284c7,#0369a1)" }}>{schedule.logo}</div>
-                )}
-              </div>
-              <div>
-                <p className="font-bold text-sm" style={{ color: "#0c4a6e" }}>{schedule.operator}</p>
-                <p className="text-xs" style={{ color: "#64748b" }}>{schedule.boatType}</p>
-              </div>
-            </div>
-            <div className="space-y-2">
-              {summaryRows.map(({ icon, label, value }) => (
-                <div key={label} className="flex items-center justify-between gap-2">
-                  <span className="text-xs flex items-center gap-1.5" style={{ color: "#94a3b8" }}>
-                    <span style={{ color: "#0369a1" }}>{icon}</span> {label}
-                  </span>
-                  <span className="text-xs font-semibold text-right" style={{ color: "#334155" }}>{value}</span>
-                </div>
-              ))}
-              <div className="flex items-center justify-between pt-1">
-                <span className="text-xs flex items-center gap-1.5" style={{ color: "#94a3b8" }}>
-                  <span style={{ color: "#0369a1" }}><Icon.User width={14} height={14} /></span> {t.booking.passengersLabel}
-                </span>
-                <div className="flex items-center gap-2">
-                  <button onClick={() => setPassengers(p => Math.max(1, p - 1))}
-                    className="w-6 h-6 rounded-lg text-sm font-bold flex items-center justify-center"
-                    style={{ background: "#eff6ff", color: "#0284c7" }}>−</button>
-                  <span className="text-sm font-extrabold w-5 text-center" style={{ color: "#0369a1" }}>{passengers}</span>
-                  <button onClick={() => setPassengers(p => Math.min(schedule.availableSeats, p + 1))}
-                    className="w-6 h-6 rounded-lg text-sm font-bold flex items-center justify-center"
-                    style={{ background: "#eff6ff", color: "#0284c7" }}>+</button>
-                </div>
-              </div>
-              <div className="flex justify-between items-center text-xs pt-2" style={{ color: "#94a3b8", borderTop: "1px solid #f0f9ff" }}>
-                <span>Tiket {formatRupiah(schedule.price)} × {passengers}</span>
-                <span>{formatRupiah(ticketSubtotal)}</span>
-              </div>
-              <HarbourTaxRow
-                payInApp={payTaxInApp}
-                onToggle={() => setPayTaxInApp(v => !v)}
-                taxAmount={taxAmount}
-                t={t}
-                compact
-              />
-              {!payTaxInApp && (
-                <div className="rounded-lg p-2 flex items-start gap-2 mt-1"
-                  style={{ background: "#fef3c7", border: "1px solid #fde047" }}>
-                  <span style={{ color: "#a16207" }}>⚠️</span>
-                  <p className="text-[10px] leading-snug font-semibold" style={{ color: "#854d0e" }}>
-                    {t.booking.payAtPortWarning} <strong>{formatRupiah(taxAmount)}</strong>
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        {/* Compact bar */}
         <div className="px-4 py-3 flex items-center gap-3">
-          <button onClick={() => setMobileSummaryOpen(o => !o)} className="flex-1 text-left min-w-0">
+          <div className="flex-1 min-w-0">
             <p className="text-[10px] font-semibold truncate" style={{ color: "#64748b" }}>
               <span className="tabular-nums">Rp {schedule.price}K × {passengers}</span>
               {payTaxInApp && (
                 <> + <span style={{ color: "#0369a1" }}>⚓ {HARBOUR_TAX_PER_PAX}K</span></>
               )}
             </p>
-            <p className="text-lg font-extrabold flex items-center gap-1 leading-tight" style={{ color: "#0369a1" }}>
+            <p className="text-lg font-extrabold leading-tight" style={{ color: "#0369a1" }}>
               {formatRupiah(totalPrice)}
-              <Icon.ChevronDown width={14} height={14} style={{ transform: mobileSummaryOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s cubic-bezier(0.32,0.72,0.24,1)" }} />
             </p>
-          </button>
+          </div>
           <button onClick={handleSubmit}
             className="flex-1 py-3 rounded-xl text-white text-sm font-extrabold btn-ocean">
             {t.booking.nextBtn}
