@@ -14,8 +14,8 @@ export default function HeroSection({ onSearch, searchParams }: Props) {
       {/* Background photo */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1581420455310-e069c4d4529e?fm=jpg&q=85&w=1920&auto=format&fit=crop"
-          alt="Pantai Sunset Tropis"
+          src="https://thelangkahtravel.com/wp-content/uploads/2019/05/Gili-Trawangan-Lombok-1-1.jpg"
+          alt="Gili Trawangan, Lombok"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(160deg,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.2) 100%)" }} />
