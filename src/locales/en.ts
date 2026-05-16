@@ -3,6 +3,7 @@ import type { Translations } from "./id";
 const en: Translations = {
   nav: {
     home: "Home",
+    fastboat: "Fastboat",
     schedule: "Schedule",
     fleet: "Fleet",
     rental: "Rental",

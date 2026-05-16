@@ -2,6 +2,7 @@ const id = {
   // Navbar
   nav: {
     home: "Beranda",
+    fastboat: "Fastboat",
     schedule: "Jadwal",
     fleet: "Armada",
     rental: "Rental",

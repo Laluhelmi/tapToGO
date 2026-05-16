@@ -1,11 +1,23 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import Logo from "./Logo";
+
+interface NavChild {
+  label: string;
+  href: string;
+}
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const { lang, setLang, t } = useLang();
 
   useEffect(() => {
@@ -14,13 +26,29 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  const navLinks = [
-    { label: t.nav.home,     href: "/" },
-    { label: t.nav.schedule, href: "/jadwal" },
-    { label: t.nav.rental,   href: "/rental" },
-    { label: t.nav.tour,     href: "/tour" },
-    { label: t.nav.fleet,    href: "/armada" },
-    { label: t.nav.help,     href: "/bantuan" },
+  // Close desktop dropdown when clicking outside
+  useEffect(() => {
+    const fn = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", fn);
+    return () => document.removeEventListener("mousedown", fn);
+  }, []);
+
+  const navLinks: NavItem[] = [
+    { label: t.nav.home, href: "/" },
+    {
+      label: t.nav.fastboat,
+      children: [
+        { label: t.nav.schedule, href: "/jadwal" },
+        { label: t.nav.fleet,    href: "/armada" },
+      ],
+    },
+    { label: t.nav.rental, href: "/rental" },
+    { label: t.nav.tour,   href: "/tour" },
+    { label: t.nav.help,   href: "/bantuan" },
   ];
 
   return (
@@ -41,15 +69,50 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex flex-1 items-center justify-center gap-5">
-          {navLinks.map(({ label, href }) => (
-            <a key={href} href={href} className="text-sm font-semibold transition-colors duration-200"
-              style={{ color: "#475569" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#0369a1")}
-              onMouseLeave={e => (e.currentTarget.style.color = "#475569")}>
-              {label}
-            </a>
-          ))}
+        <div ref={dropdownRef} className="hidden md:flex flex-1 items-center justify-center gap-5">
+          {navLinks.map((item) =>
+            item.children ? (
+              <div key={item.label} className="relative">
+                <button
+                  onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                  className="text-sm font-semibold transition-colors duration-200 flex items-center gap-1"
+                  style={{ color: openDropdown === item.label ? "#0369a1" : "#475569" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "#0369a1")}
+                  onMouseLeave={e => {
+                    if (openDropdown !== item.label) e.currentTarget.style.color = "#475569";
+                  }}>
+                  {item.label}
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    style={{ transform: openDropdown === item.label ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+                {openDropdown === item.label && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-xl overflow-hidden min-w-[160px]"
+                    style={{ background: "white", border: "1.5px solid #e0f2fe", boxShadow: "0 8px 24px rgba(2,132,199,0.15)" }}>
+                    {item.children.map(c => (
+                      <a key={c.href} href={c.href}
+                        onClick={() => setOpenDropdown(null)}
+                        className="block px-4 py-2.5 text-sm font-semibold transition-colors"
+                        style={{ color: "#334155" }}
+                        onMouseEnter={e => { e.currentTarget.style.background = "#f0f9ff"; e.currentTarget.style.color = "#0369a1"; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#334155"; }}>
+                        {c.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <a key={item.href} href={item.href!} className="text-sm font-semibold transition-colors duration-200"
+                style={{ color: "#475569" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#0369a1")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#475569")}>
+                {item.label}
+              </a>
+            )
+          )}
         </div>
 
         {/* Language switcher */}
@@ -85,22 +148,41 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
         style={{
-          maxHeight: mobileOpen ? "400px" : "0px",
+          maxHeight: mobileOpen ? "500px" : "0px",
           opacity: mobileOpen ? 1 : 0,
           borderTop: mobileOpen ? "1px solid #e0f2fe" : "1px solid transparent",
           background: "rgba(255,255,255,0.97)",
         }}>
         <div className="px-4 pb-4 pt-2">
-          {navLinks.map(({ label, href }, i) => (
-            <a key={href} href={href}
-              className="block py-2.5 px-3 text-sm font-semibold rounded-lg mb-1 transition-all duration-200"
-              style={{ color: "#334155", transform: mobileOpen ? "translateY(0)" : "translateY(-8px)", transitionDelay: `${i * 40}ms` }}
-              onClick={() => setMobileOpen(false)}
-              onMouseEnter={e => { e.currentTarget.style.background = "#f0f9ff"; e.currentTarget.style.color = "#0369a1"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#334155"; }}>
-              {label}
-            </a>
-          ))}
+          {navLinks.map((item) =>
+            item.children ? (
+              <div key={item.label}>
+                <div className="block py-2.5 px-3 text-sm font-extrabold uppercase tracking-wide mt-2"
+                  style={{ color: "#0369a1" }}>
+                  {item.label}
+                </div>
+                {item.children.map(c => (
+                  <a key={c.href} href={c.href}
+                    className="block py-2.5 pl-7 pr-3 text-sm font-semibold rounded-lg mb-1 transition-all duration-200"
+                    style={{ color: "#334155" }}
+                    onClick={() => setMobileOpen(false)}
+                    onMouseEnter={e => { e.currentTarget.style.background = "#f0f9ff"; e.currentTarget.style.color = "#0369a1"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#334155"; }}>
+                    {c.label}
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <a key={item.href} href={item.href!}
+                className="block py-2.5 px-3 text-sm font-semibold rounded-lg mb-1 transition-all duration-200"
+                style={{ color: "#334155" }}
+                onClick={() => setMobileOpen(false)}
+                onMouseEnter={e => { e.currentTarget.style.background = "#f0f9ff"; e.currentTarget.style.color = "#0369a1"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#334155"; }}>
+                {item.label}
+              </a>
+            )
+          )}
           {/* Mobile language switcher */}
           <div className="flex gap-2 mt-3 pt-3" style={{ borderTop: "1px solid #e0f2fe" }}>
             <button onClick={() => setLang("id")}
