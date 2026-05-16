@@ -3,9 +3,51 @@ import type { Translations } from "./id";
 const en: Translations = {
   nav: {
     home: "Home",
+    fastboat: "Fastboat",
     schedule: "Schedule",
     fleet: "Fleet",
+    rental: "Rental",
+    tour: "Tour",
     help: "Help",
+  },
+
+  productTab: {
+    fastboat: "Fastboat",
+    rental: "Rent Bike",
+    tour: "Tour",
+  },
+
+  rentalSearch: {
+    title: "Motor / Car Rental",
+    location: "Pickup Location",
+    locationPlaceholder: "Choose location",
+    startDate: "Start Date",
+    duration: "Duration",
+    durationUnit: "days",
+    vehicleType: "Vehicle Type",
+    typeAny: "Any type",
+    typeMatic: "Automatic Scooter",
+    typeManual: "Manual Motorcycle",
+    typeBigBike: "Big Bike",
+    typeCar: "Car",
+    searchBtn: "Search Vehicle",
+    popular: "Popular locations:",
+  },
+
+  tourSearch: {
+    title: "Snorkeling & Day Tour",
+    destination: "Destination",
+    destinationPlaceholder: "Choose destination",
+    date: "Tour Date",
+    participants: "Participants",
+    tourType: "Tour Type",
+    typeAny: "Any type",
+    typeHalfDay: "Half-Day Tour",
+    typeFullDay: "Full-Day Tour",
+    typePrivate: "Private Boat",
+    typeDiving: "Diving",
+    searchBtn: "Search Tour",
+    popular: "Popular destinations:",
   },
 
   search: {

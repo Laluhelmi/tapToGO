@@ -2,9 +2,54 @@ const id = {
   // Navbar
   nav: {
     home: "Beranda",
+    fastboat: "Fastboat",
     schedule: "Jadwal",
     fleet: "Armada",
+    rental: "Rental",
+    tour: "Tour",
     help: "Bantuan",
+  },
+
+  // Product tabs in search form
+  productTab: {
+    fastboat: "Fastboat",
+    rental: "Rent Bike",
+    tour: "Tour",
+  },
+
+  // Rental search form
+  rentalSearch: {
+    title: "Sewa Motor / Mobil",
+    location: "Lokasi Pengambilan",
+    locationPlaceholder: "Pilih lokasi",
+    startDate: "Tanggal Mulai",
+    duration: "Lama Sewa",
+    durationUnit: "hari",
+    vehicleType: "Tipe Kendaraan",
+    typeAny: "Semua tipe",
+    typeMatic: "Motor Matic",
+    typeManual: "Motor Manual",
+    typeBigBike: "Big Bike",
+    typeCar: "Mobil",
+    searchBtn: "Cari Kendaraan",
+    popular: "Lokasi populer:",
+  },
+
+  // Tour search form
+  tourSearch: {
+    title: "Snorkeling & Day Tour",
+    destination: "Destinasi",
+    destinationPlaceholder: "Pilih destinasi",
+    date: "Tanggal Tour",
+    participants: "Peserta",
+    tourType: "Tipe Tour",
+    typeAny: "Semua tipe",
+    typeHalfDay: "Half-Day Tour",
+    typeFullDay: "Full-Day Tour",
+    typePrivate: "Private Boat",
+    typeDiving: "Diving",
+    searchBtn: "Cari Tour",
+    popular: "Destinasi populer:",
   },
 
   // Search Form

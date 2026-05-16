@@ -9,7 +9,7 @@ interface Props {
 
 export default function HeroSection({ onSearch, searchParams }: Props) {
   return (
-    <section className="relative overflow-hidden pt-16" style={{ minHeight: "55vh" }}>
+    <section className="relative overflow-hidden pt-16" style={{ minHeight: "48vh" }}>
 
       {/* Background photo */}
       <div className="absolute inset-0 z-0">
@@ -28,7 +28,7 @@ export default function HeroSection({ onSearch, searchParams }: Props) {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-28">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-24">
         <div className="flex items-center justify-center">
           <div className="w-full max-w-3xl">
             <SearchForm onSearch={onSearch} initialValues={searchParams} />
