@@ -82,7 +82,7 @@ export default function ArmadaDetailPage({ params }: { params: Promise<{ name: s
               <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">{operatorName}</h1>
               <p className="mb-4" style={{ color: "#bae6fd" }}>{first.boatType}</p>
 
-              <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm text-center sm:text-left">
                 <div>
                   <p className="font-extrabold text-2xl">{schedules.length}</p>
                   <p style={{ color: "#bae6fd" }}>{t.armadaDetail.totalSchedules}</p>
