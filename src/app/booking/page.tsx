@@ -345,7 +345,7 @@ function BookingContent() {
   const { t, lang } = useLang();
   const params = useSearchParams();
   const id = params.get("id");
-  const date = params.get("date") ?? "";
+  const [date, setDate] = useState(() => params.get("date") ?? new Date().toISOString().split("T")[0]);
   const initPassengers = Number(params.get("passengers") ?? 1);
 
   const schedule = useMemo(() => SCHEDULES.find(s => s.id === id), [id]);
@@ -440,12 +440,12 @@ function BookingContent() {
   const stepIndex: 0 | 1 | 2 = step === "form" ? 0 : step === "confirm" ? 1 : 2;
 
   // Summary rows (used in sidebar)
+  const today = new Date().toISOString().split("T")[0];
   const summaryRows = [
     { icon: <Icon.Pin width={14} height={14} />, label: t.booking.from, value: schedule.from },
     { icon: <Icon.Flag width={14} height={14} />, label: t.booking.to, value: schedule.to },
     { icon: <Icon.Clock width={14} height={14} />, label: t.booking.departs, value: schedule.departureTime },
     { icon: <Icon.Timer width={14} height={14} />, label: t.booking.duration, value: schedule.duration },
-    { icon: <Icon.Calendar width={14} height={14} />, label: t.booking.dateLabel, value: formatDateLong(date, lang) },
   ];
 
   // ── DONE ──
@@ -821,6 +821,24 @@ function BookingContent() {
                     <span className="text-xs font-semibold text-right" style={{ color: "#334155" }}>{value}</span>
                   </div>
                 ))}
+
+                {/* Date — editable */}
+                <div className="flex items-center justify-between gap-2 pt-1">
+                  <span className="text-xs flex items-center gap-1.5" style={{ color: "#94a3b8" }}>
+                    <span style={{ color: "#0369a1" }}><Icon.Calendar width={14} height={14} /></span> {t.booking.dateLabel}
+                  </span>
+                  <label className="relative inline-flex items-center">
+                    <span className="text-xs font-semibold text-right pr-1.5 cursor-pointer flex items-center gap-1 transition-colors"
+                      style={{ color: "#0369a1" }}>
+                      {formatDateLong(date, lang)}
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
+                      </svg>
+                    </span>
+                    <input type="date" value={date} min={today} onChange={e => setDate(e.target.value)}
+                      className="absolute inset-0 opacity-0 cursor-pointer" />
+                  </label>
+                </div>
 
                 {/* Passengers — editable */}
                 <div className="flex items-center justify-between pt-1">
