@@ -479,9 +479,62 @@ function BookingContent() {
             taxAmount={taxAmount}
           />
 
-          <p className="print:hidden text-xs mt-4 text-center" style={{ color: "#64748b" }}>
-            {t.booking.waNotif} <strong>{form.whatsapp}</strong> {t.booking.waTime}
-          </p>
+          {/* Payment CTA — booking is still pending payment */}
+          {(() => {
+            const adminWa = "6281234567890"; // admin WhatsApp (no + prefix, no spaces)
+            const msgLines = [
+              t.booking.waMsgGreeting,
+              "",
+              `📋 ${t.booking.bookingCode}: *${orderCode}*`,
+              `🚤 ${schedule.operator} (${schedule.boatType})`,
+              `📍 ${schedule.from} → ${schedule.to}`,
+              `📅 ${formatDateLong(date, lang)}`,
+              `🕐 ${schedule.departureTime} → ${schedule.arrivalTime} (${schedule.duration})`,
+              `👤 ${form.name} · ${passengers} ${t.search.pax}`,
+              `📞 ${form.whatsapp}`,
+              `📧 ${form.email}`,
+              "",
+              `💰 ${t.booking.totalPayment}: *${formatRupiah(totalPrice)}*`,
+              taxAmount > 0
+                ? (payTaxInApp
+                  ? `⚓ Harbour Tax: Lunas (${formatRupiah(taxAmount)})`
+                  : `⚓ Harbour Tax: Bayar di pelabuhan (${formatRupiah(taxAmount)})`)
+                : "",
+              "",
+              t.booking.waMsgRequest,
+            ].filter(Boolean).join("\n");
+            const waUrl = `https://wa.me/${adminWa}?text=${encodeURIComponent(msgLines)}`;
+            const smsBody = msgLines.replace(/\*/g, "");
+            const smsUrl = `sms:+${adminWa}?body=${encodeURIComponent(smsBody)}`;
+
+            return (
+              <div className="print:hidden mt-5 rounded-2xl p-4"
+                style={{ background: "#fef3c7", border: "1.5px solid #fde047" }}>
+                <p className="text-sm font-extrabold mb-1" style={{ color: "#854d0e" }}>
+                  {t.booking.pendingPayment}
+                </p>
+                <p className="text-xs mb-3" style={{ color: "#a16207" }}>
+                  {t.booking.paymentInstructions}
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <a href={waUrl} target="_blank" rel="noreferrer"
+                    className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-extrabold transition-all hover:scale-[1.02]"
+                    style={{
+                      background: "linear-gradient(135deg,#22c55e,#15803d)",
+                      color: "white",
+                      boxShadow: "0 4px 16px rgba(34,197,94,0.3)",
+                    }}>
+                    {t.booking.confirmViaWa}
+                  </a>
+                  <a href={smsUrl}
+                    className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.02]"
+                    style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
+                    {t.booking.confirmViaSms}
+                  </a>
+                </div>
+              </div>
+            );
+          })()}
 
           <Link href="/" className="print:hidden mt-4 max-w-md mx-auto block w-full py-3 rounded-2xl text-sm font-extrabold text-center transition-all hover:scale-[1.01]"
             style={{ background: "#f0f9ff", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
