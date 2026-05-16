@@ -190,6 +190,7 @@ const id = {
     idNumber: "No. Paspor / KTP",
     idPlaceholder: "Opsional",
     nextBtn: "Lanjut ke Konfirmasi →",
+    continueBtn: "Lanjut →",
     required: "*",
     errorName: "Nama wajib diisi",
     errorEmail: "Email tidak valid",

@@ -362,6 +362,8 @@ function BookingContent() {
   const [orderCode] = useState(() => `TG-${Date.now().toString(36).toUpperCase()}`);
   const [issuedAt] = useState(() => new Date());
   const [payTaxInApp, setPayTaxInApp] = useState(true);
+  const [mobileFormComplete, setMobileFormComplete] = useState(false);
+  const summaryRef = useRef<HTMLDivElement>(null);
 
   // Clear an error key when the related field becomes valid
   const setField = (key: keyof typeof form, value: string) => {
@@ -411,6 +413,22 @@ function BookingContent() {
     if (!validate()) return;
     setStep("confirm");
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Mobile 2-stage CTA:
+  //   stage 1 (mobileFormComplete=false): tap → validate → scroll to summary
+  //   stage 2 (mobileFormComplete=true): tap → handleSubmit (proceed to confirm)
+  const handleMobileCta = () => {
+    if (mobileFormComplete) {
+      handleSubmit();
+      return;
+    }
+    if (!validate()) return;
+    setMobileFormComplete(true);
+    // Smooth scroll to summary section
+    setTimeout(() => {
+      summaryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   };
 
   const handleConfirm = () => {
@@ -772,7 +790,7 @@ function BookingContent() {
           </div>
 
           {/* Order summary — visible on all screens */}
-          <div className="space-y-4">
+          <div ref={summaryRef} className="space-y-4 scroll-mt-20">
             <div className="bg-white rounded-2xl p-5 lg:sticky lg:top-20"
               style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
               <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: "#94a3b8" }}>{t.booking.orderSummary}</p>
@@ -889,9 +907,9 @@ function BookingContent() {
               {formatRupiah(totalPrice)}
             </p>
           </div>
-          <button onClick={handleSubmit}
-            className="flex-1 py-3 rounded-xl text-white text-sm font-extrabold btn-ocean">
-            {t.booking.nextBtn}
+          <button onClick={handleMobileCta}
+            className="flex-1 py-3 rounded-xl text-white text-sm font-extrabold btn-ocean transition-all">
+            {mobileFormComplete ? t.booking.nextBtn : t.booking.continueBtn}
           </button>
         </div>
       </div>

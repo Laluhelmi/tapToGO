@@ -182,6 +182,7 @@ const en: Translations = {
     idNumber: "Passport / ID Number",
     idPlaceholder: "Optional",
     nextBtn: "Continue to Confirmation →",
+    continueBtn: "Continue →",
     required: "*",
     errorName: "Name is required",
     errorEmail: "Invalid email address",
