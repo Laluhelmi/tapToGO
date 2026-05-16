@@ -86,6 +86,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
   const [rentalLoc, setRentalLoc] = useState("Bangsal");
   const [rentalStart, setRentalStart] = useState(getTodayString());
   const [rentalDays, setRentalDays] = useState(1);
+  const [rentalQty, setRentalQty] = useState(1);
   const [rentalType, setRentalType] = useState<"any" | "matic" | "manual" | "bigbike" | "car">("any");
 
   // ── Tour state ──
@@ -114,6 +115,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
       location: rentalLoc,
       startDate: rentalStart,
       duration: String(rentalDays),
+      quantity: String(rentalQty),
       type: rentalType,
     });
     router.push(`/rental?${params.toString()}`);
@@ -230,7 +232,7 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
         {/* ── RENTAL TAB ── */}
         {tab === "rental" && (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 items-end">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 items-end">
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 ml-1" style={{ color: "#0369a1" }}>{t.rentalSearch.location}</label>
                 <div className="relative">
@@ -255,6 +257,10 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 ml-1" style={{ color: "#0369a1" }}>{t.rentalSearch.duration}</label>
                 <Counter value={rentalDays} setValue={setRentalDays} min={1} max={30} label={t.rentalSearch.durationUnit} />
+              </div>
+              <div>
+                <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 ml-1" style={{ color: "#0369a1" }}>{t.rentalSearch.quantity}</label>
+                <Counter value={rentalQty} setValue={setRentalQty} min={1} max={10} label={t.rentalSearch.quantityUnit} />
               </div>
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 ml-1" style={{ color: "#0369a1" }}>{t.rentalSearch.vehicleType}</label>

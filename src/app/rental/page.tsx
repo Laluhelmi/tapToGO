@@ -11,6 +11,7 @@ function RentalContent() {
   const location = params.get("location") ?? "—";
   const startDate = params.get("startDate") ?? "—";
   const duration = params.get("duration") ?? "1";
+  const quantity = params.get("quantity") ?? "1";
   const type = params.get("type") ?? "any";
 
   return (
@@ -26,7 +27,7 @@ function RentalContent() {
             🛵 {t.rentalSearch.title}
           </h1>
           <p style={{ color: "#bae6fd" }}>
-            {location} · {startDate} · {duration} {t.rentalSearch.durationUnit} · {type}
+            {location} · {startDate} · {duration} {t.rentalSearch.durationUnit} · {quantity} {t.rentalSearch.quantityUnit} · {type}
           </p>
         </div>
         <div style={{ lineHeight: 0 }}>
@@ -68,6 +69,7 @@ function RentalContent() {
             <div className="flex justify-between"><span style={{ color: "#64748b" }}>📍 {t.rentalSearch.location}</span><span className="font-semibold" style={{ color: "#0c4a6e" }}>{location}</span></div>
             <div className="flex justify-between"><span style={{ color: "#64748b" }}>📅 {t.rentalSearch.startDate}</span><span className="font-semibold" style={{ color: "#0c4a6e" }}>{startDate}</span></div>
             <div className="flex justify-between"><span style={{ color: "#64748b" }}>⏱ {t.rentalSearch.duration}</span><span className="font-semibold" style={{ color: "#0c4a6e" }}>{duration} {t.rentalSearch.durationUnit}</span></div>
+            <div className="flex justify-between"><span style={{ color: "#64748b" }}># {t.rentalSearch.quantity}</span><span className="font-semibold" style={{ color: "#0c4a6e" }}>{quantity} {t.rentalSearch.quantityUnit}</span></div>
             <div className="flex justify-between"><span style={{ color: "#64748b" }}>🛵 {t.rentalSearch.vehicleType}</span><span className="font-semibold" style={{ color: "#0c4a6e" }}>{type}</span></div>
           </div>
         </div>
