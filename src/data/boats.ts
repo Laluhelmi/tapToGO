@@ -255,7 +255,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.5,
     reviewCount: 452,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1570006625_golden-queen-fast-boat-slide-1.jpg",
+    image: "/images/golden-queen/1.jpeg",
   },
   {
     id: "sch-013",
@@ -273,7 +273,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.6,
     reviewCount: 483,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1570006625_golden-queen-fast-boat-slide-1.jpg",
+    image: "/images/golden-queen/1.jpeg",
   },
   {
     id: "sch-014",
@@ -291,7 +291,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.7,
     reviewCount: 514,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1570006625_golden-queen-fast-boat-slide-1.jpg",
+    image: "/images/golden-queen/1.jpeg",
   },
   {
     id: "sch-015",
@@ -309,7 +309,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.8,
     reviewCount: 545,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1646743199_Ostina-Fast-Boat-1.jpeg",
+    image: "/images/ostina/1.jpeg",
   },
   {
     id: "sch-016",
@@ -327,7 +327,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.1,
     reviewCount: 576,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1646743199_Ostina-Fast-Boat-1.jpeg",
+    image: "/images/ostina/1.jpeg",
   },
   {
     id: "sch-017",
@@ -345,7 +345,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.2,
     reviewCount: 607,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1646743199_Ostina-Fast-Boat-1.jpeg",
+    image: "/images/ostina/1.jpeg",
   },
   {
     id: "sch-018",
@@ -471,7 +471,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.1,
     reviewCount: 824,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-darmajaya/1.jpeg",
   },
   {
     id: "sch-025",
@@ -489,7 +489,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.2,
     reviewCount: 855,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-darmajaya/1.jpeg",
   },
   {
     id: "sch-026",
@@ -507,7 +507,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.3,
     reviewCount: 86,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-darmajaya/1.jpeg",
   },
   {
     id: "sch-027",
@@ -525,7 +525,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.4,
     reviewCount: 117,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-darmajaya/1.jpeg",
   },
   {
     id: "sch-028",
@@ -543,7 +543,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.5,
     reviewCount: 148,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-darmajaya/1.jpeg",
   },
   {
     id: "sch-029",
@@ -561,7 +561,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.6,
     reviewCount: 179,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-darmajaya/1.jpeg",
   },
   {
     id: "sch-030",
@@ -579,7 +579,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.7,
     reviewCount: 210,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-darmajaya/1.jpeg",
   },
   {
     id: "sch-031",
@@ -1191,7 +1191,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.1,
     reviewCount: 464,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-065",
@@ -1209,7 +1209,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.2,
     reviewCount: 495,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-066",
@@ -1227,7 +1227,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.3,
     reviewCount: 526,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-067",
@@ -1245,7 +1245,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.4,
     reviewCount: 557,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-068",
@@ -1731,7 +1731,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.7,
     reviewCount: 594,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-095",
@@ -1749,7 +1749,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.8,
     reviewCount: 625,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-096",
@@ -1767,7 +1767,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.1,
     reviewCount: 656,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-097",
@@ -1785,7 +1785,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.2,
     reviewCount: 687,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-098",
@@ -2109,7 +2109,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.4,
     reviewCount: 445,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-116",
@@ -2127,7 +2127,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.5,
     reviewCount: 476,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-117",
@@ -2145,7 +2145,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.6,
     reviewCount: 507,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-118",
@@ -2163,7 +2163,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.7,
     reviewCount: 538,
     boatType: "Fastboat",
-    image: "https://baligilifastboat.com/wp-content/uploads/2024/07/11.jpg",
+    image: "/images/semaya-pride/1.jpeg",
   },
   {
     id: "sch-119",
@@ -2559,7 +2559,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.5,
     reviewCount: 420,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1619180763_Maruti-Group-1-Maruti-Express.jpeg",
+    image: "/images/gili-getaway/1.jpeg",
   },
   {
     id: "sch-141",
@@ -2577,7 +2577,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.6,
     reviewCount: 451,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1619180763_Maruti-Group-1-Maruti-Express.jpeg",
+    image: "/images/gili-getaway/1.jpeg",
   },
   {
     id: "sch-142",
@@ -2595,7 +2595,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.7,
     reviewCount: 482,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1619180763_Maruti-Group-1-Maruti-Express.jpeg",
+    image: "/images/gili-getaway/1.jpeg",
   },
   {
     id: "sch-143",
@@ -2732,6 +2732,28 @@ export const OPERATOR_GALLERY: Record<string, string[]> = {
   "Ekajaya Matra": [
     "/images/ekajaya-matra/1.jpeg",
     "/images/ekajaya-matra/2.jpeg",
+  ],
+  "Gili Gateway Fast Ferry": [
+    "/images/gili-getaway/1.jpeg",
+    "/images/gili-getaway/2.jpeg",
+    "/images/gili-getaway/3.jpeg",
+  ],
+  "Golden Queen Fast Boat": [
+    "/images/golden-queen/1.jpeg",
+    "/images/golden-queen/2.jpeg",
+  ],
+  "Ostina Fast Boat": [
+    "/images/ostina/1.jpeg",
+    "/images/ostina/2.jpeg",
+    "/images/ostina/3.jpeg",
+  ],
+  "Semaya Pride 99": [
+    "/images/semaya-pride/1.jpeg",
+    "/images/semaya-pride/2.jpeg",
+  ],
+  "Semaya Darmajaya Jet": [
+    "/images/semaya-darmajaya/1.jpeg",
+    "/images/semaya-darmajaya/2.jpeg",
   ],
 };
 
