@@ -13,8 +13,8 @@ const en: Translations = {
 
   productTab: {
     fastboat: "Fastboat",
-    rental: "Rental",
-    tour: "Snorkel & Tour",
+    rental: "Rent Bike",
+    tour: "Tour",
   },
 
   rentalSearch: {

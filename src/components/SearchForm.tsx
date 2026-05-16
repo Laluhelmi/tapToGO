@@ -111,14 +111,13 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
 
       {/* Tab pills — top of card */}
       <div className="flex p-1.5 mx-3 mt-3 rounded-2xl" style={{ background: "#f0f9ff" }}>
-        {tabs.map(({ key, icon, label }) => (
+        {tabs.map(({ key, label }) => (
           <button key={key} onClick={() => setTab(key)}
-            className="flex-1 py-2.5 rounded-xl text-sm font-extrabold transition-all flex items-center justify-center gap-1.5"
+            className="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all whitespace-nowrap"
             style={tab === key
               ? { background: "white", color: "#0369a1", boxShadow: "0 2px 8px rgba(2,132,199,0.15)" }
               : { color: "#94a3b8" }}>
-            <span className="text-base">{icon}</span>
-            <span className="hidden sm:inline">{label}</span>
+            {label}
           </button>
         ))}
       </div>
