@@ -1,5 +1,7 @@
 "use client";
+import Link from "next/link";
 import { POPULAR_ROUTES, SCHEDULES } from "@/data/boats";
+import { routeToSlug } from "@/lib/routes";
 import BoatSVG, { BoatVariant } from "./BoatSVG";
 import type { Port } from "@/types";
 
@@ -55,8 +57,9 @@ export default function PopularRoutes({ onSelectRoute }: Props) {
             const minPrice = getMinPrice(route.from, route.to);
             const count = getCount(route.from, route.to);
             return (
-              <button key={i} onClick={() => onSelectRoute(route.from, route.to)}
-                className="group text-left rounded-3xl p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-pointer"
+              <Link key={i} href={`/rute/${routeToSlug(route.from, route.to)}`}
+                onClick={() => onSelectRoute(route.from, route.to)}
+                className="group text-left rounded-3xl p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-pointer block"
                 style={{ background: col.bg, border: `1.5px solid ${col.border}`, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
 
                 {/* Boat illustration */}
@@ -88,7 +91,7 @@ export default function PopularRoutes({ onSelectRoute }: Props) {
                   <span className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm transition-all group-hover:scale-110 group-hover:bg-opacity-80"
                     style={{ background: col.badge, color: col.badgeText }}>→</span>
                 </div>
-              </button>
+              </Link>
             );
           })}
         </div>
