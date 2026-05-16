@@ -1,22 +1,41 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import { SCHEDULES, FROM_PORTS, TO_PORTS } from "@/data/boats";
 import type { Port } from "@/types";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { useLang } from "@/contexts/LanguageContext";
 
 type SortKey = "time" | "price" | "operator";
 
 export default function JadwalPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" style={{ background: "#f0f9ff" }}><Navbar /></div>}>
+      <JadwalContent />
+    </Suspense>
+  );
+}
+
+function JadwalContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { t } = useLang();
   const [from, setFrom] = useState<Port | "">("");
   const [to, setTo] = useState<Port | "">("");
   const [operator, setOperator] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("time");
   const [search, setSearch] = useState("");
+
+  // Apply filter from URL query (e.g. ?operator=Ekajaya%2025 from /armada)
+  useEffect(() => {
+    const op = searchParams.get("operator");
+    const f = searchParams.get("from");
+    const tp = searchParams.get("to");
+    if (op) setOperator(op);
+    if (f) setFrom(f as Port);
+    if (tp) setTo(tp as Port);
+  }, [searchParams]);
 
   const goToBooking = (id: string) => {
     const today = new Date().toISOString().split("T")[0];
@@ -152,7 +171,7 @@ export default function JadwalPage() {
                 onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 12px rgba(2,132,199,0.07)"}>
 
                 {/* Mobile layout */}
-                <div className="md:hidden px-4 py-4 flex flex-col gap-3">
+                <div className="lg:hidden px-4 py-4 flex flex-col gap-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-extrabold text-white shrink-0"
@@ -170,28 +189,26 @@ export default function JadwalPage() {
                       <p className="text-xs" style={{ color: "#94a3b8" }}>/pax</p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.from}</p>
-                        <p className="text-sm font-semibold" style={{ color: "#334155" }}>{s.from}</p>
-                      </div>
-                      <span style={{ color: "#bae6fd" }}>→</span>
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.to}</p>
-                        <p className="text-sm font-semibold" style={{ color: "#334155" }}>{s.to}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>Jam</p>
-                        <p className="text-sm font-semibold tabular-nums" style={{ color: "#0369a1" }}>{s.departureTime}</p>
-                      </div>
+                  <div className="flex items-center gap-4">
+                    <div className="shrink-0">
+                      <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.from}</p>
+                      <p className="text-sm font-semibold" style={{ color: "#334155" }}>{s.from}</p>
                     </div>
-                    <button onClick={() => goToBooking(s.id)} className="px-4 py-2 rounded-xl text-xs font-extrabold text-white btn-ocean">{t.jadwal.select}</button>
+                    <span className="shrink-0" style={{ color: "#bae6fd" }}>→</span>
+                    <div className="shrink-0">
+                      <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.to}</p>
+                      <p className="text-sm font-semibold" style={{ color: "#334155" }}>{s.to}</p>
+                    </div>
+                    <div className="shrink-0 ml-auto">
+                      <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>Jam</p>
+                      <p className="text-sm font-semibold tabular-nums" style={{ color: "#0369a1" }}>{s.departureTime}</p>
+                    </div>
                   </div>
+                  <button onClick={() => goToBooking(s.id)} className="w-full py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean">{t.jadwal.select}</button>
                 </div>
 
                 {/* Desktop layout */}
-                <div className="hidden md:flex items-center px-5 py-4 gap-0">
+                <div className="hidden lg:flex items-center px-5 py-4 gap-0">
 
                   {/* Time — 90px */}
                   <div className="shrink-0 w-[90px]">

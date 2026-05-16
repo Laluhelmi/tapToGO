@@ -1,8 +1,8 @@
 "use client";
 import type { BoatSchedule } from "@/types";
-import { AMENITY_ICONS } from "@/data/boats";
 import { useRouter } from "next/navigation";
 import { useLang } from "@/contexts/LanguageContext";
+import { useCompare } from "@/contexts/CompareContext";
 
 const BADGE_STYLES = {
   "Best Price":    { bg: "#dcfce7", text: "#15803d", icon: "💚" },
@@ -14,18 +14,35 @@ const BADGE_STYLES = {
 export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSchedule; index?: number; date?: string; passengers?: number }) {
   const router = useRouter();
   const { t } = useLang();
+  const compare = useCompare();
   const badge = boat.badge ? BADGE_STYLES[boat.badge] : null;
-  const seatPct = boat.availableSeats / boat.seats;
   const almostFull = boat.availableSeats <= 5;
+  const selected = compare.isSelected(boat.id);
 
-  const goToBooking = () => {
+  const goToDetail = () => {
+    router.push(`/armada/${encodeURIComponent(boat.operator)}`);
+  };
+
+  const goToBooking = (e: React.MouseEvent) => {
+    e.stopPropagation();
     const d = date || new Date().toISOString().split("T")[0];
     router.push(`/booking?id=${boat.id}&date=${d}&passengers=${passengers}`);
   };
 
+  const toggleCompare = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    compare.toggle(boat.id);
+  };
+
   return (
-    <div className="bg-white rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 group"
-      style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 16px rgba(2,132,199,0.08)", ...(almostFull ? { borderColor: "#fca5a5" } : {}) }}
+    <div onClick={goToDetail}
+      className="bg-white rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 group cursor-pointer"
+      style={{
+        border: "1.5px solid #e0f2fe",
+        boxShadow: "0 2px 16px rgba(2,132,199,0.08)",
+        ...(almostFull ? { borderColor: "#fca5a5" } : {}),
+        ...(selected ? { borderColor: "#0284c7", borderWidth: "2.5px", boxShadow: "0 8px 28px rgba(2,132,199,0.2)" } : {}),
+      }}
       onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 48px rgba(2,132,199,0.18)"; }}
       onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 16px rgba(2,132,199,0.08)"; }}>
 
@@ -45,11 +62,33 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
           {boat.logo}
         </div>
         {badge && (
-          <span className="absolute top-3 right-3 flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full"
+          <span className="absolute top-3 right-[110px] flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full"
             style={{ background: badge.bg, color: badge.text }}>
             {badge.icon} {boat.badge}
           </span>
         )}
+        {/* Compare toggle */}
+        <button onClick={toggleCompare}
+          title={selected ? t.compare.added : t.compare.add}
+          disabled={!selected && !compare.canAdd}
+          className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-extrabold transition-all shadow-md hover:scale-105"
+          style={{
+            background: selected ? "linear-gradient(135deg,#0284c7,#0369a1)" : "rgba(255,255,255,0.95)",
+            color: selected ? "white" : "#0369a1",
+            opacity: !selected && !compare.canAdd ? 0.5 : 1,
+            cursor: !selected && !compare.canAdd ? "not-allowed" : "pointer",
+          }}>
+          {selected ? (
+            <>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>{t.compare.added}</span>
+            </>
+          ) : (
+            <span>{t.compare.add}</span>
+          )}
+        </button>
         {/* Boat type pill bottom-left */}
         <span className="absolute bottom-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white"
           style={{ background: "rgba(3,105,161,0.85)", backdropFilter: "blur(4px)" }}>
@@ -86,27 +125,6 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
           <div className="text-center">
             <p className="text-xl font-extrabold tabular-nums" style={{ color: "#0369a1" }}>{boat.arrivalTime}</p>
             <p className="text-xs font-semibold" style={{ color: "#64748b" }}>{boat.to}</p>
-          </div>
-        </div>
-
-        {/* Amenities */}
-        <div className="flex flex-wrap gap-1">
-          {boat.amenities.map(a => (
-            <span key={a} className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-lg font-medium"
-              style={{ background: "#f8fafc", color: "#475569", border: "1px solid #e2e8f0" }}>
-              {AMENITY_ICONS[a] ?? "✦"} {a}
-            </span>
-          ))}
-        </div>
-
-        {/* Seats bar */}
-        <div>
-          <p className="text-xs font-semibold mb-1" style={{ color: almostFull ? "#ef4444" : "#64748b" }}>
-            {almostFull ? `⚠ ${boat.availableSeats} ${t.boatCard.almostFull}` : `${boat.availableSeats} ${t.boatCard.seatsLeft}`}
-          </p>
-          <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#e2e8f0" }}>
-            <div className="h-full rounded-full transition-all duration-500"
-              style={{ width: `${(1 - seatPct) * 100}%`, background: almostFull ? "linear-gradient(90deg,#f87171,#ef4444)" : "linear-gradient(90deg,#0284c7,#0ea5e9)" }} />
           </div>
         </div>
 

@@ -39,21 +39,26 @@ export default function ScheduleSection({ searchParams }: Props) {
   const maxPrice = results.length ? Math.max(...results.map(s => s.price)) : 0;
 
   return (
-    <section className="py-20 px-4 sm:px-6" id="schedules" style={{ background: "#f0f9ff" }}>
+    <section className="py-12 px-4 sm:px-6" id="schedules" style={{ background: "#f0f9ff" }}>
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-10">
-          <span className="inline-block text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+        <div className="text-center mb-6">
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3"
             style={{ background: "#e0f2fe", color: "#0369a1" }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 12h3l2-3 4 6 2-3h7"/>
+              <circle cx="6" cy="12" r="0.8" fill="currentColor"/>
+              <circle cx="18" cy="12" r="0.8" fill="currentColor"/>
+            </svg>
             {t.scheduleSection.badge}
           </span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold mb-3" style={{ color: "#0c4a6e" }}>
+          <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: "#0c4a6e" }}>
             {from && to ? (
               <>{from} <span style={{ color: "#0284c7" }}>→</span> {to}</>
             ) : t.scheduleSection.pickRoute}
           </h2>
-          <p style={{ color: "#64748b" }}>
+          <p className="text-sm" style={{ color: "#64748b" }}>
             <span className="font-bold" style={{ color: "#0369a1" }}>{results.length} {t.scheduleSection.schedules}</span>
             {date && ` · ${formatDate(date)}`}
             {` · ${passengers} ${t.scheduleSection.passenger}`}
@@ -81,17 +86,19 @@ export default function ScheduleSection({ searchParams }: Props) {
           </div>
 
           {/* Price range */}
-          <div className="mt-3 flex items-center gap-4">
-            <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#64748b" }}>
-              {t.scheduleSection.maxPrice} <span className="font-bold" style={{ color: "#0369a1" }}>Rp {priceMax}K</span>
-            </span>
+          <div className="mt-3 flex flex-col gap-2">
+            <div className="flex items-center justify-between gap-3 flex-wrap">
+              <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#64748b" }}>
+                {t.scheduleSection.maxPrice} <span className="font-bold" style={{ color: "#0369a1" }}>Rp {priceMax}K</span>
+              </span>
+              <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#94a3b8" }}>
+                Rp {minPrice}K – {maxPrice}K
+              </span>
+            </div>
             <input type="range" min={300} max={1000} step={25} value={priceMax}
               onChange={e => setPriceMax(Number(e.target.value))}
-              className="flex-1 h-1.5 rounded-full appearance-none cursor-pointer"
-              style={{ accentColor: "#0284c7" }} />
-            <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#94a3b8" }}>
-              Rp {minPrice}K – {maxPrice}K
-            </span>
+              className="price-slider"
+              style={{ ["--fill" as string]: `${((priceMax - 300) / (1000 - 300)) * 100}%` }} />
           </div>
         </div>
 

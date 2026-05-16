@@ -38,6 +38,65 @@
     box-shadow: 0 4px 20px rgba(2, 132, 199, 0.35);
     transition: all 0.25s ease;
   }
+
+  /* Custom price range slider */
+  .price-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    outline: none;
+    cursor: pointer;
+  }
+  .price-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #0284c7 0%, #0ea5e9 var(--fill, 50%), #e2e8f0 var(--fill, 50%), #e2e8f0 100%);
+  }
+  .price-slider::-moz-range-track {
+    height: 6px;
+    border-radius: 999px;
+    background: #e2e8f0;
+  }
+  .price-slider::-moz-range-progress {
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #0284c7, #0ea5e9);
+  }
+  .price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #0284c7;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+    cursor: grab;
+    margin-top: -7px;
+    transition: transform 0.15s ease;
+  }
+  .price-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+  .price-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.2);
+  }
+  .price-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #0284c7;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+    cursor: grab;
+  }
+}
+
+@layer utilities {
   .btn-ocean:hover {
     background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
     box-shadow: 0 8px 28px rgba(2, 132, 199, 0.45);
@@ -64,5 +123,43 @@
   }
   .badge-recommended {
     background: linear-gradient(135deg, #f59e0b, #d97706);
+  }
+}
+
+/* Print styles — clean PDF output for e-ticket & brochure */
+@media print {
+  body * { visibility: hidden; }
+  .eticket-printable, .eticket-printable *,
+  .brochure-printable, .brochure-printable * { visibility: visible; }
+  .eticket-printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  .brochure-printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    page-break-after: always;
+  }
+  .print\:hidden { display: none !important; }
+  @page { margin: 0; size: A4; }
+  html, body {
+    background: white !important;
+    margin: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

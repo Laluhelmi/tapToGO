@@ -22,7 +22,7 @@ const id = {
 
   // Schedule Section
   scheduleSection: {
-    badge: "🗓️ Jadwal Tersedia",
+    badge: "Jadwal Tersedia",
     pickRoute: "Pilih Rute",
     schedules: "jadwal",
     passenger: "Penumpang",
@@ -98,6 +98,32 @@ const id = {
     tryOther: "Coba kata kunci lain",
     verified: "Semua operator telah terverifikasi dan berizin resmi · Diperbarui berkala",
   },
+
+  // Armada Detail Page
+  armadaDetail: {
+    backArmada: "← Kembali ke Armada",
+    overview: "Tentang Armada",
+    overviewDesc: "Armada resmi dengan izin operasional lengkap, asuransi penumpang, dan standar keselamatan internasional. Crew berpengalaman dan tersertifikasi.",
+    stats: "Statistik",
+    totalSchedules: "Total Jadwal",
+    totalRoutes: "Total Rute",
+    priceRange: "Kisaran Harga",
+    operatorRating: "Rating Operator",
+    facilities: "Fasilitas Tersedia",
+    routesServed: "Rute yang Dilayani",
+    allSchedules: "Semua Jadwal",
+    schedulesFound: "jadwal tersedia",
+    viewJadwal: "Lihat Semua Jadwal →",
+    bookNow: "Pesan Sekarang",
+    notFound: "Armada tidak ditemukan",
+    backToList: "Kembali ke daftar armada",
+    departure: "Berangkat",
+    arrival: "Tiba",
+    seatsLeft: "kursi tersisa",
+    gallery: "Galeri Foto",
+    photoCount: "foto",
+  },
+
 
   // Bantuan Page
   bantuan: {
@@ -196,6 +222,84 @@ const id = {
     backHome: "Kembali ke Beranda",
     loading: "Memuat...",
     boatType: "Fastboat",
+    // Stepper
+    stepData: "Data",
+    stepConfirm: "Konfirmasi",
+    stepDone: "Selesai",
+    // Trust badges
+    trustSecure: "Pembayaran aman",
+    trustNoFee: "Bebas biaya admin",
+    trustRefund: "Refund 24 jam",
+    trustTime: "Proses ± 2 menit",
+    // Validation feedback
+    emailValid: "Email valid",
+    waValid: "Nomor valid",
+    nameValid: "Nama lengkap",
+    // Country dropdown
+    countrySearch: "Cari negara...",
+    countryNoResult: "Negara tidak ditemukan",
+    idNumberKtp: "No. KTP",
+    idNumberPassport: "No. Paspor",
+    idPaxRequired: "wajib (untuk WNA)",
+    // Summary
+    pricePerPax: "Harga per penumpang",
+    subtotal: "Subtotal",
+    // Mobile sticky bar
+    viewSummary: "Lihat ringkasan",
+    // Harbour Tax
+    harbourTax: "Harbour Tax",
+    harbourTaxInfo: "Pajak pelabuhan resmi · Rp 20.000 / pax",
+    payInApp: "Bayar via app",
+    payAtPort: "Bayar di pelabuhan",
+    payAtPortWarning: "Siapkan cash di pelabuhan asal sebelum boarding",
+    taxPaid: "Harbour Tax: Lunas",
+    taxPayAtPort: "Bayar di pelabuhan",
+  },
+
+  // Compare boats
+  compare: {
+    add: "Bandingkan",
+    added: "Dipilih",
+    title: "Bandingkan Armada",
+    subtitle: "kapal dipilih · Bandingkan side-by-side",
+    button: "Bandingkan",
+    clear: "Hapus semua",
+    close: "Tutup",
+    operator: "Operator",
+    type: "Tipe",
+    route: "Rute",
+    departure: "Berangkat",
+    arrival: "Tiba",
+    duration: "Durasi",
+    price: "Harga / pax",
+    seats: "Kursi tersedia",
+    rating: "Rating",
+    amenities: "Fasilitas",
+    selectMore: "Pilih min. 2 kapal untuk membandingkan",
+    bookNow: "Pesan Sekarang",
+    full: "Maksimal 3 kapal",
+  },
+
+  // E-Ticket
+  eticket: {
+    title: "E-Ticket",
+    subtitle: "Tiket elektronik kamu",
+    bookingCode: "Kode Booking",
+    passenger: "Penumpang",
+    qrInfo: "Tunjukkan QR ini di counter saat boarding",
+    instructions: "Petunjuk Boarding",
+    inst1: "Datang 30 menit sebelum keberangkatan",
+    inst2: "Bawa identitas asli (KTP/Paspor)",
+    inst3: "Cetak atau simpan tiket di HP",
+    inst4: "Tunjukkan QR Code di pintu masuk",
+    download: "Unduh PDF",
+    print: "Cetak",
+    shareWa: "Bagikan via WhatsApp",
+    sendEmail: "Kirim ke Email",
+    poweredBy: "tapToGo · taptogo.id",
+    issuedAt: "Diterbitkan",
+    important: "PENTING",
+    importantDesc: "Tiket ini hanya berlaku untuk tanggal & waktu yang tertera. Tidak dapat dipindahtangankan.",
   },
 
   // Footer

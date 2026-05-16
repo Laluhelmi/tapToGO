@@ -102,11 +102,11 @@ export default function ArmadaPage() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {filtered.map((op) => (
-            <div key={op.name}
-              className="bg-white rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 group"
+            <Link key={op.name} href={`/armada/${encodeURIComponent(op.name)}`}
+              className="bg-white rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 group cursor-pointer"
               style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 16px rgba(2,132,199,0.07)" }}
-              onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 40px rgba(2,132,199,0.15)"}
-              onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 16px rgba(2,132,199,0.07)"}>
+              onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 16px 40px rgba(2,132,199,0.15)"}
+              onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 2px 16px rgba(2,132,199,0.07)"}>
 
               {/* Photo */}
               <div className="relative overflow-hidden" style={{ height: 140 }}>
@@ -181,13 +181,12 @@ export default function ArmadaPage() {
                       {op.maxPrice !== op.minPrice && <span style={{ color: "#94a3b8" }}> – {op.maxPrice}K</span>}
                     </p>
                   </div>
-                  <Link href={`/jadwal?operator=${encodeURIComponent(op.name)}`}
-                    className="text-xs px-3 py-1.5 rounded-xl font-bold text-white btn-ocean transition-all hover:scale-105">
+                  <span className="text-xs px-3 py-1.5 rounded-xl font-bold text-white btn-ocean transition-all group-hover:scale-105">
                     {t.armada.viewSchedule}
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

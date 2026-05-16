@@ -1,5 +1,6 @@
 "use client";
 import { useLang } from "@/contexts/LanguageContext";
+import Logo from "./Logo";
 
 export default function Footer() {
   const { t } = useLang();
@@ -21,21 +22,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg,#0369a1,#0c4a6e)" }}>
-                <svg viewBox="0 0 32 32" fill="none" width="22" height="22">
-                  <path d="M5 18 Q10 22 16 20 Q22 18 27 20 L25 24 L7 24 Z" fill="white"/>
-                  <rect x="10" y="10" width="12" height="9" rx="3" fill="white" opacity="0.88"/>
-                  <line x1="16" y1="5" x2="16" y2="10" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
-                  <path d="M16 5 L21 7.5 L16 10Z" fill="#f97316"/>
-                  <path d="M2 26 Q5 24 8 26 Q11 28 14 26" stroke="white" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.5"/>
-                  <path d="M18 26 Q21 24 24 26 Q27 28 30 26" stroke="white" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.5"/>
-                </svg>
-              </div>
-              <span className="text-2xl font-extrabold">
-                <span className="text-white">tapTo</span><span style={{ color: "#f97316" }}>Go</span>
-              </span>
+            <div className="mb-4">
+              <Logo size={40} variant="dark" wordmarkSize="xl" />
             </div>
             <p className="text-sm leading-relaxed mb-5" style={{ color: "#7dd3fc", maxWidth: 280 }}>
               {t.footer.desc}
