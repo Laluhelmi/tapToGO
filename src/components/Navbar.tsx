@@ -17,6 +17,8 @@ export default function Navbar() {
   const navLinks = [
     { label: t.nav.home,     href: "/" },
     { label: t.nav.schedule, href: "/jadwal" },
+    { label: t.nav.rental,   href: "/rental" },
+    { label: t.nav.tour,     href: "/tour" },
     { label: t.nav.fleet,    href: "/armada" },
     { label: t.nav.help,     href: "/bantuan" },
   ];
@@ -39,7 +41,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex flex-1 items-center justify-center gap-7">
+        <div className="hidden md:flex flex-1 items-center justify-center gap-5">
           {navLinks.map(({ label, href }) => (
             <a key={href} href={href} className="text-sm font-semibold transition-colors duration-200"
               style={{ color: "#475569" }}
