@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import { useLang } from "@/contexts/LanguageContext";
 
 const CONTACTS = [
-  { icon: "💬", label: "WhatsApp", value: "+62 812 3456 7890", link: "https://wa.me/6281234567890", color: "#dcfce7", textColor: "#15803d" },
+  { icon: "💬", label: "WhatsApp", value: "+62 878 2177 5082", link: "https://wa.me/6287821775082", color: "#dcfce7", textColor: "#15803d" },
   { icon: "📧", label: "Email", value: "hello@taptogo.id", link: "mailto:hello@taptogo.id", color: "#e0f2fe", textColor: "#0369a1" },
   { icon: "📍", label: "Kantor", value: "Jl. Raya Seminyak, Bali", link: "#", color: "#fff7ed", textColor: "#ea580c" },
 ];
@@ -88,7 +88,7 @@ export default function BantuanPage() {
           <p className="text-sm mb-6" style={{ color: "#64748b" }}>
             {t.bantuan.helpDesc}
           </p>
-          <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer"
+          <a href="https://wa.me/6287821775082" target="_blank" rel="noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl text-sm font-extrabold text-white btn-ocean transition-all hover:scale-105">
             {t.bantuan.chatWa}
           </a>

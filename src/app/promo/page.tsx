@@ -24,8 +24,8 @@ export default function PromoPage() {
   // QR code to app
   const appUrl = "https://taptogo-rouge.vercel.app";
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(appUrl)}&margin=2&color=0c4a6e&bgcolor=ffffff`;
-  const whatsapp = "+62 812 3456 7890";
-  const waLink = "https://wa.me/6281234567890";
+  const whatsapp = "+62 878 2177 5082";
+  const waLink = "https://wa.me/6287821775082";
 
   const handlePrint = () => window.print();
 

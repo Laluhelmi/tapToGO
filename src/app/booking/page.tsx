@@ -481,7 +481,7 @@ function BookingContent() {
 
           {/* Payment CTA — booking is still pending payment */}
           {(() => {
-            const adminWa = "6281234567890"; // admin WhatsApp (no + prefix, no spaces)
+            const adminWa = "6287821775082"; // admin WhatsApp (no + prefix, no spaces)
             const msgLines = [
               t.booking.waMsgGreeting,
               "",
