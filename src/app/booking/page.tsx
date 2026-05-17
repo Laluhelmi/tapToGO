@@ -417,8 +417,9 @@ function BookingContent() {
   };
 
   // Mobile 2-stage CTA:
-  //   stage 1 (mobileFormComplete=false): tap → validate → scroll to summary
-  //   stage 2 (mobileFormComplete=true): tap → handleSubmit (proceed to confirm)
+  //   stage 1: button "Continue" — tap → validate → scroll to summary
+  //   stage 2: button "Continue to Confirmation" — tap → submit
+  // Stage auto-toggles via IntersectionObserver on summary visibility.
   const handleMobileCta = () => {
     if (mobileFormComplete) {
       handleSubmit();
@@ -426,11 +427,33 @@ function BookingContent() {
     }
     if (!validate()) return;
     setMobileFormComplete(true);
-    // Smooth scroll to summary section
     setTimeout(() => {
       summaryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   };
+
+  // Auto-detect when user manually scrolls to / away from summary section
+  useEffect(() => {
+    if (step !== "form") return;
+    const el = summaryRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          // When >25% of summary card is visible, treat as "reached bottom"
+          if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
+            setMobileFormComplete(true);
+          } else if (entry.intersectionRatio === 0) {
+            // Fully out of viewport — back to stage 1
+            setMobileFormComplete(false);
+          }
+        });
+      },
+      { threshold: [0, 0.25, 0.5] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [step]);
 
   const handleConfirm = () => {
     setStep("done");
