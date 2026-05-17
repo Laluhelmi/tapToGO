@@ -14,8 +14,8 @@ export default function HeroSection({ onSearch, searchParams }: Props) {
       {/* Background photo */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1571366343168-d484f4f6a4dc?w=1920&auto=format&fit=crop&q=85"
-          alt="3 Gili Islands — turquoise water paradise"
+          src="/images/wahana-virendra/1.jpeg"
+          alt="Fastboat over turquoise water — Gili Islands"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(160deg,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.2) 100%)" }} />
