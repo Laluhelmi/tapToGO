@@ -790,7 +790,7 @@ function BookingContent() {
                     strokeLinecap="round" strokeLinejoin="round" style={{ color: "#94a3b8", flexShrink: 0 }}>
                     <polyline points="6 9 12 15 18 9"/>
                   </svg>
-                  <input type="date" value={date} min={today} onChange={e => setDate(e.target.value)}
+                  <input type="date" value={date} min={today} onChange={e => { const v = e.target.value; if (v && v >= today) setDate(v); }}
                     className="absolute inset-0 opacity-0 cursor-pointer" />
                 </label>
               </div>

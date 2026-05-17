@@ -24,15 +24,23 @@ export default function ScheduleSection({ searchParams }: Props) {
   const { from, to, date, passengers } = searchParams;
 
   const results = useMemo(() => {
+    // If selected date is today, hide schedules whose departure already passed
+    const today = new Date().toISOString().split("T")[0];
+    const isToday = date === today;
+    const nowHHMM = isToday
+      ? `${String(new Date().getHours()).padStart(2, "0")}:${String(new Date().getMinutes()).padStart(2, "0")}`
+      : "00:00";
+
     return SCHEDULES
       .filter(s => (!from || s.from === from) && (!to || s.to === to))
       .filter(s => s.price <= priceMax)
       .filter(s => s.availableSeats >= passengers)
+      .filter(s => !isToday || s.departureTime > nowHHMM)
       .sort((a, b) =>
         sort === "price" ? a.price - b.price :
         a.departureTime.localeCompare(b.departureTime)
       );
-  }, [from, to, priceMax, passengers, sort]);
+  }, [from, to, date, priceMax, passengers, sort]);
 
   const routeLabel = from && to ? `${from} → ${to}` : "Semua Rute";
   const minPrice = results.length ? Math.min(...results.map(s => s.price)) : 0;
