@@ -88,7 +88,7 @@ export default function BrandPage() {
               </div>
               <div className="flex gap-2">
                 <AssetDownload href="/brand/logo-full.svg" label="SVG" size="Vector" highlight compact />
-                <AssetDownload href="/brand/logo-full.png" label="PNG" size="1200×300" compact />
+                <AssetDownload href="/brand/logo-full.png" label="PNG" size="1000×240" compact />
               </div>
             </div>
 
@@ -103,7 +103,7 @@ export default function BrandPage() {
               </div>
               <div className="flex gap-2">
                 <AssetDownload href="/brand/logo-full-dark.svg" label="SVG" size="Vector" highlight compact />
-                <AssetDownload href="/brand/logo-full-dark.png" label="PNG" size="1200×300" compact />
+                <AssetDownload href="/brand/logo-full-dark.png" label="PNG" size="1000×240" compact />
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function BrandPage() {
             </div>
             <div className="flex gap-2">
               <AssetDownload href="/brand/logo-wordmark.svg" label="SVG" size="Vector" highlight compact />
-              <AssetDownload href="/brand/logo-wordmark.png" label="PNG" size="900×200" compact />
+              <AssetDownload href="/brand/logo-wordmark.png" label="PNG" size="850×170" compact />
             </div>
           </div>
         </section>
