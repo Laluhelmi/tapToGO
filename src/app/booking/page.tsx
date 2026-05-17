@@ -460,25 +460,21 @@ function BookingContent() {
     }, 50);
   };
 
-  // Auto-detect when user manually scrolls to / away from summary section
+  // Switch CTA only when user has scrolled to the very bottom of the page
   useEffect(() => {
     if (step !== "form") return;
-    const el = summaryRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
-            setMobileFormComplete(true);
-          } else if (entry.intersectionRatio === 0) {
-            setMobileFormComplete(false);
-          }
-        });
-      },
-      { threshold: [0, 0.25, 0.5] }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    const onScroll = () => {
+      const scrolled = window.innerHeight + window.scrollY;
+      const full = document.documentElement.scrollHeight;
+      setMobileFormComplete(full - scrolled < 80);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, [step]);
 
   // Show "Continue to Confirmation" only if user reached summary AND form is valid.
