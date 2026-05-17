@@ -357,6 +357,7 @@ function BookingContent() {
     email: "",
     whatsapp: "",
     nationality: "",
+    note: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [orderCode] = useState(() => `TG-${Date.now().toString(36).toUpperCase()}`);
@@ -500,6 +501,7 @@ function BookingContent() {
                   ? `⚓ Harbour Tax: Lunas (${formatRupiah(taxAmount)})`
                   : `⚓ Harbour Tax: Bayar di pelabuhan (${formatRupiah(taxAmount)})`)
                 : "",
+              form.note ? `\n📝 ${t.booking.additionalNote}:\n${form.note}` : "",
               "",
               t.booking.waMsgRequest,
             ].filter(Boolean).join("\n");
@@ -607,11 +609,12 @@ function BookingContent() {
                 { label: t.booking.email, value: form.email },
                 { label: t.booking.whatsapp, value: form.whatsapp },
                 { label: t.booking.nationality, value: form.nationality },
+                ...(form.note ? [{ label: t.booking.additionalNote, value: form.note }] : []),
               ].map(({ label, value }) => (
-                <div key={label} className="flex justify-between items-center py-1.5"
+                <div key={label} className="flex justify-between items-start gap-3 py-1.5"
                   style={{ borderBottom: "1px solid #f0f9ff" }}>
-                  <span className="text-sm" style={{ color: "#64748b" }}>{label}</span>
-                  <span className="text-sm font-semibold text-right" style={{ color: "#334155" }}>{value}</span>
+                  <span className="text-sm shrink-0" style={{ color: "#64748b" }}>{label}</span>
+                  <span className="text-sm font-semibold text-right" style={{ color: "#334155", whiteSpace: "pre-wrap" }}>{value}</span>
                 </div>
               ))}
             </div>
@@ -814,6 +817,23 @@ function BookingContent() {
                 </label>
                 <CountryPicker value={form.nationality} onChange={v => setField("nationality", v)} error={errors.nationality} t={t} />
                 {errors.nationality && <p className="text-xs mt-1" style={{ color: "#dc2626" }}>✕ {errors.nationality}</p>}
+              </div>
+
+              {/* Additional note (optional) */}
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
+                  {t.booking.additionalNote} <span className="font-normal lowercase" style={{ color: "#94a3b8" }}>· {t.booking.noteOptional}</span>
+                </label>
+                <textarea
+                  value={form.note}
+                  onChange={e => setField("note", e.target.value)}
+                  placeholder={t.booking.notePlaceholder}
+                  rows={3}
+                  className="w-full rounded-xl px-4 py-3 text-sm font-medium focus:outline-none transition-all resize-none"
+                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#334155" }}
+                  onFocus={e => e.target.style.borderColor = "#38bdf8"}
+                  onBlur={e => e.target.style.borderColor = "#e2e8f0"}
+                />
               </div>
 
             </div>
