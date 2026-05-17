@@ -224,7 +224,7 @@ const en: Translations = {
     nationality: "Nationality",
     natPlaceholder: "Indonesian / Australian / etc",
     additionalNote: "Additional Note",
-    notePlaceholder: "Special requests, allergies, hotel pickup, etc (optional)",
+    notePlaceholder: "Special requests",
     noteOptional: "Optional",
     idNumber: "Passport / ID Number",
     idPlaceholder: "Optional",

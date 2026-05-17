@@ -235,7 +235,7 @@ const id = {
     nationality: "Kewarganegaraan",
     natPlaceholder: "Indonesia / Australia / dll",
     additionalNote: "Catatan Tambahan",
-    notePlaceholder: "Permintaan khusus, alergi, hotel pickup, dll (opsional)",
+    notePlaceholder: "Permintaan khusus",
     noteOptional: "Opsional",
     idNumber: "No. Paspor / KTP",
     idPlaceholder: "Opsional",
