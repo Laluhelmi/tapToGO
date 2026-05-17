@@ -196,8 +196,8 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 ml-1" style={{ color: "#0369a1" }}>{t.search.date}</label>
                 <input type="date" value={date} min={getTodayString()} onChange={e => setDate(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none transition-all [color-scheme:light] cursor-pointer"
-                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1" }}
+                  className="w-full min-w-0 max-w-full rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none transition-all [color-scheme:light] cursor-pointer appearance-none"
+                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1", boxSizing: "border-box" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
                   onBlur={e => e.target.style.borderColor = "#e2e8f0"} />
               </div>
@@ -249,8 +249,8 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 ml-1" style={{ color: "#0369a1" }}>{t.rentalSearch.startDate}</label>
                 <input type="date" value={rentalStart} min={getTodayString()} onChange={e => setRentalStart(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none transition-all [color-scheme:light] cursor-pointer"
-                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1" }}
+                  className="w-full min-w-0 max-w-full rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none transition-all [color-scheme:light] cursor-pointer appearance-none"
+                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1", boxSizing: "border-box" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
                   onBlur={e => e.target.style.borderColor = "#e2e8f0"} />
               </div>
@@ -322,8 +322,8 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-widest mb-1.5 ml-1" style={{ color: "#0369a1" }}>{t.tourSearch.date}</label>
                 <input type="date" value={tourDate} min={getTodayString()} onChange={e => setTourDate(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none transition-all [color-scheme:light] cursor-pointer"
-                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1" }}
+                  className="w-full min-w-0 max-w-full rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none transition-all [color-scheme:light] cursor-pointer appearance-none"
+                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1", boxSizing: "border-box" }}
                   onFocus={e => e.target.style.borderColor = "#38bdf8"}
                   onBlur={e => e.target.style.borderColor = "#e2e8f0"} />
               </div>
