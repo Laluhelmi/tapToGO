@@ -260,7 +260,7 @@ function ValidatedInput({
       <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
         {label} {required && <span style={{ color: "#dc2626" }}>*</span>}
       </label>
-      <div className="relative">
+      <div className="relative" data-invalid={!!error || undefined}>
         <input type={type} value={value} onChange={e => onChange(e.target.value)}
           onBlur={() => setTouched(true)}
           placeholder={placeholder}
@@ -365,6 +365,7 @@ function BookingContent() {
   const [payTaxInApp, setPayTaxInApp] = useState(false);
   const [mobileFormComplete, setMobileFormComplete] = useState(false);
   const summaryRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   // Clear an error key when the related field becomes valid
   const setField = (key: keyof typeof form, value: string) => {
@@ -416,16 +417,31 @@ function BookingContent() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Mobile 2-stage CTA:
-  //   stage 1: button "Continue" — tap → validate → scroll to summary
-  //   stage 2: button "Continue to Confirmation" — tap → submit
-  // Stage auto-toggles via IntersectionObserver on summary visibility.
+  // Form fully valid? (used for button text + tap behavior)
+  const isFormValid = validName && validEmail && validWa && validNat;
+
+  // Mobile CTA logic:
+  //   - Form invalid → button "Continue" → tap: validate + scroll to first invalid field
+  //   - Form valid + summary not in view → button "Continue" → tap: scroll to summary
+  //   - Form valid + summary in view → button "Continue to / Confirmation →" → tap: submit
   const handleMobileCta = () => {
+    if (!isFormValid) {
+      validate();
+      // Scroll to first invalid input
+      setTimeout(() => {
+        const firstError = document.querySelector('[data-invalid="true"]') as HTMLElement | null;
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 50);
+      return;
+    }
     if (mobileFormComplete) {
       handleSubmit();
       return;
     }
-    if (!validate()) return;
     setMobileFormComplete(true);
     setTimeout(() => {
       summaryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -440,11 +456,9 @@ function BookingContent() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          // When >25% of summary card is visible, treat as "reached bottom"
           if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
             setMobileFormComplete(true);
           } else if (entry.intersectionRatio === 0) {
-            // Fully out of viewport — back to stage 1
             setMobileFormComplete(false);
           }
         });
@@ -454,6 +468,9 @@ function BookingContent() {
     observer.observe(el);
     return () => observer.disconnect();
   }, [step]);
+
+  // Show "Continue to Confirmation" only if user reached summary AND form is valid.
+  const showFinalCta = mobileFormComplete && isFormValid;
 
   const handleConfirm = () => {
     setStep("done");
@@ -751,7 +768,7 @@ function BookingContent() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-5">
 
           {/* Form */}
-          <div className="bg-white rounded-2xl p-5 sm:p-6"
+          <div ref={formRef} className="bg-white rounded-2xl p-5 sm:p-6 scroll-mt-20"
             style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
             <p className="text-sm font-bold uppercase tracking-wide mb-4" style={{ color: "#0369a1" }}>
               {t.booking.passengerData}
@@ -834,7 +851,7 @@ function BookingContent() {
               />
 
               {/* Nationality */}
-              <div>
+              <div data-invalid={errors.nationality ? "true" : undefined}>
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
                   {t.booking.nationality} <span style={{ color: "#dc2626" }}>*</span>
                 </label>
@@ -988,8 +1005,18 @@ function BookingContent() {
             </p>
           </div>
           <button onClick={handleMobileCta}
-            className="shrink-0 ml-auto px-5 py-3 rounded-xl text-white text-sm font-extrabold btn-ocean transition-all whitespace-nowrap">
-            {mobileFormComplete ? t.booking.nextBtn : t.booking.continueBtn}
+            className="shrink-0 ml-auto px-5 py-2.5 rounded-xl text-white text-xs font-extrabold btn-ocean transition-all whitespace-nowrap leading-tight text-center">
+            {showFinalCta ? (
+              <>
+                <span className="block">Continue to</span>
+                <span className="block">Confirmation →</span>
+              </>
+            ) : (
+              <>
+                <span className="block">Continue</span>
+                <span className="block">→</span>
+              </>
+            )}
           </button>
         </div>
       </div>
