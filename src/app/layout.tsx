@@ -14,7 +14,7 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const BASE_URL = "https://taptogo-rouge.vercel.app";
+const BASE_URL = "https://taptogo.id";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

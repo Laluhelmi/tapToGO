@@ -22,7 +22,7 @@ export default function PromoPage() {
   const cheapestPrice = routes.length ? Math.min(...routes.map(r => r.price)) : 300;
 
   // QR code to app
-  const appUrl = "https://taptogo-rouge.vercel.app";
+  const appUrl = "https://taptogo.id";
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(appUrl)}&margin=2&color=0c4a6e&bgcolor=ffffff`;
   const whatsapp = "+62 878 2177 5082";
   const waLink = "https://wa.me/6287821775082";
@@ -200,7 +200,7 @@ export default function PromoPage() {
               </p>
               <p className="font-black leading-tight text-base">Buka Sekarang ›</p>
               <a href={appUrl} className="inline-block mt-0.5 text-[11px] font-bold underline" style={{ color: "#fbbf24" }}>
-                taptogo-rouge.vercel.app
+                taptogo.id
               </a>
             </div>
 

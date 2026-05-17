@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllRouteSlugs } from "@/lib/routes";
 import { SCHEDULES } from "@/data/boats";
 
-const BASE_URL = "https://taptogo-rouge.vercel.app";
+const BASE_URL = "https://taptogo.id";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

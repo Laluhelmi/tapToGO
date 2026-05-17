@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: "website",
-      url: `https://taptogo-rouge.vercel.app/rute/${slug}`,
+      url: `https://taptogo.id/rute/${slug}`,
       siteName: "tapToGo",
       locale: "en_US",
       alternateLocale: ["id_ID"],
@@ -59,11 +59,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
     },
     alternates: {
-      canonical: `https://taptogo-rouge.vercel.app/rute/${slug}`,
+      canonical: `https://taptogo.id/rute/${slug}`,
       languages: {
-        "en-US": `https://taptogo-rouge.vercel.app/rute/${slug}`,
-        "id-ID": `https://taptogo-rouge.vercel.app/rute/${slug}`,
-        "x-default": `https://taptogo-rouge.vercel.app/rute/${slug}`,
+        "en-US": `https://taptogo.id/rute/${slug}`,
+        "id-ID": `https://taptogo.id/rute/${slug}`,
+        "x-default": `https://taptogo.id/rute/${slug}`,
       },
     },
     other: {
@@ -89,7 +89,7 @@ export default async function RoutePage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "TouristTrip",
-        "@id": `https://taptogo-rouge.vercel.app/rute/${slug}#trip`,
+        "@id": `https://taptogo.id/rute/${slug}#trip`,
         name: `Fastboat ${route.from} to ${route.to}`,
         description: `Fastboat ticket service from ${route.from} to ${route.to}, duration ${route.duration}. ${route.scheduleCount} daily schedules.`,
         touristType: "Tourist",

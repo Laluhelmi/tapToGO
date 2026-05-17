@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://taptogo-rouge.vercel.app";
+const BASE_URL = "https://taptogo.id";
 
 export default function robots(): MetadataRoute.Robots {
   return {
