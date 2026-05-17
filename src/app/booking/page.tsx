@@ -976,7 +976,7 @@ function BookingContent() {
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40"
         style={{ background: "white", borderTop: "1.5px solid #e0f2fe", boxShadow: "0 -4px 20px rgba(2,132,199,0.08)" }}>
         <div className="px-4 py-3 flex items-center gap-3">
-          <div className="flex-1 min-w-0">
+          <div className="shrink min-w-0">
             <p className="text-[10px] font-semibold truncate" style={{ color: "#64748b" }}>
               <span className="tabular-nums">Rp {schedule.price}K × {passengers}</span>
               {payTaxInApp && (
@@ -988,7 +988,7 @@ function BookingContent() {
             </p>
           </div>
           <button onClick={handleMobileCta}
-            className="flex-1 py-3 rounded-xl text-white text-sm font-extrabold btn-ocean transition-all">
+            className="shrink-0 ml-auto px-5 py-3 rounded-xl text-white text-sm font-extrabold btn-ocean transition-all whitespace-nowrap">
             {mobileFormComplete ? t.booking.nextBtn : t.booking.continueBtn}
           </button>
         </div>
