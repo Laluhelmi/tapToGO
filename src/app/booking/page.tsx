@@ -1005,17 +1005,14 @@ function BookingContent() {
             </p>
           </div>
           <button onClick={handleMobileCta}
-            className="shrink-0 ml-auto px-5 py-2.5 rounded-xl text-white text-xs font-extrabold btn-ocean transition-all whitespace-nowrap leading-tight text-center">
+            className="shrink-0 ml-auto px-5 py-3 rounded-xl text-white text-sm font-extrabold btn-ocean transition-all whitespace-nowrap leading-tight text-center">
             {showFinalCta ? (
-              <>
+              <span className="block text-xs leading-tight">
                 <span className="block">Continue to</span>
                 <span className="block">Confirmation →</span>
-              </>
+              </span>
             ) : (
-              <>
-                <span className="block">Continue</span>
-                <span className="block">→</span>
-              </>
+              <span>Continue →</span>
             )}
           </button>
         </div>
