@@ -39,7 +39,7 @@ export default function ScheduleSection({ searchParams }: Props) {
   const maxPrice = results.length ? Math.max(...results.map(s => s.price)) : 0;
 
   return (
-    <section className="py-12 px-4 sm:px-6" id="schedules" style={{ background: "#f0f9ff" }}>
+    <section className="pt-4 pb-12 px-4 sm:px-6" id="schedules" style={{ background: "#f0f9ff" }}>
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
