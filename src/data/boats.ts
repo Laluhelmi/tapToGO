@@ -57,7 +57,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.2,
     reviewCount: 111,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1551281361_seeingbali-the_main_boat_of_rocky_fast_cruise-25.jpg",
+    image: "/images/ekajaya-26/1.jpeg",
   },
   {
     id: "sch-002",
@@ -75,7 +75,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.3,
     reviewCount: 142,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1551281361_seeingbali-the_main_boat_of_rocky_fast_cruise-25.jpg",
+    image: "/images/ekajaya-26/1.jpeg",
   },
   {
     id: "sch-003",
@@ -93,7 +93,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.4,
     reviewCount: 173,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1551281361_seeingbali-the_main_boat_of_rocky_fast_cruise-25.jpg",
+    image: "/images/ekajaya-26/1.jpeg",
   },
   {
     id: "sch-004",
@@ -111,7 +111,7 @@ export const SCHEDULES: BoatSchedule[] = [
     rating: 4.5,
     reviewCount: 204,
     boatType: "Fastboat",
-    image: "https://www.giliferries.com/uploads/images/1551281361_seeingbali-the_main_boat_of_rocky_fast_cruise-25.jpg",
+    image: "/images/ekajaya-26/1.jpeg",
   },
   {
     id: "sch-005",
@@ -2732,6 +2732,10 @@ export const OPERATOR_GALLERY: Record<string, string[]> = {
   "Ekajaya Matra": [
     "/images/ekajaya-matra/1.jpeg",
     "/images/ekajaya-matra/2.jpeg",
+  ],
+  "Eka Jaya Fast 26": [
+    "/images/ekajaya-26/1.jpeg",
+    "/images/ekajaya-26/2.jpeg",
   ],
   "Gili Gateway Fast Ferry": [
     "/images/gili-getaway/1.jpeg",
