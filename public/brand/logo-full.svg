@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="55%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon -->
+  <rect x="30" y="30" width="240" height="240" rx="54" fill="url(#bg2)"/>
+  <path d="M60 210 Q96 192 132 207 T200 207 T242 195"
+    stroke="white" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.35" transform="translate(30 30)"/>
+  <path d="M60 167 C92 105 145 105 169 138 C189 162 213 152 238 110"
+    stroke="white" stroke-width="22" stroke-linecap="round" fill="none" transform="translate(30 30)"/>
+  <circle cx="268" cy="140" r="15" fill="#fbbf24"/>
+  <!-- Wordmark -->
+  <text x="310" y="195" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="130" letter-spacing="-3">
+    <tspan fill="#0c4a6e">tapTo</tspan><tspan fill="#f59e0b">Go</tspan>
+  </text>
+  <text x="312" y="240" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="26" letter-spacing="6" fill="#0369a1">
+    FASTBOAT BOOKING
+  </text>
+</svg>

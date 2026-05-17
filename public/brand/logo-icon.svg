@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="55%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="115" fill="url(#bg)"/>
+  <!-- Subtle ripple -->
+  <path d="M64 384 Q140 346 218 378 T362 378 T460 358"
+    stroke="white" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.35"/>
+  <!-- Bold wave-arrow -->
+  <path d="M64 294 C128 166 244 166 294 230 C336 281 384 262 435 173"
+    stroke="white" stroke-width="46" stroke-linecap="round" fill="none"/>
+  <!-- Golden destination spark -->
+  <circle cx="435" cy="173" r="32" fill="#fbbf24"/>
+</svg>

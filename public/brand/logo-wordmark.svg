@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200">
+  <text x="50" y="135" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="130" letter-spacing="-3">
+    <tspan fill="#0c4a6e">tapTo</tspan><tspan fill="#f59e0b">Go</tspan>
+  </text>
+  <text x="52" y="180" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="26" letter-spacing="6" fill="#0369a1">
+    FASTBOAT BOOKING
+  </text>
+</svg>
