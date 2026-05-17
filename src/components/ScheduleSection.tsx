@@ -4,6 +4,7 @@ import { SCHEDULES } from "@/data/boats";
 import BoatCard from "./BoatCard";
 import type { SearchParams } from "@/app/page";
 import { useLang } from "@/contexts/LanguageContext";
+import { getTodayString } from "@/lib/utils";
 
 type SortKey = "departure" | "price";
 
@@ -25,7 +26,7 @@ export default function ScheduleSection({ searchParams }: Props) {
 
   const results = useMemo(() => {
     // If selected date is today, hide schedules whose departure already passed
-    const today = new Date().toISOString().split("T")[0];
+    const today = getTodayString();
     const isToday = date === today;
     const nowHHMM = isToday
       ? `${String(new Date().getHours()).padStart(2, "0")}:${String(new Date().getMinutes()).padStart(2, "0")}`

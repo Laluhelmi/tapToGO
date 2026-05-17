@@ -27,6 +27,18 @@ function formatDateLong(iso: string, lang: string) {
   });
 }
 
+// Shorter format for tight UI slots: "Tue, 18 May 2026"
+function formatDateShort(iso: string, lang: string) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString(lang === "en" ? "en-US" : "id-ID", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
 // Auto-format WhatsApp: keep leading + and group digits
 function formatWhatsApp(value: string) {
   let v = value.replace(/[^\d+]/g, "");
@@ -782,9 +794,9 @@ function BookingContent() {
                 </label>
                 <label className="relative flex items-center w-full rounded-xl px-3 py-2.5 cursor-pointer"
                   style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0" }}>
-                  <Icon.Calendar width={15} height={15} style={{ color: "#0369a1", flexShrink: 0 }} />
-                  <span className="text-xs font-bold ml-2 flex-1 min-w-0 truncate" style={{ color: "#0369a1" }}>
-                    {formatDateLong(date, lang)}
+                  <Icon.Calendar width={14} height={14} style={{ color: "#0369a1", flexShrink: 0 }} />
+                  <span className="text-[11px] font-bold ml-1.5 flex-1 min-w-0 whitespace-nowrap" style={{ color: "#0369a1" }}>
+                    {formatDateShort(date, lang)}
                   </span>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
                     strokeLinecap="round" strokeLinejoin="round" style={{ color: "#94a3b8", flexShrink: 0 }}>
