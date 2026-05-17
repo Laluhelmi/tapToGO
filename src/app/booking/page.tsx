@@ -731,6 +731,46 @@ function BookingContent() {
               {t.booking.passengerData}
             </p>
 
+            {/* Date + Passengers row (editable, moved from summary) */}
+            <div className="grid grid-cols-2 gap-3 mb-4 pb-4" style={{ borderBottom: "1px solid #f0f9ff" }}>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
+                  {t.booking.dateLabel}
+                </label>
+                <label className="relative flex items-center w-full rounded-xl px-3 py-2.5 cursor-pointer"
+                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0" }}>
+                  <Icon.Calendar width={15} height={15} style={{ color: "#0369a1", flexShrink: 0 }} />
+                  <span className="text-xs font-bold ml-2 flex-1 min-w-0 truncate" style={{ color: "#0369a1" }}>
+                    {formatDateLong(date, lang)}
+                  </span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                    strokeLinecap="round" strokeLinejoin="round" style={{ color: "#94a3b8", flexShrink: 0 }}>
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                  <input type="date" value={date} min={today} onChange={e => setDate(e.target.value)}
+                    className="absolute inset-0 opacity-0 cursor-pointer" />
+                </label>
+              </div>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
+                  {t.booking.passengersLabel}
+                </label>
+                <div className="flex items-center gap-2 rounded-xl px-2 py-1.5"
+                  style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0" }}>
+                  <button onClick={() => setPassengers(p => Math.max(1, p - 1))}
+                    className="w-7 h-7 rounded-lg text-base font-bold flex items-center justify-center transition-all hover:scale-110"
+                    style={{ background: "#eff6ff", color: "#0284c7" }}>−</button>
+                  <div className="flex-1 text-center">
+                    <p className="text-sm font-extrabold leading-none" style={{ color: "#0369a1" }}>{passengers}</p>
+                    <p className="text-[9px]" style={{ color: "#94a3b8" }}>{t.search.pax}</p>
+                  </div>
+                  <button onClick={() => setPassengers(p => Math.min(schedule.availableSeats, p + 1))}
+                    className="w-7 h-7 rounded-lg text-base font-bold flex items-center justify-center transition-all hover:scale-110"
+                    style={{ background: "#eff6ff", color: "#0284c7" }}>+</button>
+                </div>
+              </div>
+            </div>
+
             <div className="space-y-3.5">
               <ValidatedInput
                 label={t.booking.fullName}
@@ -817,38 +857,22 @@ function BookingContent() {
                   </div>
                 ))}
 
-                {/* Date — editable */}
+                {/* Date + Passengers now displayed in form section (read-only here) */}
                 <div className="flex items-center justify-between gap-2 pt-1">
                   <span className="text-xs flex items-center gap-1.5" style={{ color: "#94a3b8" }}>
                     <span style={{ color: "#0369a1" }}><Icon.Calendar width={14} height={14} /></span> {t.booking.dateLabel}
                   </span>
-                  <label className="relative inline-flex items-center">
-                    <span className="text-xs font-semibold text-right pr-1.5 cursor-pointer flex items-center gap-1 transition-colors"
-                      style={{ color: "#0369a1" }}>
-                      {formatDateLong(date, lang)}
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="6 9 12 15 18 9"/>
-                      </svg>
-                    </span>
-                    <input type="date" value={date} min={today} onChange={e => setDate(e.target.value)}
-                      className="absolute inset-0 opacity-0 cursor-pointer" />
-                  </label>
+                  <span className="text-xs font-semibold text-right" style={{ color: "#334155" }}>
+                    {formatDateLong(date, lang)}
+                  </span>
                 </div>
-
-                {/* Passengers — editable */}
                 <div className="flex items-center justify-between pt-1">
                   <span className="text-xs flex items-center gap-1.5" style={{ color: "#94a3b8" }}>
                     <span style={{ color: "#0369a1" }}><Icon.User width={14} height={14} /></span> {t.booking.passengersLabel}
                   </span>
-                  <div className="flex items-center gap-2">
-                    <button onClick={() => setPassengers(p => Math.max(1, p - 1))}
-                      className="w-6 h-6 rounded-lg text-sm font-bold flex items-center justify-center transition-all hover:scale-110"
-                      style={{ background: "#eff6ff", color: "#0284c7" }}>−</button>
-                    <span className="text-sm font-extrabold w-5 text-center" style={{ color: "#0369a1" }}>{passengers}</span>
-                    <button onClick={() => setPassengers(p => Math.min(schedule.availableSeats, p + 1))}
-                      className="w-6 h-6 rounded-lg text-sm font-bold flex items-center justify-center transition-all hover:scale-110"
-                      style={{ background: "#eff6ff", color: "#0284c7" }}>+</button>
-                  </div>
+                  <span className="text-xs font-semibold text-right" style={{ color: "#334155" }}>
+                    {passengers} {t.search.pax}
+                  </span>
                 </div>
               </div>
 
