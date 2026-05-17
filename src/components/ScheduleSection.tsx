@@ -103,7 +103,7 @@ export default function ScheduleSection({ searchParams }: Props) {
         </div>
 
         <p className="text-sm mb-4 px-1" style={{ color: "#64748b" }}>
-          {t.scheduleSection.showing} <span className="font-bold" style={{ color: "#0369a1" }}>{results.length}</span> {t.scheduleSection.schedules} · {t.scheduleSection.priceIncluded}
+          {t.scheduleSection.showing} <span className="font-bold" style={{ color: "#0369a1" }}>{results.length}</span> {t.scheduleSection.schedules}
         </p>
 
         {/* Cards */}
