@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useEffect, Suspense } from "react";
+import { useState, useMemo, useEffect, Suspense, type ReactNode } from "react";
 import { SCHEDULES, FROM_PORTS, TO_PORTS } from "@/data/boats";
 import type { Port } from "@/types";
 import Link from "next/link";
@@ -132,16 +132,41 @@ function JadwalContent() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-xs font-bold" style={{ color: "#94a3b8" }}>{t.jadwal.sortBy}</span>
               {([
-                { k: "time", l: t.jadwal.sortTime },
-                { k: "price", l: t.jadwal.sortPrice },
-                { k: "operator", l: t.jadwal.sortOperator },
-              ] as { k: SortKey; l: string }[]).map(({ k, l }) => (
+                {
+                  k: "time", l: t.jadwal.sortTime,
+                  icon: (
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="9"/>
+                      <polyline points="12 7 12 12 15 14"/>
+                    </svg>
+                  ),
+                },
+                {
+                  k: "price", l: t.jadwal.sortPrice,
+                  icon: (
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="2" x2="12" y2="22"/>
+                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                  ),
+                },
+                {
+                  k: "operator", l: t.jadwal.sortOperator,
+                  icon: (
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 18c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/>
+                      <path d="M4 14l1.5-4.5h13L20 14"/>
+                      <line x1="12" y1="3" x2="12" y2="9.5"/>
+                    </svg>
+                  ),
+                },
+              ] as { k: SortKey; l: string; icon: ReactNode }[]).map(({ k, l, icon }) => (
                 <button key={k} onClick={() => setSortKey(k)}
-                  className="px-3 py-1 rounded-lg text-xs font-bold transition-all"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
                   style={sortKey === k
                     ? { background: "linear-gradient(135deg,#0284c7,#0369a1)", color: "white" }
                     : { background: "#f8fafc", color: "#64748b", border: "1px solid #e2e8f0" }}>
-                  {l}
+                  {icon}{l}
                 </button>
               ))}
             </div>
