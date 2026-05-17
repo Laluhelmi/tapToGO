@@ -419,7 +419,7 @@ const en: Translations = {
     steps: [
       { n: "01", icon: "🔍", title: "Find Route", desc: "Choose departure port, destination, date, and number of passengers." },
       { n: "02", icon: "⛵", title: "Pick Fastboat", desc: "Compare prices, schedules, facilities & official operator ratings." },
-      { n: "03", icon: "💳", title: "Pay Securely", desc: "Pay by card, transfer, or e-wallet. Everything is encrypted." },
+      { n: "03", icon: "💳", title: "Pay by Transfer", desc: "Transfer the total to our account, then confirm via WhatsApp." },
       { n: "04", icon: "🎟️", title: "E-Ticket Ready", desc: "E-ticket sent straight to your email. Show QR code at boarding!" },
     ],
   },

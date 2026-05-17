@@ -442,7 +442,7 @@ const id = {
     steps: [
       { n: "01", icon: "🔍", title: "Cari Rute", desc: "Pilih pelabuhan asal & tujuan, tanggal, dan jumlah penumpang." },
       { n: "02", icon: "⛵", title: "Pilih Fastboat", desc: "Bandingkan harga, jadwal, fasilitas & rating operator resmi." },
-      { n: "03", icon: "💳", title: "Bayar Aman", desc: "Bayar via kartu, transfer, atau e-wallet. Semua terenkripsi." },
+      { n: "03", icon: "💳", title: "Bayar via Transfer", desc: "Transfer ke rekening kami, lalu konfirmasi via WhatsApp." },
       { n: "04", icon: "🎟️", title: "E-Tiket Siap", desc: "E-tiket langsung ke email. Tunjukkan QR saat boarding!" },
     ],
   },

@@ -361,7 +361,7 @@ function BookingContent() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [orderCode] = useState(() => `TG-${Date.now().toString(36).toUpperCase()}`);
   const [issuedAt] = useState(() => new Date());
-  const [payTaxInApp, setPayTaxInApp] = useState(true);
+  const [payTaxInApp, setPayTaxInApp] = useState(false);
   const [mobileFormComplete, setMobileFormComplete] = useState(false);
   const summaryRef = useRef<HTMLDivElement>(null);
 
