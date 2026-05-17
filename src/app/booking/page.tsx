@@ -460,20 +460,23 @@ function BookingContent() {
     }, 50);
   };
 
-  // Switch CTA only when user has scrolled to the very bottom of the page
+  // Switch CTA only when the Order Summary section is fully visible in viewport
   useEffect(() => {
     if (step !== "form") return;
-    const onScroll = () => {
-      const scrolled = window.innerHeight + window.scrollY;
-      const full = document.documentElement.scrollHeight;
-      setMobileFormComplete(full - scrolled < 80);
+    const check = () => {
+      const el = summaryRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      // "Fully seen" = bottom of summary has scrolled into viewport
+      const bottomVisible = rect.bottom <= window.innerHeight + 20;
+      setMobileFormComplete(bottomVisible);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
     };
   }, [step]);
 
