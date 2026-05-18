@@ -285,8 +285,6 @@ function JadwalContent() {
                   <div className="shrink-0 w-[100px]">
                     <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.duration}</p>
                     <p className="text-sm font-semibold" style={{ color: "#64748b" }}>{s.duration}</p>
-                    <span className="text-xs px-1.5 py-0.5 rounded-md inline-block mt-0.5"
-                      style={{ background: "#f0f9ff", color: "#0369a1" }}>{s.availableSeats} {t.jadwal.seats}</span>
                   </div>
 
                   <div className="shrink-0 w-px self-stretch mx-4" style={{ background: "#e0f2fe" }} />

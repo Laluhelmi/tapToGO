@@ -295,7 +295,7 @@ export default function ArmadaDetailPage({ params }: { params: Promise<{ name: s
                       <span className="text-sm font-bold truncate" style={{ color: "#334155" }}>{s.to}</span>
                     </div>
                     <p className="text-xs mt-1" style={{ color: "#94a3b8" }}>
-                      {s.duration} · {s.availableSeats} {t.armadaDetail.seatsLeft}
+                      {s.duration}
                     </p>
                   </div>
 

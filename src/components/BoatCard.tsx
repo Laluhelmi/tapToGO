@@ -120,7 +120,6 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
               <div className="flex-1 h-0.5 rounded-full" style={{ background: "linear-gradient(90deg,#0284c7,#0ea5e9)" }} />
               <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#0ea5e9" }} />
             </div>
-            <p className="text-xs mt-1 font-semibold" style={{ color: "#0284c7" }}>{t.scheduleSection.direct}</p>
           </div>
           <div className="text-center">
             <p className="text-xl font-extrabold tabular-nums" style={{ color: "#0369a1" }}>{boat.arrivalTime}</p>
