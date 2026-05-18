@@ -175,7 +175,7 @@ const id = {
   // Bantuan Page
   bantuan: {
     title: "Pusat Bantuan",
-    subtitle: "Ada pertanyaan? Kami siap membantu 24/7",
+    subtitle: "Ada pertanyaan? Kami siap membantu 07:00–22:00 WITA",
     backHome: "← Beranda",
     faqTitle: "Pertanyaan yang Sering Ditanyakan",
     stillNeedHelp: "Masih butuh bantuan?",
@@ -280,7 +280,7 @@ const id = {
     stepConfirm: "Konfirmasi",
     stepDone: "Selesai",
     // Trust badges
-    trustSecure: "Pembayaran aman",
+    trustSecure: "Operator resmi",
     trustNoFee: "Bebas biaya admin",
     trustRefund: "Refund 24 jam",
     trustTime: "Proses ± 2 menit",

@@ -6,8 +6,7 @@ import { useLang } from "@/contexts/LanguageContext";
 
 const CONTACTS = [
   { icon: "💬", label: "WhatsApp", value: "+62 878 2177 5082", link: "https://wa.me/6287821775082", color: "#dcfce7", textColor: "#15803d" },
-  { icon: "📧", label: "Email", value: "hello@taptogo.id", link: "mailto:hello@taptogo.id", color: "#e0f2fe", textColor: "#0369a1" },
-  { icon: "📍", label: "Kantor", value: "Jl. Raya Seminyak, Bali", link: "#", color: "#fff7ed", textColor: "#ea580c" },
+  { icon: "🕐", label: "Operating Hours", value: "07:00 – 22:00 WITA", link: null, color: "#e0f2fe", textColor: "#0369a1" },
 ];
 
 export default function BantuanPage() {
@@ -36,18 +35,25 @@ export default function BantuanPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Contact cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-          {CONTACTS.map(c => (
-            <a key={c.label} href={c.link} target="_blank" rel="noreferrer"
-              className="rounded-2xl p-5 flex items-center gap-4 transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: c.color, border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
-              <span className="text-3xl">{c.icon}</span>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wide mb-0.5" style={{ color: "#94a3b8" }}>{c.label}</p>
-                <p className="text-sm font-bold" style={{ color: c.textColor }}>{c.value}</p>
-              </div>
-            </a>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          {CONTACTS.map(c => {
+            const inner = (
+              <>
+                <span className="text-3xl">{c.icon}</span>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide mb-0.5" style={{ color: "#94a3b8" }}>{c.label}</p>
+                  <p className="text-sm font-bold" style={{ color: c.textColor }}>{c.value}</p>
+                </div>
+              </>
+            );
+            const cls = "rounded-2xl p-5 flex items-center gap-4 transition-all duration-200 hover:-translate-y-0.5";
+            const style = { background: c.color, border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" };
+            return c.link ? (
+              <a key={c.label} href={c.link} target="_blank" rel="noreferrer" className={cls} style={style}>{inner}</a>
+            ) : (
+              <div key={c.label} className={cls} style={style}>{inner}</div>
+            );
+          })}
         </div>
 
         {/* FAQ */}

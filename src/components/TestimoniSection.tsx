@@ -16,7 +16,7 @@ export default function TestimoniSection() {
               Sudah Berlayar
             </span>
           </h2>
-          <p style={{ color: "#64748b" }}>Bergabung dengan ribuan traveler puas yang menggunakan tapToGo</p>
+          <p style={{ color: "#64748b" }}>Cerita perjalanan dari penumpang tapToGo</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -47,7 +47,7 @@ export default function TestimoniSection() {
 
         {/* Trust row */}
         <div className="mt-12 flex flex-wrap justify-center gap-6">
-          {["🏆 Operator Terverifikasi","🔒 Pembayaran Aman","📩 E-Tiket Instan","🎯 Harga Terjamin","💬 Support 24/7"].map(b => (
+          {["🏆 Operator Resmi","📩 E-Tiket Instan","💬 Support 07–22 WITA","🎯 Tanpa Biaya Tersembunyi"].map(b => (
             <span key={b} className="text-sm font-semibold" style={{ color: "#64748b" }}>{b}</span>
           ))}
         </div>

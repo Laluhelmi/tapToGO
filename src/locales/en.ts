@@ -165,7 +165,7 @@ const en: Translations = {
 
   bantuan: {
     title: "Help Center",
-    subtitle: "Have questions? We're here to help 24/7",
+    subtitle: "Have questions? We're here to help 07:00–22:00 WITA",
     backHome: "← Home",
     faqTitle: "Frequently Asked Questions",
     stillNeedHelp: "Still need help?",
@@ -267,7 +267,7 @@ const en: Translations = {
     stepData: "Details",
     stepConfirm: "Confirm",
     stepDone: "Done",
-    trustSecure: "Secure payment",
+    trustSecure: "Trusted operators",
     trustNoFee: "No admin fees",
     trustRefund: "24h refund",
     trustTime: "Takes ± 2 min",

@@ -219,7 +219,7 @@ export default function PromoPage() {
               </p>
               <p className="font-black leading-tight text-base">{whatsapp}</p>
               <p className="text-[10px] mt-0.5" style={{ color: "#bae6fd" }}>
-                Customer Service 24/7
+                07:00 – 22:00 WITA
               </p>
             </div>
           </div>
