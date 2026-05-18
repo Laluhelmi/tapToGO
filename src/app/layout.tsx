@@ -6,6 +6,7 @@ import { CompareProvider } from "@/contexts/CompareContext";
 import CompareBar from "@/components/CompareBar";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <CompareBar />
           </CompareProvider>
         </LanguageProvider>
+        <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>

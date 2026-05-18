@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import ETicket from "@/components/ETicket";
 import { useLang } from "@/contexts/LanguageContext";
 import { COUNTRIES, TOP_COUNTRY_CODES } from "@/data/countries";
+import { events } from "@/lib/gtag";
 
 // ── Constants ──
 const HARBOUR_TAX_PER_PAX = 20; // in thousands (Rp 20,000)
@@ -486,6 +487,13 @@ function BookingContent() {
   const handleConfirm = () => {
     setStep("done");
     window.scrollTo({ top: 0, behavior: "smooth" });
+    events.bookingCompleted({
+      bookingCode: orderCode,
+      operator: schedule.operator,
+      route: `${schedule.from} → ${schedule.to}`,
+      pax: passengers,
+      total: totalPrice,
+    });
   };
 
   // Stepper position
@@ -599,6 +607,7 @@ function BookingContent() {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <a href={waUrl} target="_blank" rel="noreferrer"
+                    onClick={() => events.clickWhatsAppPayment(orderCode)}
                     className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-extrabold transition-all hover:scale-[1.02]"
                     style={{
                       background: "linear-gradient(135deg,#22c55e,#15803d)",
