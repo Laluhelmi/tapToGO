@@ -42,6 +42,10 @@ function JadwalContent() {
     router.push(`/booking?id=${id}&date=${today}&passengers=1`);
   };
 
+  const goToArmada = (operator: string) => {
+    router.push(`/armada/${encodeURIComponent(operator)}`);
+  };
+
   const operators = useMemo(() => {
     const set = new Set(SCHEDULES.map(s => s.operator));
     return Array.from(set).sort();
@@ -190,6 +194,10 @@ function JadwalContent() {
           <div className="flex flex-col gap-3">
             {filtered.map((s) => (
               <div key={s.id}
+                onClick={() => goToArmada(s.operator)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={e => { if (e.key === "Enter" || e.key === " ") goToArmada(s.operator); }}
                 className="bg-white rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                 style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}
                 onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 28px rgba(2,132,199,0.14)"}
@@ -229,7 +237,7 @@ function JadwalContent() {
                       <p className="text-sm font-semibold tabular-nums" style={{ color: "#0369a1" }}>{s.departureTime}</p>
                     </div>
                   </div>
-                  <button onClick={() => goToBooking(s.id)} className="w-full py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean">{t.jadwal.select}</button>
+                  <button onClick={(e) => { e.stopPropagation(); goToBooking(s.id); }} className="w-full py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean">{t.jadwal.select}</button>
                 </div>
 
                 {/* Desktop layout */}
@@ -289,7 +297,7 @@ function JadwalContent() {
                       <p className="text-xl font-extrabold leading-none" style={{ color: "#0369a1" }}>Rp {s.price}K</p>
                       <p className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>{t.jadwal.perPax}</p>
                     </div>
-                    <button onClick={() => goToBooking(s.id)} className="px-4 py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean transition-all hover:scale-105 whitespace-nowrap">
+                    <button onClick={(e) => { e.stopPropagation(); goToBooking(s.id); }} className="px-4 py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean transition-all hover:scale-105 whitespace-nowrap">
                       {t.jadwal.select}
                     </button>
                   </div>
