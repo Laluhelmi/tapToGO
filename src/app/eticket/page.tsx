@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { SCHEDULES } from "@/data/boats";
@@ -59,9 +59,33 @@ function ETicketInner() {
   // Generate QR code via free public service (no API key needed)
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=0&data=${encodeURIComponent(code)}`;
 
+  const pdfRef = useRef<HTMLDivElement>(null);
+  const [downloading, setDownloading] = useState(false);
+
   useEffect(() => {
     document.title = `E-Ticket ${code} · tapToGo`;
   }, [code]);
+
+  const handleDownload = async () => {
+    if (!pdfRef.current || downloading) return;
+    setDownloading(true);
+    try {
+      const html2pdf = (await import("html2pdf.js")).default;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const opts: any = {
+        margin: 10,
+        filename: `eticket-${code}.pdf`,
+        image: { type: "jpeg", quality: 0.95 },
+        html2canvas: { scale: 2, useCORS: true, allowTaint: false, backgroundColor: "#ffffff" },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        pagebreak: { mode: ["css", "legacy"], before: ".eticket-page-break" },
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await (html2pdf() as any).from(pdfRef.current).set(opts).save();
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   if (!schedule) {
     return (
@@ -89,6 +113,8 @@ function ETicketInner() {
   const grandTotal = totalPrice + taxAmount;
 
   const handlePrint = () => window.print();
+  const staticMapUrl = (lat: number, lng: number) =>
+    `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&maptype=mapnik&markers=${lat},${lng},red-pushpin`;
 
   return (
     <div className="eticket-bg min-h-screen" style={{ background: "#f8fafc" }}>
@@ -99,18 +125,31 @@ function ETicketInner() {
           <Link href="/" className="text-sm font-bold" style={{ color: "#0369a1" }}>← Home</Link>
           <div className="flex items-center gap-2">
             <button onClick={handlePrint}
-              className="px-4 py-2 rounded-lg text-sm font-bold text-white inline-flex items-center gap-2"
-              style={{ background: "linear-gradient(135deg,#0284c7,#0369a1)" }}>
+              className="px-3 py-2 rounded-lg text-sm font-bold inline-flex items-center gap-1.5"
+              style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}
+              title="Print">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="6 9 6 2 18 2 18 9"/>
                 <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
                 <rect x="6" y="14" width="12" height="8"/>
               </svg>
-              Download PDF
+              Print
+            </button>
+            <button onClick={handleDownload} disabled={downloading}
+              className="px-4 py-2 rounded-lg text-sm font-bold text-white inline-flex items-center gap-2 disabled:opacity-60"
+              style={{ background: "linear-gradient(135deg,#0284c7,#0369a1)" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              {downloading ? "Generating…" : "Download PDF"}
             </button>
           </div>
         </div>
       </div>
+
+      <div ref={pdfRef}>
 
       {/* PAGE 1 */}
       <div className="eticket-page max-w-3xl mx-auto bg-white" style={{ padding: "32px 32px 40px", margin: "16px auto", boxShadow: "0 4px 24px rgba(15,23,42,0.06)" }}>
@@ -250,17 +289,16 @@ function ETicketInner() {
                   className="text-xs font-bold inline-block mb-2" style={{ color: "#0369a1" }}>
                   Coordinates {fromLoc.lat}, {fromLoc.lng} →
                 </a>
-                <div className="rounded-md overflow-hidden" style={{ border: "1px solid #e2e8f0", aspectRatio: "4 / 3" }}>
-                  <iframe
-                    src={`https://www.openstreetmap.org/export/embed.html?bbox=${fromLoc.lng - 0.01},${fromLoc.lat - 0.008},${fromLoc.lng + 0.01},${fromLoc.lat + 0.008}&layer=mapnik&marker=${fromLoc.lat},${fromLoc.lng}`}
-                    style={{ border: 0, width: "100%", height: "100%" }}
-                    title={`${schedule.from} location`}
-                  />
+                <div className="rounded-md overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
+                  <img src={staticMapUrl(fromLoc.lat, fromLoc.lng)} alt={`${schedule.from} location`}
+                    crossOrigin="anonymous"
+                    style={{ width: "100%", height: "auto", display: "block" }} />
                 </div>
               </>
             )}
           </div>
 
+          {/* TO map (replaces the same iframe block below) */}
           {/* Arrival */}
           <div>
             <p className="text-sm font-extrabold mb-2" style={{ color: "#0c4a6e" }}>Arrival point</p>
@@ -272,12 +310,10 @@ function ETicketInner() {
                   className="text-xs font-bold inline-block mb-2" style={{ color: "#0369a1" }}>
                   Coordinates {toLoc.lat}, {toLoc.lng} →
                 </a>
-                <div className="rounded-md overflow-hidden" style={{ border: "1px solid #e2e8f0", aspectRatio: "4 / 3" }}>
-                  <iframe
-                    src={`https://www.openstreetmap.org/export/embed.html?bbox=${toLoc.lng - 0.01},${toLoc.lat - 0.008},${toLoc.lng + 0.01},${toLoc.lat + 0.008}&layer=mapnik&marker=${toLoc.lat},${toLoc.lng}`}
-                    style={{ border: 0, width: "100%", height: "100%" }}
-                    title={`${schedule.to} location`}
-                  />
+                <div className="rounded-md overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
+                  <img src={staticMapUrl(toLoc.lat, toLoc.lng)} alt={`${schedule.to} location`}
+                    crossOrigin="anonymous"
+                    style={{ width: "100%", height: "auto", display: "block" }} />
                 </div>
               </>
             )}
@@ -290,6 +326,8 @@ function ETicketInner() {
           <p className="mt-1">Booking# {code}</p>
           <p className="mt-1">© 2026 tapToGo · Lombok–Bali Fastboat Booking</p>
         </div>
+      </div>
+
       </div>
 
       {/* Print-only styles */}
