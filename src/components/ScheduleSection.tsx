@@ -25,18 +25,21 @@ export default function ScheduleSection({ searchParams }: Props) {
   const { from, to, date, passengers } = searchParams;
 
   const results = useMemo(() => {
-    // If selected date is today, hide schedules whose departure already passed
+    // Only hide expired departures when the selected date is EXACTLY today.
+    // Future dates (tomorrow and beyond) always show every schedule incl. earliest.
     const today = getTodayString();
-    const isToday = date === today;
-    const nowHHMM = isToday
-      ? `${String(new Date().getHours()).padStart(2, "0")}:${String(new Date().getMinutes()).padStart(2, "0")}`
-      : "00:00";
+    const isToday = Boolean(date) && date.trim() === today;
+    const now = new Date();
+    const nowHHMM = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
 
     return SCHEDULES
       .filter(s => (!from || s.from === from) && (!to || s.to === to))
       .filter(s => s.price <= priceMax)
       .filter(s => s.availableSeats >= passengers)
-      .filter(s => !isToday || s.departureTime > nowHHMM)
+      .filter(s => {
+        if (!isToday) return true;            // future date → keep all
+        return s.departureTime > nowHHMM;      // today → drop passed departures
+      })
       .sort((a, b) =>
         sort === "price" ? a.price - b.price :
         a.departureTime.localeCompare(b.departureTime)
