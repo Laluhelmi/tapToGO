@@ -182,10 +182,6 @@ const en: Translations = {
         a: "Our team will contact you via WhatsApp within 15–30 minutes after booking. Please make sure the WhatsApp number you entered is active.",
       },
       {
-        q: "What payment methods are available?",
-        a: "We currently support bank transfer, credit/debit cards, and e-wallets (GoPay, OVO, Dana). For international travelers, payment via international credit card is available.",
-      },
-      {
         q: "Can I cancel or change my schedule?",
         a: "Cancellations or schedule changes can be made at least 24 hours before departure. Contact us via WhatsApp with your booking code.",
       },

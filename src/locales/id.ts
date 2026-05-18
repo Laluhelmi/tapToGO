@@ -192,10 +192,6 @@ const id = {
         a: "Tim kami akan menghubungi kamu via WhatsApp dalam 15–30 menit setelah pemesanan. Pastikan nomor WhatsApp yang kamu masukkan aktif.",
       },
       {
-        q: "Metode pembayaran apa yang tersedia?",
-        a: "Saat ini kami mendukung transfer bank, kartu kredit/debit, dan e-wallet (GoPay, OVO, Dana). Untuk wisatawan mancanegara, tersedia pembayaran via kartu internasional.",
-      },
-      {
         q: "Bisakah saya membatalkan atau mengubah jadwal?",
         a: "Pembatalan atau perubahan jadwal bisa dilakukan minimal 24 jam sebelum keberangkatan. Hubungi kami via WhatsApp dengan menyertakan kode booking kamu.",
       },
