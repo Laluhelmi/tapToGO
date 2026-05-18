@@ -233,7 +233,7 @@ function JadwalContent() {
                       <p className="text-sm font-semibold" style={{ color: "#334155" }}>{s.to}</p>
                     </div>
                     <div className="shrink-0 ml-auto">
-                      <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>Jam</p>
+                      <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#94a3b8" }}>{t.jadwal.time}</p>
                       <p className="text-sm font-semibold tabular-nums" style={{ color: "#0369a1" }}>{s.departureTime}</p>
                     </div>
                   </div>
