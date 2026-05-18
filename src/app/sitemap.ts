@@ -16,6 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/tour`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/bantuan`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE_URL}/promo`, lastModified: now, changeFrequency: "weekly", priority: 0.5 },
+    { url: `${BASE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/refund`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   // Per-route SEO landing pages (24 routes)

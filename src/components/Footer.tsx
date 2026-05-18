@@ -2,12 +2,39 @@
 import { useLang } from "@/contexts/LanguageContext";
 import Logo from "./Logo";
 
+type LinkItem = { label: string; href: string };
+
 export default function Footer() {
   const { t } = useLang();
-  const links: Record<string, string[]> = {
-    [t.footer.popularRoutes]: ["Sanur → Nusa Penida", "Bangsal → Padang Bai", "Padang Bai → Gili T", "Sanur → Lembongan", "Amed → Nusa Penida"],
-    [t.footer.company]: t.footer.companyLinks,
-    [t.footer.help]: t.footer.helpLinks,
+  const isID = (t.footer.copyright || "").includes("Hak");
+
+  const popularRoutes: LinkItem[] = [
+    { label: "Gili T → Padang Bai", href: "/rute/gili-trawangan-padang-bai" },
+    { label: "Bangsal → Padang Bai", href: "/rute/bangsal-padang-bai" },
+    { label: "Gili Air → Nusa Penida", href: "/rute/gili-air-nusa-penida" },
+    { label: "Gili T → Sanur", href: "/rute/gili-trawangan-sanur" },
+    { label: "Bangsal → Serangan", href: "/rute/bangsal-serangan" },
+  ];
+
+  const companyLinks: LinkItem[] = [
+    { label: isID ? "Tentang Kami" : "About Us", href: "/" },
+    { label: isID ? "Armada" : "Fleet", href: "/armada" },
+    { label: isID ? "Jadwal" : "Schedule", href: "/jadwal" },
+    { label: isID ? "Brand Assets" : "Brand Assets", href: "/brand" },
+    { label: isID ? "Kontak" : "Contact", href: "https://wa.me/6287821775082" },
+  ];
+
+  const helpLinks: LinkItem[] = [
+    { label: isID ? "FAQ" : "FAQ", href: "/bantuan" },
+    { label: isID ? "Syarat & Ketentuan" : "Terms of Service", href: "/terms" },
+    { label: isID ? "Kebijakan Privasi" : "Privacy Policy", href: "/privacy" },
+    { label: isID ? "Kebijakan Refund" : "Refund Policy", href: "/refund" },
+  ];
+
+  const links: Record<string, LinkItem[]> = {
+    [t.footer.popularRoutes]: popularRoutes,
+    [t.footer.company]: companyLinks,
+    [t.footer.help]: helpLinks,
   };
 
   return (
@@ -43,10 +70,10 @@ export default function Footer() {
               <h4 className="text-white font-bold text-sm mb-4">{title}</h4>
               <ul className="space-y-2.5">
                 {items.map(item => (
-                  <li key={item}>
-                    <a href="#" className="text-sm transition-colors hover:text-white"
+                  <li key={item.label}>
+                    <a href={item.href} className="text-sm transition-colors hover:text-white"
                       style={{ color: "#7dd3fc" }}>
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}

@@ -748,6 +748,22 @@ function BookingContent() {
               {t.booking.confirmBtn}
             </button>
           </div>
+
+          <p className="mt-3 text-center text-[11px]" style={{ color: "#64748b" }}>
+            {lang === "id" ? (
+              <>Dengan melanjutkan, kamu menyetujui{" "}
+                <Link href="/terms" className="font-bold" style={{ color: "#0369a1" }}>Syarat & Ketentuan</Link>,{" "}
+                <Link href="/privacy" className="font-bold" style={{ color: "#0369a1" }}>Kebijakan Privasi</Link>, dan{" "}
+                <Link href="/refund" className="font-bold" style={{ color: "#0369a1" }}>Kebijakan Refund</Link> tapToGo.
+              </>
+            ) : (
+              <>By continuing you agree to tapToGo&apos;s{" "}
+                <Link href="/terms" className="font-bold" style={{ color: "#0369a1" }}>Terms</Link>,{" "}
+                <Link href="/privacy" className="font-bold" style={{ color: "#0369a1" }}>Privacy</Link>, and{" "}
+                <Link href="/refund" className="font-bold" style={{ color: "#0369a1" }}>Refund Policy</Link>.
+              </>
+            )}
+          </p>
         </div>
       </div>
     );
