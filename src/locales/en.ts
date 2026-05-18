@@ -181,26 +181,6 @@ const en: Translations = {
         q: "How long does booking confirmation take?",
         a: "Our team will contact you via WhatsApp within 15–30 minutes after booking. Please make sure the WhatsApp number you entered is active.",
       },
-      {
-        q: "Can I cancel or change my schedule?",
-        a: "Cancellations or schedule changes can be made at least 24 hours before departure. Contact us via WhatsApp with your booking code.",
-      },
-      {
-        q: "Is there a baggage fee?",
-        a: "Each passenger gets 15 kg of free baggage. Excess baggage is charged according to each operator's policy.",
-      },
-      {
-        q: "What if the boat is cancelled due to bad weather?",
-        a: "If the trip is cancelled by the operator due to weather conditions or emergencies, you will receive a full refund or free rescheduling.",
-      },
-      {
-        q: "Can children use the tickets?",
-        a: "Children under 2 years are usually free (sitting on parent's lap). Children aged 2–12 are charged 50–75% of the adult ticket price depending on the operator.",
-      },
-      {
-        q: "Where can I find my e-ticket after booking?",
-        a: "Your e-ticket will be sent to your registered email address. Also check your spam folder if it doesn't appear in your inbox.",
-      },
     ],
   },
 

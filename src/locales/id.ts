@@ -191,26 +191,6 @@ const id = {
         q: "Berapa lama konfirmasi booking setelah memesan?",
         a: "Tim kami akan menghubungi kamu via WhatsApp dalam 15–30 menit setelah pemesanan. Pastikan nomor WhatsApp yang kamu masukkan aktif.",
       },
-      {
-        q: "Bisakah saya membatalkan atau mengubah jadwal?",
-        a: "Pembatalan atau perubahan jadwal bisa dilakukan minimal 24 jam sebelum keberangkatan. Hubungi kami via WhatsApp dengan menyertakan kode booking kamu.",
-      },
-      {
-        q: "Apakah ada biaya bagasi?",
-        a: "Setiap penumpang mendapat jatah bagasi gratis 15 kg. Kelebihan bagasi dikenakan biaya sesuai kebijakan masing-masing operator.",
-      },
-      {
-        q: "Bagaimana jika kapal dibatalkan karena cuaca buruk?",
-        a: "Jika perjalanan dibatalkan oleh operator karena kondisi cuaca atau keadaan darurat, kamu akan mendapatkan refund penuh atau penjadwalan ulang tanpa biaya tambahan.",
-      },
-      {
-        q: "Apakah tiket bisa digunakan untuk penumpang anak-anak?",
-        a: "Anak usia di bawah 2 tahun biasanya gratis (duduk di pangkuan orang tua). Anak usia 2–12 tahun dikenakan 50–75% dari harga tiket dewasa tergantung operator.",
-      },
-      {
-        q: "Di mana saya bisa melihat e-tiket setelah booking?",
-        a: "E-tiket akan dikirimkan ke alamat email yang kamu daftarkan. Cek juga folder spam jika tidak muncul di inbox.",
-      },
     ],
   },
 
