@@ -1,9 +1,12 @@
 "use client";
 import Script from "next/script";
 
+// Google Ads conversion tag — hardcoded since it's public client-side anyway
+const AW_ID_FALLBACK = "AW-18172624638";
+
 export default function GoogleAnalytics() {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-  const AW_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+  const AW_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || AW_ID_FALLBACK;
   if (!GA_ID && !AW_ID) return null;
 
   // Use whichever ID exists as the script loader; configs work together via gtag()
