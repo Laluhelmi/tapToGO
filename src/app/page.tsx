@@ -18,8 +18,8 @@ export interface SearchParams {
 
 export default function Home() {
   const [searchParams, setSearchParams] = useState<SearchParams>({
-    from: "Gili Trawangan",
-    to: "Padang Bai",
+    from: "",
+    to: "",
     date: getTodayString(),
     passengers: 1,
   });
