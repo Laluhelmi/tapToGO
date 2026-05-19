@@ -39,17 +39,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks: NavItem[] = [
-    { label: t.nav.home, href: "/" },
-    {
-      label: t.nav.fastboat,
-      children: [
-        { label: t.nav.schedule, href: "/jadwal" },
-        { label: t.nav.fleet,    href: "/armada" },
-      ],
-    },
-    { label: t.nav.rental, href: "/rental" },
-    { label: t.nav.tour,   href: "/tour" },
-    { label: t.nav.help,   href: "/bantuan" },
+    { label: t.nav.home,     href: "/" },
+    { label: t.nav.fastboat, href: "/jadwal" },
+    { label: t.nav.schedule, href: "/jadwal" },
+    { label: t.nav.fleet,    href: "/armada" },
+    { label: t.nav.help,     href: "/bantuan" },
   ];
 
   return (
