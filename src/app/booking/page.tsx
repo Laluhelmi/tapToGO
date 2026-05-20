@@ -539,34 +539,6 @@ function BookingContent() {
             taxAmount={taxAmount}
           />
 
-          {/* View printable PDF e-ticket */}
-          {(() => {
-            const params = new URLSearchParams({
-              code: orderCode,
-              id: schedule.id,
-              name: form.name,
-              email: form.email,
-              phone: form.whatsapp,
-              nationality: form.nationality,
-              date,
-              pax: String(passengers),
-              tax: payTaxInApp ? "1" : "0",
-              ...(form.note ? { note: form.note } : {}),
-            });
-            return (
-              <Link href={`/eticket?${params.toString()}`} target="_blank"
-                className="print:hidden mt-4 max-w-md mx-auto flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-sm font-extrabold transition-all hover:scale-[1.01]"
-                style={{ background: "linear-gradient(135deg,#0284c7,#0369a1)", color: "white" }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="7 10 12 15 17 10"/>
-                  <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                View Printable E-Ticket (PDF)
-              </Link>
-            );
-          })()}
-
           {/* Payment CTA — booking is still pending payment */}
           {(() => {
             const adminWa = "6287821775082"; // admin WhatsApp (no + prefix, no spaces)
