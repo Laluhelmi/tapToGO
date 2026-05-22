@@ -12,13 +12,13 @@ interface Props {
   searchParams: SearchParams;
 }
 
-function formatDate(dateStr: string) {
+function formatDate(dateStr: string, lang: string) {
   const d = new Date(dateStr);
-  return d.toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  return d.toLocaleDateString(lang === "en" ? "en-US" : "id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 }
 
 export default function ScheduleSection({ searchParams }: Props) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [sort, setSort] = useState<SortKey>("departure");
   const [priceMax, setPriceMax] = useState(1000);
 
@@ -72,9 +72,9 @@ export default function ScheduleSection({ searchParams }: Props) {
           </h2>
           <p className="text-sm" style={{ color: "#64748b" }}>
             <span className="font-bold" style={{ color: "#0369a1" }}>{results.length} {t.scheduleSection.schedules}</span>
-            {date && ` · ${formatDate(date)}`}
+            {date && ` · ${formatDate(date, lang)}`}
             {` · ${passengers} ${t.scheduleSection.passenger}`}
-            {results.length > 0 && ` · Mulai Rp ${minPrice}K`}
+            {results.length > 0 && ` · ${t.scheduleSection.startFrom} ${minPrice}K`}
           </p>
         </div>
 
