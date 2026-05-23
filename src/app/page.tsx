@@ -33,7 +33,10 @@ export default function Home() {
     <main className="min-h-screen" style={{ background: "#f0f9ff" }}>
       <Navbar />
       <HeroSection onSearch={handleSearch} searchParams={searchParams} />
-      <ScheduleSection searchParams={searchParams} />
+      <ScheduleSection
+        searchParams={searchParams}
+        onChangeDate={(d) => setSearchParams((p) => ({ ...p, date: d }))}
+      />
 <HowItWorks />
       <TestimoniSection />
       <Footer />

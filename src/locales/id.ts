@@ -83,6 +83,8 @@ const id = {
     noSchedule: "Tidak ada jadwal ditemukan",
     pickPortHint: "Pilih pelabuhan keberangkatan dan tujuan di atas",
     noMatch: "Tidak ada jadwal yang sesuai filter",
+    tryNextDateHint: "Tidak ada keberangkatan di tanggal ini. Coba cek tanggal berikutnya.",
+    tryNextDate: "Coba Tanggal Berikutnya →",
     resetFilter: "Reset Filter",
     direct: "Langsung",
     seatsLeft: "kursi tersedia",

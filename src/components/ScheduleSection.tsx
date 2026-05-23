@@ -10,6 +10,7 @@ type SortKey = "departure" | "price";
 
 interface Props {
   searchParams: SearchParams;
+  onChangeDate?: (date: string) => void;
 }
 
 function formatDate(dateStr: string, lang: string) {
@@ -17,7 +18,7 @@ function formatDate(dateStr: string, lang: string) {
   return d.toLocaleDateString(lang === "en" ? "en-US" : "id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 }
 
-export default function ScheduleSection({ searchParams }: Props) {
+export default function ScheduleSection({ searchParams, onChangeDate }: Props) {
   const { t, lang } = useLang();
   const [sort, setSort] = useState<SortKey>("departure");
   const [priceMax, setPriceMax] = useState(1000);
@@ -132,10 +133,29 @@ export default function ScheduleSection({ searchParams }: Props) {
                   ? t.scheduleSection.pickPortHint
                   : t.scheduleSection.noMatch}
               </p>
-              <button onClick={() => setPriceMax(1000)}
-                className="px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
-                {t.scheduleSection.resetFilter}
-              </button>
+              {from && to && onChangeDate && (
+                <p className="text-sm mb-4" style={{ color: "#64748b" }}>
+                  {t.scheduleSection.tryNextDateHint}
+                </p>
+              )}
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <button onClick={() => setPriceMax(1000)}
+                  className="px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
+                  {t.scheduleSection.resetFilter}
+                </button>
+                {from && to && onChangeDate && (
+                  <button
+                    onClick={() => {
+                      const d = new Date(date || new Date().toISOString().split("T")[0]);
+                      d.setDate(d.getDate() + 1);
+                      onChangeDate(d.toISOString().split("T")[0]);
+                    }}
+                    className="px-6 py-2.5 rounded-xl text-sm font-bold"
+                    style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
+                    {t.scheduleSection.tryNextDate}
+                  </button>
+                )}
+              </div>
             </div>
           )}
         </div>

@@ -79,6 +79,8 @@ const en: Translations = {
     noSchedule: "No schedules found",
     pickPortHint: "Select departure and destination port above",
     noMatch: "No schedules match your filter",
+    tryNextDateHint: "No departures on this date. Try checking the next day.",
+    tryNextDate: "Try Next Day →",
     resetFilter: "Reset Filter",
     direct: "Direct",
     seatsLeft: "seats available",
