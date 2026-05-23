@@ -494,6 +494,37 @@ function BookingContent() {
       pax: passengers,
       total: totalPrice,
     });
+
+    // Notify admin via email (fire-and-forget)
+    fetch("/api/booking-notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bookingCode: orderCode,
+        passenger: {
+          name: form.name,
+          email: form.email,
+          phone: form.whatsapp,
+          nationality: form.nationality,
+        },
+        schedule: {
+          operator: schedule.operator,
+          boatType: schedule.boatType,
+          from: schedule.from,
+          to: schedule.to,
+          departureTime: schedule.departureTime,
+          arrivalTime: schedule.arrivalTime,
+          duration: schedule.duration,
+        },
+        date,
+        passengers,
+        ticketTotal: ticketSubtotal,
+        taxAmount,
+        payTaxInApp,
+        grandTotal: totalPrice,
+        note: form.note || "",
+      }),
+    }).catch((e) => console.warn("Booking notify failed:", e));
   };
 
   // Stepper position
