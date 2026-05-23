@@ -4879,6 +4879,13 @@ export const SCHEDULES: BoatSchedule[] = [
 export const OPERATOR_GALLERY: Record<string, string[]> = {
   "Kapal Karya Bahari": [
     "/images/kkb/1.jpeg",
+    "/images/kkb/2.jpeg",
+    "/images/kkb/3.jpeg",
+    "/images/kkb/4.jpeg",
+    "/images/kkb/5.jpeg",
+    "/images/kkb/6.jpeg",
+    "/images/kkb/7.jpeg",
+    "/images/kkb/8.jpeg",
   ],
   "Miko Natalia": [
     "/images/miko-natalia/1.jpeg",
