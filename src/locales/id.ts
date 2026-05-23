@@ -249,6 +249,8 @@ const id = {
     waNotif: "Tim kami akan menghubungi kamu via WhatsApp ke",
     pendingPayment: "⏳ Booking belum dibayar",
     paymentInstructions: "Kirim detail booking via WhatsApp atau SMS untuk proses pembayaran",
+    teamContactTitle: "Booking diterima — tim kami akan menghubungi Anda",
+    teamContactDesc: "Tim kami akan menghubungi Anda via WhatsApp dalam 15 menit (07:00–22:00 WITA) untuk instruksi pembayaran dan detail lainnya. Mohon pastikan nomor telepon Anda aktif.",
     confirmViaWa: "💬 Konfirmasi via WhatsApp",
     confirmViaSms: "📱 Konfirmasi via SMS",
     waMsgGreeting: "Halo tapToGo, saya mau bayar tiket fastboat:",

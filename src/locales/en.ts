@@ -238,6 +238,8 @@ const en: Translations = {
     waNotif: "Our team will contact you via WhatsApp at",
     pendingPayment: "⏳ Booking pending payment",
     paymentInstructions: "Send booking details via WhatsApp or SMS to process payment",
+    teamContactTitle: "Booking received — our team will contact you",
+    teamContactDesc: "Our team will reach out via WhatsApp within 15 minutes (07:00–22:00 WITA) with payment instructions and any additional details. Please keep your phone reachable.",
     confirmViaWa: "💬 Confirm via WhatsApp",
     confirmViaSms: "📱 Confirm via SMS",
     waMsgGreeting: "Hi tapToGo, I'd like to pay for my fastboat ticket:",

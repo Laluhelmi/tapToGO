@@ -570,64 +570,22 @@ function BookingContent() {
             taxAmount={taxAmount}
           />
 
-          {/* Payment CTA — booking is still pending payment */}
-          {(() => {
-            const adminWa = "6287821775082"; // admin WhatsApp (no + prefix, no spaces)
-            const msgLines = [
-              t.booking.waMsgGreeting,
-              "",
-              `📋 ${t.booking.bookingCode}: *${orderCode}*`,
-              `🚤 ${schedule.operator} (${schedule.boatType})`,
-              `📍 ${schedule.from} → ${schedule.to}`,
-              `📅 ${formatDateLong(date, lang)}`,
-              `🕐 ${schedule.departureTime} → ${schedule.arrivalTime} (${schedule.duration})`,
-              `👤 ${form.name} · ${passengers} ${t.search.pax}`,
-              `📞 ${form.whatsapp}`,
-              `📧 ${form.email}`,
-              "",
-              `💰 ${t.booking.totalPayment}: *${formatRupiah(totalPrice)}*`,
-              taxAmount > 0
-                ? (payTaxInApp
-                  ? `⚓ Harbour Tax: Lunas (${formatRupiah(taxAmount)})`
-                  : `⚓ Harbour Tax: Bayar di pelabuhan (${formatRupiah(taxAmount)})`)
-                : "",
-              form.note ? `\n📝 ${t.booking.additionalNote}:\n${form.note}` : "",
-              "",
-              t.booking.waMsgRequest,
-            ].filter(Boolean).join("\n");
-            const waUrl = `https://wa.me/${adminWa}?text=${encodeURIComponent(msgLines)}`;
-            const smsBody = msgLines.replace(/\*/g, "");
-            const smsUrl = `sms:+${adminWa}?body=${encodeURIComponent(smsBody)}`;
-
-            return (
-              <div className="print:hidden mt-5 rounded-2xl p-4"
-                style={{ background: "#fef3c7", border: "1.5px solid #fde047" }}>
-                <p className="text-sm font-extrabold mb-1" style={{ color: "#854d0e" }}>
-                  {t.booking.pendingPayment}
-                </p>
-                <p className="text-xs mb-3" style={{ color: "#a16207" }}>
-                  {t.booking.paymentInstructions}
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <a href={waUrl} target="_blank" rel="noreferrer"
-                    onClick={() => events.clickWhatsAppPayment(orderCode)}
-                    className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-extrabold transition-all hover:scale-[1.02]"
-                    style={{
-                      background: "linear-gradient(135deg,#22c55e,#15803d)",
-                      color: "white",
-                      boxShadow: "0 4px 16px rgba(34,197,94,0.3)",
-                    }}>
-                    {t.booking.confirmViaWa}
-                  </a>
-                  <a href={smsUrl}
-                    className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.02]"
-                    style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
-                    {t.booking.confirmViaSms}
-                  </a>
-                </div>
-              </div>
-            );
-          })()}
+          {/* Team will reach out for payment */}
+          <div className="print:hidden mt-5 rounded-2xl p-5 text-center"
+            style={{ background: "#ecfdf5", border: "1.5px solid #a7f3d0" }}>
+            <div className="flex justify-center mb-2">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <p className="text-sm font-extrabold mb-1" style={{ color: "#065f46" }}>
+              {t.booking.teamContactTitle}
+            </p>
+            <p className="text-xs leading-relaxed" style={{ color: "#047857" }}>
+              {t.booking.teamContactDesc}
+            </p>
+          </div>
 
           <Link href="/" className="print:hidden mt-4 max-w-md mx-auto block w-full py-3 rounded-2xl text-sm font-extrabold text-center transition-all hover:scale-[1.01]"
             style={{ background: "#f0f9ff", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
