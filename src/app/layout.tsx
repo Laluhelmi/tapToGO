@@ -7,6 +7,7 @@ import CompareBar from "@/components/CompareBar";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -57,12 +58,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={plusJakarta.variable}>
       <body style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}>
-        <LanguageProvider>
-          <CompareProvider>
-            {children}
-            <CompareBar />
-          </CompareProvider>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <CompareProvider>
+              {children}
+              <CompareBar />
+            </CompareProvider>
+          </LanguageProvider>
+        </ThemeProvider>
         <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />

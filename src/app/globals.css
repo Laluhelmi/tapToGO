@@ -7,10 +7,52 @@
     background-color: #f0f9ff;
     color: #0f172a;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark mode — CSS-filter approach (works with inline-style codebase) */
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+  html[data-theme="dark"] body {
+    background-color: #0a1929;
+    filter: invert(1) hue-rotate(180deg);
+  }
+  /* Un-invert media so photos/icons keep original colors */
+  html[data-theme="dark"] body img,
+  html[data-theme="dark"] body video,
+  html[data-theme="dark"] body iframe,
+  html[data-theme="dark"] body svg image,
+  html[data-theme="dark"] body picture {
+    filter: invert(1) hue-rotate(180deg);
   }
 }
 
 @layer utilities {
+  /* ─── Typography scale (consistent across pages) ─── */
+  .h-display { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+  .h-page    { font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
+  .h-section { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 800; line-height: 1.25; }
+  .h-card    { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+  .text-meta { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* ─── Spacing scale (use as className) ─── */
+  .section-py     { padding-top: clamp(2rem, 5vw, 4rem); padding-bottom: clamp(2rem, 5vw, 4rem); }
+  .section-py-sm  { padding-top: clamp(1.5rem, 3vw, 2.5rem); padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .container-pad  { padding-left: clamp(1rem, 3vw, 2rem); padding-right: clamp(1rem, 3vw, 2rem); }
+
+  /* ─── Mobile-friendly tap targets ─── */
+  @media (max-width: 640px) {
+    button, a[role="button"], input[type="date"], input[type="email"], input[type="tel"], input[type="text"], select, textarea {
+      min-height: 44px; /* iOS HIG recommended */
+    }
+  }
+
+  /* Date input — let iOS show native picker nicely */
+  input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+  }
+
   .ocean-gradient {
     background: linear-gradient(160deg, #0284c7 0%, #0369a1 40%, #0c4a6e 100%);
   }
