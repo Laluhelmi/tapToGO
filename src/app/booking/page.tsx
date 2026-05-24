@@ -8,6 +8,7 @@ import ETicket from "@/components/ETicket";
 import { useLang } from "@/contexts/LanguageContext";
 import { COUNTRIES, TOP_COUNTRY_CODES } from "@/data/countries";
 import { events } from "@/lib/gtag";
+import Spinner from "@/components/Spinner";
 
 // ── Constants ──
 const HARBOUR_TAX_PER_PAX = 20; // in thousands (Rp 20,000)
@@ -518,9 +519,16 @@ function BookingContent() {
   // Show "Continue to Confirmation" only if user reached summary AND form is valid.
   const showFinalCta = mobileFormComplete && isFormValid;
 
+  const [isConfirming, setIsConfirming] = useState(false);
+
   const handleConfirm = () => {
-    setStep("done");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (isConfirming) return;
+    setIsConfirming(true);
+    setTimeout(() => {
+      setStep("done");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsConfirming(false);
+    }, 400);
     events.bookingCompleted({
       bookingCode: orderCode,
       operator: schedule.operator,
@@ -747,9 +755,16 @@ function BookingContent() {
               style={{ borderColor: "#e0f2fe", color: "#64748b" }}>
               {t.booking.editData}
             </button>
-            <button onClick={handleConfirm}
-              className="flex-[2] py-3.5 rounded-2xl text-sm font-extrabold text-white btn-ocean transition-all hover:scale-[1.02]">
-              {t.booking.confirmBtn}
+            <button onClick={handleConfirm} disabled={isConfirming}
+              className="flex-[2] py-3.5 rounded-2xl text-sm font-extrabold text-white btn-ocean transition-all hover:scale-[1.02] disabled:opacity-70 disabled:scale-100 flex items-center justify-center gap-2">
+              {isConfirming ? (
+                <>
+                  <Spinner size={16} color="white" />
+                  Processing…
+                </>
+              ) : (
+                t.booking.confirmBtn
+              )}
             </button>
           </div>
 

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FROM_PORTS, TO_PORTS } from "@/data/boats";
 import { getTodayString } from "@/lib/utils";
+import Spinner from "./Spinner";
 import type { Port } from "@/types";
 import type { SearchParams } from "@/app/page";
 import { useLang } from "@/contexts/LanguageContext";
@@ -104,10 +105,17 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
     }
   }, [initialValues]);
 
+  const [isSearching, setIsSearching] = useState(false);
+
   // ── Search handlers ──
   const searchFastboat = () => {
     if (!from || !to) return;
-    onSearch({ from, to, date, passengers });
+    setIsSearching(true);
+    // Brief loading state for visual feedback (search itself is instant in-memory)
+    setTimeout(() => {
+      onSearch({ from, to, date, passengers });
+      setTimeout(() => setIsSearching(false), 600);
+    }, 200);
   };
 
   const searchRental = () => {
@@ -208,9 +216,18 @@ export default function SearchForm({ onSearch, initialValues }: Props) {
             </div>
             <button onClick={searchFastboat}
               className="mt-3 w-full py-3 rounded-xl text-white text-sm font-extrabold tracking-wide btn-ocean flex items-center justify-center gap-2 disabled:opacity-50"
-              disabled={!from || !to}>
-              <IconSearch width={16} height={16} />
-              {t.search.searchBtn}
+              disabled={!from || !to || isSearching}>
+              {isSearching ? (
+                <>
+                  <Spinner size={16} color="white" />
+                  Searching…
+                </>
+              ) : (
+                <>
+                  <IconSearch width={16} height={16} />
+                  {t.search.searchBtn}
+                </>
+              )}
             </button>
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <span className="text-xs font-semibold" style={{ color: "#94a3b8" }}>{t.search.popular}</span>
