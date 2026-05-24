@@ -107,6 +107,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "Invalid payload" }, { status: 400 });
     }
 
+    // Phone validation (server-side, anti-spam)
+    const digits = (body.passenger.phone || "").replace(/\D/g, "");
+    if (digits.length < 8 || digits.length > 15) {
+      return NextResponse.json({ ok: false, error: "Invalid phone" }, { status: 400 });
+    }
+    if (/(\d)\1{4,}/.test(digits)) {
+      return NextResponse.json({ ok: false, error: "Suspicious phone (repeating digits)" }, { status: 400 });
+    }
+
     const { error } = await resend.emails.send({
       from: `tapToGo Booking <${FROM_EMAIL}>`,
       to: ADMIN_EMAIL,

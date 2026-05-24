@@ -211,7 +211,7 @@ const en: Translations = {
     required: "*",
     errorName: "Name is required",
     errorEmail: "Invalid email address",
-    errorWa: "Phone number is required",
+    errorWa: "Invalid phone number (e.g. +62 812 3456 7890)",
     errorNat: "Nationality is required",
     orderSummary: "Order Summary",
     from: "From",

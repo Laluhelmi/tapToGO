@@ -56,6 +56,40 @@ function formatWhatsApp(value: string) {
 // Email validation
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Phone validation — supports Indonesian (+62 / 0) and international format
+// Total digit length 8-15 (excluding country code separators)
+// Indonesian mobile typically: +62 8xx-xxxx-xxxx (10-13 digits total)
+// International (foreign tourists): +<country><7-14 digits>
+function isValidPhone(raw: string): boolean {
+  const digits = raw.replace(/\D/g, "");
+  // Reject too short or too long (typical real phone: 8-15 digits)
+  if (digits.length < 8 || digits.length > 15) return false;
+  // For Indonesian numbers (start with 62 or 0), enforce stricter length
+  if (digits.startsWith("62")) {
+    // +62 8xx... → total 10-13 digits
+    if (digits.length < 10 || digits.length > 13) return false;
+    // Indonesian mobile starts with 628
+    if (!digits.startsWith("628")) return false;
+  } else if (digits.startsWith("0")) {
+    // 08xx... local format → 10-13 digits
+    if (digits.length < 10 || digits.length > 13) return false;
+    if (!digits.startsWith("08")) return false;
+  }
+  // Reject obvious mash: 5+ consecutive same digits (e.g. 99999, 00000)
+  if (/(\d)\1{4,}/.test(digits)) return false;
+  // Reject obvious sequential: 123456, 987654 — 6+ sequential
+  for (let i = 0; i <= digits.length - 6; i++) {
+    const s = digits.slice(i, i + 6);
+    let asc = true, desc = true;
+    for (let j = 1; j < s.length; j++) {
+      if (+s[j] !== +s[j - 1] + 1) asc = false;
+      if (+s[j] !== +s[j - 1] - 1) desc = false;
+    }
+    if (asc || desc) return false;
+  }
+  return true;
+}
+
 
 // ── SVG Icons ──
 const Icon = {
@@ -411,7 +445,7 @@ function BookingContent() {
   // Real-time validation states
   const validName = form.name.trim().length >= 3;
   const validEmail = EMAIL_RE.test(form.email);
-  const validWa = form.whatsapp.replace(/\D/g, "").length >= 10;
+  const validWa = isValidPhone(form.whatsapp);
   const validNat = !!form.nationality;
 
   const validate = () => {

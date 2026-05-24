@@ -222,7 +222,7 @@ const id = {
     required: "*",
     errorName: "Nama wajib diisi",
     errorEmail: "Email tidak valid",
-    errorWa: "Nomor telepon wajib diisi",
+    errorWa: "Nomor telepon tidak valid (contoh: +62 812 3456 7890)",
     errorNat: "Kewarganegaraan wajib diisi",
     orderSummary: "Ringkasan Pesanan",
     from: "Dari",
