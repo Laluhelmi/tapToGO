@@ -168,29 +168,42 @@ function Stepper({ current, t }: { current: 0 | 1 | 2; t: ReturnType<typeof useL
           <div key={label} className="flex items-center gap-1.5 sm:gap-3">
             <div className="flex items-center gap-2">
               <div
-                className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold transition-all"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold transition-all duration-300"
                 style={
                   done
-                    ? { background: "#22c55e", color: "white" }
+                    ? { background: "#22c55e", color: "white", transform: "scale(1)" }
                     : active
-                    ? { background: "white", color: "#0369a1", boxShadow: "0 0 0 3px rgba(255,255,255,0.35)" }
-                    : { background: "rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.7)" }
+                    ? {
+                        background: "white",
+                        color: "#0369a1",
+                        boxShadow: "0 0 0 4px rgba(255,255,255,0.35), 0 4px 14px rgba(255,255,255,0.25)",
+                        transform: "scale(1.1)",
+                      }
+                    : { background: "rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.7)", transform: "scale(0.95)" }
                 }
               >
                 {done ? <Icon.Check width={14} height={14} /> : i + 1}
               </div>
               <span
-                className="text-xs sm:text-sm font-bold hidden sm:inline"
-                style={{ color: active || done ? "white" : "rgba(255,255,255,0.7)" }}
+                className="text-xs sm:text-sm font-bold hidden sm:inline transition-all duration-300"
+                style={{ color: active || done ? "white" : "rgba(255,255,255,0.6)" }}
               >
                 {label}
               </span>
             </div>
             {i < steps.length - 1 && (
               <div
-                className="w-6 sm:w-12 h-0.5 rounded-full"
-                style={{ background: done ? "#22c55e" : "rgba(255,255,255,0.25)" }}
-              />
+                className="relative w-6 sm:w-12 h-0.5 rounded-full overflow-hidden"
+                style={{ background: "rgba(255,255,255,0.2)" }}
+              >
+                <div
+                  className="absolute inset-0 rounded-full transition-all duration-500"
+                  style={{
+                    background: "#22c55e",
+                    width: done ? "100%" : active ? "50%" : "0%",
+                  }}
+                />
+              </div>
             )}
           </div>
         );

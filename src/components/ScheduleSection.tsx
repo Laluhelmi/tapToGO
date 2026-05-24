@@ -5,6 +5,7 @@ import BoatCard from "./BoatCard";
 import type { SearchParams } from "@/app/page";
 import { useLang } from "@/contexts/LanguageContext";
 import { getTodayString } from "@/lib/utils";
+import EmptyState from "./EmptyState";
 
 type SortKey = "departure" | "price";
 
@@ -124,38 +125,36 @@ export default function ScheduleSection({ searchParams, onChangeDate }: Props) {
           {results.length > 0 ? (
             results.map((b, i) => <BoatCard key={b.id} boat={b} index={i} date={date} passengers={passengers} />)
           ) : (
-            <div className="col-span-3 bg-white rounded-3xl p-16 text-center"
-              style={{ border: "1.5px solid #e0f2fe" }}>
-              <div className="text-6xl mb-4">🔍</div>
-              <p className="text-xl font-bold mb-2" style={{ color: "#0c4a6e" }}>{t.scheduleSection.noSchedule}</p>
-              <p className="text-sm mb-4" style={{ color: "#64748b" }}>
-                {!from || !to
-                  ? t.scheduleSection.pickPortHint
-                  : t.scheduleSection.noMatch}
-              </p>
-              {from && to && onChangeDate && (
-                <p className="text-sm mb-4" style={{ color: "#64748b" }}>
-                  {t.scheduleSection.tryNextDateHint}
-                </p>
-              )}
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                <button onClick={() => setPriceMax(1000)}
-                  className="px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
-                  {t.scheduleSection.resetFilter}
-                </button>
-                {from && to && onChangeDate && (
-                  <button
-                    onClick={() => {
-                      const d = new Date(date || new Date().toISOString().split("T")[0]);
-                      d.setDate(d.getDate() + 1);
-                      onChangeDate(d.toISOString().split("T")[0]);
-                    }}
-                    className="px-6 py-2.5 rounded-xl text-sm font-bold"
-                    style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
-                    {t.scheduleSection.tryNextDate}
-                  </button>
-                )}
-              </div>
+            <div className="col-span-3">
+              <EmptyState
+                title={t.scheduleSection.noSchedule}
+                description={!from || !to ? t.scheduleSection.pickPortHint : t.scheduleSection.noMatch}
+                action={
+                  <div className="space-y-3">
+                    {from && to && onChangeDate && (
+                      <p className="text-sm" style={{ color: "#64748b" }}>{t.scheduleSection.tryNextDateHint}</p>
+                    )}
+                    <div className="flex flex-wrap items-center justify-center gap-2">
+                      <button onClick={() => setPriceMax(1000)}
+                        className="px-6 py-2.5 rounded-xl text-sm font-bold text-white btn-ocean">
+                        {t.scheduleSection.resetFilter}
+                      </button>
+                      {from && to && onChangeDate && (
+                        <button
+                          onClick={() => {
+                            const d = new Date(date || new Date().toISOString().split("T")[0]);
+                            d.setDate(d.getDate() + 1);
+                            onChangeDate(d.toISOString().split("T")[0]);
+                          }}
+                          className="px-6 py-2.5 rounded-xl text-sm font-bold"
+                          style={{ background: "white", color: "#0369a1", border: "1.5px solid #bae6fd" }}>
+                          {t.scheduleSection.tryNextDate}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                }
+              />
             </div>
           )}
         </div>

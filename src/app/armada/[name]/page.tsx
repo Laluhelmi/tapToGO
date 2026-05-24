@@ -67,7 +67,7 @@ export default function ArmadaDetailPage({ params }: { params: Promise<{ name: s
             {/* Photo */}
             <div className="w-full md:w-[360px] h-[220px] rounded-3xl overflow-hidden shrink-0 relative"
               style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.3)" }}>
-              <img src={first.image} alt={operatorName} className="w-full h-full object-cover" style={{ objectPosition: "center 70%" }} />
+              <img src={first.image} alt={operatorName} loading="eager" decoding="async" className="w-full h-full object-cover" style={{ objectPosition: "center 70%" }} />
               <div className="absolute top-3 left-3 w-11 h-11 rounded-2xl flex items-center justify-center text-sm font-extrabold text-white shadow-md"
                 style={{ background: "linear-gradient(135deg,#0284c7,#0369a1)" }}>
                 {first.logo}
@@ -176,7 +176,7 @@ export default function ArmadaDetailPage({ params }: { params: Promise<{ name: s
                       border: carouselIdx === i ? "2.5px solid #0284c7" : "2.5px solid transparent",
                       opacity: carouselIdx === i ? 1 : 0.6,
                     }}>
-                    <img src={src} alt={`thumb ${i + 1}`} className="w-full h-full object-cover" />
+                    <img src={src} alt={`thumb ${i + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>

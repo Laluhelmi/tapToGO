@@ -11,7 +11,7 @@ const BADGE_STYLES = {
   "Recommended":   { bg: "#fef9c3", text: "#854d0e", icon: "⭐" },
 };
 
-export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSchedule; index?: number; date?: string; passengers?: number }) {
+export default function BoatCard({ boat, index = 0, date, passengers = 1 }: { boat: BoatSchedule; index?: number; date?: string; passengers?: number }) {
   const router = useRouter();
   const { t } = useLang();
   const compare = useCompare();
@@ -51,6 +51,8 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
         <img
           src={boat.image}
           alt={boat.operator}
+          loading={index < 3 ? "eager" : "lazy"}
+          decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           style={{ background: "#e0f2fe" }}
         />

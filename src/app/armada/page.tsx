@@ -113,6 +113,7 @@ export default function ArmadaPage() {
               {/* Photo */}
               <div className="relative overflow-hidden" style={{ height: 140 }}>
                 <img src={op.image} alt={op.name}
+                  loading="lazy" decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   style={{ background: "#e0f2fe" }} />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom,rgba(0,0,0,0.04),rgba(0,0,0,0.4))" }} />
