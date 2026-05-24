@@ -867,7 +867,7 @@ function BookingContent() {
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
                   {t.booking.dateLabel}
                 </label>
-                <label className="relative flex items-center w-full rounded-xl px-3 py-2.5 cursor-pointer"
+                <label className="relative flex items-center w-full rounded-xl px-3 h-12 cursor-pointer"
                   style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0" }}>
                   <Icon.Calendar width={14} height={14} style={{ color: "#0369a1", flexShrink: 0 }} />
                   <span className="text-[11px] font-bold ml-1.5 flex-1 min-w-0 whitespace-nowrap" style={{ color: "#0369a1" }}>
@@ -885,7 +885,7 @@ function BookingContent() {
                 <label className="block text-xs font-bold uppercase tracking-wide mb-1.5" style={{ color: "#64748b" }}>
                   {t.booking.passengersLabel}
                 </label>
-                <div className="flex items-center gap-2 rounded-xl px-2 py-1.5"
+                <div className="flex items-center gap-2 rounded-xl px-2 h-12"
                   style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0" }}>
                   <button onClick={() => setPassengers(p => Math.max(1, p - 1))}
                     className="w-7 h-7 rounded-lg text-base font-bold flex items-center justify-center transition-all hover:scale-110"
