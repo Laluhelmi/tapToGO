@@ -213,21 +213,6 @@ function RentalContent() {
           />
         )}
 
-        <div className="mt-10 rounded-2xl p-5 text-sm"
-          style={{ background: "white", border: "1.5px solid #e0f2fe" }}>
-          <p className="font-bold mb-2 flex items-center gap-2" style={{ color: "#0c4a6e" }}>
-            🛡️ Rental Terms
-          </p>
-          <ul className="space-y-1.5 text-xs leading-relaxed" style={{ color: "#64748b" }}>
-            <li>• Valid Indonesian driver license (SIM C) or International Driving Permit required</li>
-            <li>• Minimum age 18 years for scooter, 21 years for big bike & car</li>
-            <li>• Cash deposit Rp 500K–2jt (returned at handover)</li>
-            <li>• Damage charges apply for accidents not covered by basic insurance</li>
-            <li>• Helmet, full tank, and basic insurance included in price</li>
-            <li>• Free delivery in Gili area (booking 24h advance)</li>
-            <li>• Cancellation: free up to 24h before pickup</li>
-          </ul>
-        </div>
       </main>
 
       <Footer />
