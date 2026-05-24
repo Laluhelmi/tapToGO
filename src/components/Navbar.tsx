@@ -43,8 +43,8 @@ export default function Navbar() {
   const navLinks: NavItem[] = [
     { label: t.nav.home,     href: "/" },
     { label: t.nav.fastboat, href: "/jadwal" },
-    { label: t.nav.schedule, href: "/jadwal" },
     { label: t.nav.fleet,    href: "/armada" },
+    { label: t.nav.rental,   href: "/rental" },
     { label: t.nav.help,     href: "/bantuan" },
   ];
 
