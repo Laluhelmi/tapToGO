@@ -218,7 +218,7 @@ function JadwalContent() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg font-extrabold" style={{ color: "#0369a1" }}>Rp {s.price}K</p>
+                      <p className="text-lg font-extrabold" style={{ color: "#0369a1" }}>{s.price > 0 ? `Rp ${s.price}K` : "—"}</p>
                       <p className="text-xs" style={{ color: "#94a3b8" }}>/pax</p>
                     </div>
                   </div>
@@ -237,7 +237,12 @@ function JadwalContent() {
                       <p className="text-sm font-semibold tabular-nums" style={{ color: "#0369a1" }}>{s.departureTime}</p>
                     </div>
                   </div>
-                  <button onClick={(e) => { e.stopPropagation(); goToBooking(s.id); }} className="w-full py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean">{t.jadwal.select}</button>
+                  {s.price > 0 ? (
+                    <button onClick={(e) => { e.stopPropagation(); goToBooking(s.id); }} className="w-full py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean">{t.jadwal.select}</button>
+                  ) : (
+                    <button disabled className="w-full py-2.5 rounded-xl text-xs font-bold cursor-not-allowed"
+                      style={{ background: "#f1f5f9", color: "#94a3b8", border: "1.5px solid #e2e8f0" }}>Coming Soon</button>
+                  )}
                 </div>
 
                 {/* Desktop layout */}
@@ -292,12 +297,19 @@ function JadwalContent() {
                   {/* Price + CTA — 160px */}
                   <div className="shrink-0 w-[160px] flex items-center justify-between gap-3">
                     <div>
-                      <p className="text-xl font-extrabold leading-none" style={{ color: "#0369a1" }}>Rp {s.price}K</p>
+                      <p className="text-xl font-extrabold leading-none" style={{ color: "#0369a1" }}>{s.price > 0 ? `Rp ${s.price}K` : "—"}</p>
                       <p className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>{t.jadwal.perPax}</p>
                     </div>
+                    {s.price > 0 ? (
                     <button onClick={(e) => { e.stopPropagation(); goToBooking(s.id); }} className="px-4 py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean transition-all hover:scale-105 whitespace-nowrap">
                       {t.jadwal.select}
                     </button>
+                    ) : (
+                    <button disabled className="px-4 py-2.5 rounded-xl text-xs font-bold cursor-not-allowed whitespace-nowrap"
+                      style={{ background: "#f1f5f9", color: "#94a3b8", border: "1.5px solid #e2e8f0" }}>
+                      Coming Soon
+                    </button>
+                    )}
                   </div>
 
                 </div>

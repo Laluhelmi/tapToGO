@@ -43,8 +43,9 @@ export default function ArmadaDetailPage({ params }: { params: Promise<{ name: s
   const first = schedules[0];
   const destinations = Array.from(new Set(schedules.map(s => s.to)));
   const origins = Array.from(new Set(schedules.map(s => s.from)));
-  const minPrice = Math.min(...schedules.map(s => s.price));
-  const maxPrice = Math.max(...schedules.map(s => s.price));
+  const pricesNonZero = schedules.map(s => s.price).filter(p => p > 0);
+  const minPrice = pricesNonZero.length ? Math.min(...pricesNonZero) : 0;
+  const maxPrice = pricesNonZero.length ? Math.max(...pricesNonZero) : 0;
   const avgRating = (schedules.reduce((a, s) => a + s.rating, 0) / schedules.length).toFixed(1);
 
   const goToBooking = (id: string) => {
@@ -99,7 +100,7 @@ export default function ArmadaDetailPage({ params }: { params: Promise<{ name: s
                 </div>
                 <div className="w-px self-stretch" style={{ background: "rgba(255,255,255,0.2)" }} />
                 <div>
-                  <p className="font-extrabold text-2xl">Rp {minPrice}K{maxPrice !== minPrice && <span className="text-sm font-bold" style={{ color: "#bae6fd" }}> – {maxPrice}K</span>}</p>
+                  <p className="font-extrabold text-2xl">{minPrice > 0 ? <>Rp {minPrice}K{maxPrice !== minPrice && <span className="text-sm font-bold" style={{ color: "#bae6fd" }}> – {maxPrice}K</span>}</> : "—"}</p>
                   <p style={{ color: "#bae6fd" }}>{t.armadaDetail.priceRange}</p>
                 </div>
               </div>
@@ -301,11 +302,18 @@ export default function ArmadaDetailPage({ params }: { params: Promise<{ name: s
 
                   {/* Price + CTA */}
                   <div className="shrink-0 text-right">
-                    <p className="text-base font-extrabold leading-none" style={{ color: "#0369a1" }}>Rp {s.price}K</p>
-                    <button onClick={() => goToBooking(s.id)}
-                      className="mt-2 px-3 py-1.5 rounded-lg text-xs font-extrabold text-white btn-ocean whitespace-nowrap">
-                      {t.armadaDetail.bookNow}
-                    </button>
+                    <p className="text-base font-extrabold leading-none" style={{ color: "#0369a1" }}>{s.price > 0 ? `Rp ${s.price}K` : "—"}</p>
+                    {s.price > 0 ? (
+                      <button onClick={() => goToBooking(s.id)}
+                        className="mt-2 px-3 py-1.5 rounded-lg text-xs font-extrabold text-white btn-ocean whitespace-nowrap">
+                        {t.armadaDetail.bookNow}
+                      </button>
+                    ) : (
+                      <button disabled className="mt-2 px-3 py-1.5 rounded-lg text-xs font-bold cursor-not-allowed whitespace-nowrap"
+                        style={{ background: "#f1f5f9", color: "#94a3b8", border: "1.5px solid #e2e8f0" }}>
+                        Coming Soon
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}

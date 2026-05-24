@@ -29,16 +29,18 @@ export default function ArmadaPage() {
           logo: s.logo,
           image: s.image ?? "",
           destinations: [],
-          minPrice: s.price,
-          maxPrice: s.price,
+          minPrice: 0,
+          maxPrice: 0,
           amenities: s.amenities,
           scheduleCount: 0,
         };
       }
       const op = map[s.operator];
       if (!op.destinations.includes(s.to)) op.destinations.push(s.to);
-      op.minPrice = Math.min(op.minPrice, s.price);
-      op.maxPrice = Math.max(op.maxPrice, s.price);
+      if (s.price > 0) {
+        op.minPrice = op.minPrice === 0 ? s.price : Math.min(op.minPrice, s.price);
+        op.maxPrice = Math.max(op.maxPrice, s.price);
+      }
       op.scheduleCount += 1;
       if (s.amenities.length > op.amenities.length) op.amenities = s.amenities;
     }
@@ -177,8 +179,9 @@ export default function ArmadaPage() {
                   <div>
                     <p className="text-xs" style={{ color: "#94a3b8" }}>{t.armada.ticketPrice}</p>
                     <p className="text-sm font-extrabold" style={{ color: "#0369a1" }}>
-                      Rp {op.minPrice}K
-                      {op.maxPrice !== op.minPrice && <span style={{ color: "#94a3b8" }}> – {op.maxPrice}K</span>}
+                      {op.minPrice > 0 ? (
+                        <>Rp {op.minPrice}K{op.maxPrice !== op.minPrice && <span style={{ color: "#94a3b8" }}> – {op.maxPrice}K</span>}</>
+                      ) : "—"}
                     </p>
                   </div>
                   <span className="text-xs px-3 py-1.5 rounded-xl font-bold text-white btn-ocean transition-all group-hover:scale-105">

@@ -134,13 +134,20 @@ export default function BoatCard({ boat, date, passengers = 1 }: { boat: BoatSch
               <p className="text-xs line-through" style={{ color: "#94a3b8" }}>Rp {boat.originalPrice}K</p>
             )}
             <p className="text-xl font-extrabold" style={{ background: "linear-gradient(135deg,#0369a1,#0284c7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Rp {boat.price}K
+              {boat.price > 0 ? `Rp ${boat.price}K` : "—"}
             </p>
             <p className="text-xs" style={{ color: "#94a3b8" }}>/pax</p>
           </div>
-          <button onClick={goToBooking} className="px-5 py-2.5 rounded-2xl text-sm font-extrabold text-white transition-all hover:scale-105 btn-ocean">
-            {t.boatCard.select}
-          </button>
+          {boat.price > 0 ? (
+            <button onClick={goToBooking} className="px-5 py-2.5 rounded-2xl text-sm font-extrabold text-white transition-all hover:scale-105 btn-ocean">
+              {t.boatCard.select}
+            </button>
+          ) : (
+            <button disabled className="px-5 py-2.5 rounded-2xl text-sm font-bold cursor-not-allowed"
+              style={{ background: "#f1f5f9", color: "#94a3b8", border: "1.5px solid #e2e8f0" }}>
+              Coming Soon
+            </button>
+          )}
         </div>
       </div>
     </div>
