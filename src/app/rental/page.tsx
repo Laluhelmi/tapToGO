@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VehicleCard from "@/components/VehicleCard";
 import EmptyState from "@/components/EmptyState";
-import { VEHICLES, VEHICLE_LOCATIONS, type VehicleType } from "@/data/vehicles";
+import { VEHICLES, VEHICLE_LOCATIONS } from "@/data/vehicles";
 import { useLang } from "@/contexts/LanguageContext";
 
 type SortKey = "popular" | "price-low" | "price-high";
@@ -16,19 +16,19 @@ function RentalContent() {
   const params = useSearchParams();
 
   const initLocation = params.get("location") ?? "";
-  const initType = (params.get("type") as VehicleType | "any") ?? "any";
+  const initBrand = params.get("brand") ?? "any";
   const initStartDate = params.get("startDate") ?? "";
   const initDuration = Number(params.get("duration") || "1");
   const initQuantity = Number(params.get("quantity") || "1");
 
   const [location, setLocation] = useState(initLocation);
-  const [type, setType] = useState<VehicleType | "any">(initType);
+  const [brand, setBrand] = useState<string>(initBrand);
   const [sort, setSort] = useState<SortKey>("popular");
 
   const filtered = useMemo(() => {
     let list = VEHICLES.filter((v) => {
       if (location && !v.locations.includes(location)) return false;
-      if (type !== "any" && v.type !== type) return false;
+      if (brand !== "any" && v.brand !== brand) return false;
       return true;
     });
 
@@ -37,11 +37,11 @@ function RentalContent() {
     else list = list.slice().sort((a, b) => b.reviewCount - a.reviewCount);
 
     return list;
-  }, [location, type, sort]);
+  }, [location, brand, sort]);
 
   const reset = () => {
     setLocation("");
-    setType("any");
+    setBrand("any");
     setSort("popular");
   };
 
@@ -122,16 +122,14 @@ function RentalContent() {
                 {t.rentalSearch.vehicleType}
               </label>
               <select
-                value={type}
-                onChange={(e) => setType(e.target.value as VehicleType | "any")}
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
                 className="w-full px-3 py-2.5 rounded-xl text-sm font-bold"
                 style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", color: "#0369a1" }}
               >
-                <option value="any">{t.rentalSearch.typeAny}</option>
-                <option value="matic">{t.rentalSearch.typeMatic}</option>
-                <option value="manual">{t.rentalSearch.typeManual}</option>
-                <option value="big_bike">{t.rentalSearch.typeBigBike}</option>
-                <option value="car">{t.rentalSearch.typeCar}</option>
+                <option value="any">All brands</option>
+                <option value="Honda">Honda</option>
+                <option value="Yamaha">Yamaha</option>
               </select>
             </div>
 
@@ -155,17 +153,15 @@ function RentalContent() {
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold" style={{ color: "#94a3b8" }}>Quick:</span>
             {[
-              { v: "matic" as const, l: "🛵 Scooter" },
-              { v: "manual" as const, l: "🏍️ Manual" },
-              { v: "big_bike" as const, l: "🏍️ Big Bike" },
-              { v: "car" as const, l: "🚗 Car" },
+              { v: "Honda", l: "Honda" },
+              { v: "Yamaha", l: "Yamaha" },
             ].map((c) => (
               <button
                 key={c.v}
-                onClick={() => setType(type === c.v ? "any" : c.v)}
+                onClick={() => setBrand(brand === c.v ? "any" : c.v)}
                 className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
                 style={
-                  type === c.v
+                  brand === c.v
                     ? { background: "linear-gradient(135deg,#0284c7,#0369a1)", color: "white" }
                     : { background: "#f0f9ff", color: "#0369a1", border: "1px solid #bae6fd" }
                 }
@@ -173,7 +169,7 @@ function RentalContent() {
                 {c.l}
               </button>
             ))}
-            {(location || type !== "any") && (
+            {(location || brand !== "any") && (
               <button
                 onClick={reset}
                 className="ml-auto text-xs font-bold px-3 py-1.5 rounded-lg"

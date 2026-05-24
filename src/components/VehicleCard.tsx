@@ -46,15 +46,27 @@ export default function VehicleCard({ vehicle, startDate, duration = 1, quantity
         boxShadow: "0 2px 12px rgba(2,132,199,0.06)",
       }}
     >
-      {/* Photo / Icon area */}
+      {/* Photo area */}
       <div
-        className="relative flex items-center justify-center"
+        className="relative overflow-hidden"
         style={{
-          height: 140,
+          height: 180,
           background: `linear-gradient(135deg, ${vehicle.color}22, ${vehicle.color}66)`,
         }}
       >
-        <span style={{ fontSize: 64, filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.15))" }}>{vehicle.image}</span>
+        {vehicle.image?.startsWith("/") ? (
+          <img
+            src={vehicle.image}
+            alt={vehicle.name}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span style={{ fontSize: 64, filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.15))" }}>{vehicle.image}</span>
+          </div>
+        )}
 
         {/* Brand badge */}
         <div

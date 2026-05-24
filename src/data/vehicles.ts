@@ -20,17 +20,9 @@ export interface Vehicle {
   description?: string;
 }
 
-export const VEHICLE_LOCATIONS = [
-  "Gili Trawangan",
-  "Gili Air",
-  "Gili Meno",
-  "Bangsal",
-  "Senggigi",
-  "Mataram",
-  "Lombok Airport",
-];
+export const VEHICLE_LOCATIONS = ["Bangsal"];
 
-// Real available rental motors from operator
+// Real available rental motors from operator (Bangsal pickup)
 export const VEHICLES: Vehicle[] = [
   {
     id: "veh-001",
@@ -38,13 +30,13 @@ export const VEHICLES: Vehicle[] = [
     brand: "Honda",
     type: "matic",
     cc: 110,
-    image: "🛵",
+    image: "/images/rental/honda-beat-street.jpg",
     color: "#0ea5e9",
     pricePerDay: 135,
     pricePerWeek: 810,
     features: ["Helmet × 2", "Full tank", "Insurance"],
     available: 4,
-    locations: ["Gili Trawangan", "Gili Air", "Bangsal", "Senggigi"],
+    locations: ["Bangsal"],
     rating: 4.5,
     reviewCount: 0,
     badge: "Best Value",
@@ -56,13 +48,13 @@ export const VEHICLES: Vehicle[] = [
     brand: "Yamaha",
     type: "matic",
     cc: 155,
-    image: "🛵",
+    image: "/images/rental/yamaha-nmax.jpg",
     color: "#0369a1",
     pricePerDay: 165,
     pricePerWeek: 990,
     features: ["Helmet × 2", "Full tank", "Insurance", "ABS brakes", "Spacious storage"],
     available: 3,
-    locations: ["Gili Trawangan", "Bangsal", "Senggigi", "Lombok Airport"],
+    locations: ["Bangsal"],
     rating: 4.7,
     reviewCount: 0,
     badge: "Popular",
@@ -74,13 +66,13 @@ export const VEHICLES: Vehicle[] = [
     brand: "Honda",
     type: "matic",
     cc: 160,
-    image: "🛵",
+    image: "/images/rental/honda-pcx.jpg",
     color: "#0c4a6e",
     pricePerDay: 165,
     pricePerWeek: 990,
     features: ["Helmet × 2", "Full tank", "Insurance", "Smart Key", "Spacious storage"],
     available: 2,
-    locations: ["Gili Trawangan", "Bangsal", "Senggigi", "Mataram"],
+    locations: ["Bangsal"],
     rating: 4.6,
     reviewCount: 0,
     description: "Premium scooter with smart-key. Spacious underseat storage for surf gear or backpack.",
@@ -91,13 +83,13 @@ export const VEHICLES: Vehicle[] = [
     brand: "Honda",
     type: "matic",
     cc: 160,
-    image: "🛵",
+    image: "/images/rental/honda-adv.jpg",
     color: "#7c3aed",
     pricePerDay: 165,
     pricePerWeek: 990,
     features: ["Helmet × 2", "Full tank", "Insurance", "Adventure styling", "Long suspension"],
     available: 2,
-    locations: ["Gili Trawangan", "Bangsal", "Senggigi", "Mataram"],
+    locations: ["Bangsal"],
     rating: 4.7,
     reviewCount: 0,
     badge: "New",
@@ -109,18 +101,21 @@ export const VEHICLES: Vehicle[] = [
     brand: "Honda",
     type: "matic",
     cc: 160,
-    image: "🛵",
+    image: "/images/rental/honda-vario.jpg",
     color: "#0284c7",
     pricePerDay: 165,
     pricePerWeek: 990,
     features: ["Helmet × 2", "Full tank", "Insurance", "Idling stop", "Phone holder"],
     available: 3,
-    locations: ["Gili Trawangan", "Gili Air", "Bangsal", "Senggigi"],
+    locations: ["Bangsal"],
     rating: 4.6,
     reviewCount: 0,
     description: "Sporty scooter with strong 160cc engine. Great balance of price and performance.",
   },
 ];
+
+// Available brands for filter (instead of type)
+export const VEHICLE_BRANDS = ["Honda", "Yamaha"];
 
 export const RENTAL_AMENITY_ICONS: Record<string, string> = {
   "Helmet × 2": "⛑️",
