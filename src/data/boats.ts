@@ -2674,7 +2674,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 22,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2692,7 +2692,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 32,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2710,7 +2710,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 29,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2728,7 +2728,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 21,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2746,7 +2746,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 20,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2764,7 +2764,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 42,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2782,7 +2782,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 16,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2800,7 +2800,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 28,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2818,7 +2818,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 47,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2836,7 +2836,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 16,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2854,7 +2854,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 27,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2872,7 +2872,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 59,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2890,7 +2890,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 41,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2908,7 +2908,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 43,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2926,7 +2926,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 32,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2944,7 +2944,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 25,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2962,7 +2962,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 36,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2980,7 +2980,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 24,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -2998,7 +2998,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 36,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3016,7 +3016,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 20,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3034,7 +3034,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 21,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3052,7 +3052,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 37,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3070,7 +3070,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 31,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3088,7 +3088,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 44,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3106,7 +3106,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 22,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3124,7 +3124,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 20,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3142,7 +3142,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 33,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3160,7 +3160,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 54,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3178,7 +3178,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 51,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3196,7 +3196,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 60,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3214,7 +3214,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 17,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3232,7 +3232,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 33,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3250,7 +3250,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 29,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3268,7 +3268,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 39,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3286,7 +3286,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 44,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3304,7 +3304,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 38,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3322,7 +3322,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 38,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3340,7 +3340,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 28,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3358,7 +3358,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 59,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3376,7 +3376,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 19,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3394,7 +3394,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 55,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3412,7 +3412,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 49,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3430,7 +3430,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 25,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3448,7 +3448,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 39,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3466,7 +3466,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 55,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3484,7 +3484,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 29,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3502,7 +3502,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 18,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3520,7 +3520,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 17,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3538,7 +3538,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 40,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3556,7 +3556,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 19,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3574,7 +3574,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 51,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3592,7 +3592,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 28,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3610,7 +3610,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 46,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3628,7 +3628,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 56,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3646,7 +3646,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 24,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3664,7 +3664,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 23,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3682,7 +3682,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 50,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3700,7 +3700,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 31,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3718,7 +3718,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 42,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3736,7 +3736,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 40,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3754,7 +3754,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 29,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3772,7 +3772,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 47,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3790,7 +3790,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 20,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3808,7 +3808,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 22,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3826,7 +3826,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 55,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3844,7 +3844,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 58,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3862,7 +3862,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 53,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3880,7 +3880,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 39,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3898,7 +3898,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 53,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3916,7 +3916,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 48,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3934,7 +3934,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 50,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3952,7 +3952,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 58,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3970,7 +3970,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 58,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -3988,7 +3988,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 32,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4006,7 +4006,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 36,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4024,7 +4024,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 33,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4042,7 +4042,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 25,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4060,7 +4060,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 15,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4078,7 +4078,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 47,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4096,7 +4096,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 47,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4114,7 +4114,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 55,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4132,7 +4132,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 55,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4150,7 +4150,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 53,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4168,7 +4168,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 24,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4186,7 +4186,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 25,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4204,7 +4204,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 48,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4222,7 +4222,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 53,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4240,7 +4240,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 46,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4258,7 +4258,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 22,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4276,7 +4276,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 34,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4294,7 +4294,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 18,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4312,7 +4312,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 51,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4330,7 +4330,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 20,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4348,7 +4348,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 19,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4366,7 +4366,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 23,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4384,7 +4384,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 57,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4402,7 +4402,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 50,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4420,7 +4420,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 31,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4438,7 +4438,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 53,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4456,7 +4456,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 28,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4474,7 +4474,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 59,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4492,7 +4492,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 60,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4510,7 +4510,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 40,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4528,7 +4528,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 38,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4546,7 +4546,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 48,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4564,7 +4564,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 22,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4582,7 +4582,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 29,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4600,7 +4600,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 36,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4618,7 +4618,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 52,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4636,7 +4636,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 29,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4654,7 +4654,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 29,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4672,7 +4672,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 19,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4690,7 +4690,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 18,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4708,7 +4708,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 19,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4726,7 +4726,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 36,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4744,7 +4744,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 47,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4762,7 +4762,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 32,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4780,7 +4780,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 28,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4798,7 +4798,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 23,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4816,7 +4816,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 51,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4834,7 +4834,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 30,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4852,7 +4852,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 41,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
   {
@@ -4870,7 +4870,7 @@ export const SCHEDULES: BoatSchedule[] = [
     amenities: ["Life Jacket"],
     rating: 4.1,
     reviewCount: 21,
-    boatType: "Speedboat",
+    boatType: "Fastboat",
     image: "/images/kkb/1.jpeg",
   },
 ];
