@@ -44,10 +44,10 @@ export default function BlogIndexPage() {
             ← Home
           </Link>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white mb-3">
-            Blog tapToGo
+            Blog
           </h1>
           <p className="text-lg max-w-2xl" style={{ color: "#bae6fd" }}>
-            Tips, panduan, dan info terbaru soal fastboat Lombok–Bali, Gili Islands, dan Nusa Penida.
+            Tips, panduan, dan info terbaru soal fastboat Lombok–Bali dan Gili Islands.
           </p>
         </div>
         <div style={{ lineHeight: 0 }}>
