@@ -1,6 +1,7 @@
 "use client";
 import type { Vehicle } from "@/data/vehicles";
 import { useLang } from "@/contexts/LanguageContext";
+import { useRouter } from "next/navigation";
 
 interface Props {
   vehicle: Vehicle;
@@ -17,25 +18,18 @@ const TYPE_LABEL: Record<string, string> = {
 };
 
 export default function VehicleCard({ vehicle, startDate, duration = 1, quantity = 1 }: Props) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const router = useRouter();
   const total = vehicle.pricePerDay * duration * quantity;
 
   const handleRent = () => {
-    const adminWa = "6287821775082";
-    const msg = [
-      "Halo tapToGo, saya tertarik sewa kendaraan:",
-      "",
-      `🛵 *${vehicle.name}* (${vehicle.brand} ${vehicle.cc}cc)`,
-      `📅 Mulai: ${startDate || "TBD"}`,
-      `⏱️ Durasi: ${duration} hari`,
-      `🔢 Jumlah: ${quantity} unit`,
-      `📍 Lokasi pickup: ${vehicle.locations[0]}`,
-      `💰 Total estimasi: Rp ${(total * 1000).toLocaleString("id-ID")}`,
-      "",
-      "Mohon konfirmasi ketersediaan & detail booking. Terima kasih!",
-    ].join("\n");
-    const url = `https://wa.me/${adminWa}?text=${encodeURIComponent(msg)}`;
-    window.open(url, "_blank");
+    const params = new URLSearchParams({
+      vehicle: vehicle.id,
+      ...(startDate ? { start: startDate } : {}),
+      duration: String(duration),
+      quantity: String(quantity),
+    });
+    router.push(`/booking/rental?${params.toString()}`);
   };
 
   return (
@@ -147,7 +141,7 @@ export default function VehicleCard({ vehicle, startDate, duration = 1, quantity
             onClick={handleRent}
             className="px-4 py-2.5 rounded-xl text-xs font-extrabold text-white btn-ocean transition-all hover:scale-105 whitespace-nowrap"
           >
-            {t.rentalSearch.searchBtn === "Search Vehicle" ? "Rent via WA" : "Sewa via WA"}
+            {lang === "id" ? "Sewa Sekarang →" : "Book Now →"}
           </button>
         </div>
       </div>
