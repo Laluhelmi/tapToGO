@@ -20,6 +20,7 @@ export default function Footer() {
     { label: isID ? "Tentang Kami" : "About Us", href: "/" },
     { label: isID ? "Armada" : "Fleet", href: "/armada" },
     { label: isID ? "Jadwal" : "Schedule", href: "/jadwal" },
+    { label: "Blog", href: "/blog" },
     { label: isID ? "Brand Assets" : "Brand Assets", href: "/brand" },
     { label: isID ? "Kontak" : "Contact", href: "https://wa.me/6287821775082" },
   ];

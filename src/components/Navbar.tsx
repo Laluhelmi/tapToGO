@@ -45,6 +45,7 @@ export default function Navbar() {
     { label: t.nav.fastboat, href: "/jadwal" },
     { label: t.nav.fleet,    href: "/armada" },
     { label: t.nav.rental,   href: "/rental" },
+    { label: "Blog",         href: "/blog" },
     { label: t.nav.help,     href: "/bantuan" },
   ];
 

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllRouteSlugs } from "@/lib/routes";
 import { SCHEDULES } from "@/data/boats";
+import { getAllSlugs as getBlogSlugs } from "@/lib/blog";
 
 const BASE_URL = "https://taptogo.id";
 
@@ -19,7 +20,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/refund`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
   ];
+
+  // Blog posts
+  const blogPages: MetadataRoute.Sitemap = getBlogSlugs().map(({ slug }) => ({
+    url: `${BASE_URL}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
 
   // Per-route SEO landing pages (24 routes)
   const routePages: MetadataRoute.Sitemap = getAllRouteSlugs().map(slug => ({
@@ -38,5 +48,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...routePages, ...operatorPages];
+  return [...staticPages, ...blogPages, ...routePages, ...operatorPages];
 }
