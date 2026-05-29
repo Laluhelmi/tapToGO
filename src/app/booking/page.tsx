@@ -9,6 +9,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { COUNTRIES, TOP_COUNTRY_CODES } from "@/data/countries";
 import { events } from "@/lib/gtag";
 import Spinner from "@/components/Spinner";
+import RouteMap from "@/components/RouteMap";
 
 // ── Constants ──
 const HARBOUR_TAX_PER_PAX = 20; // in thousands (Rp 20,000)
@@ -670,6 +671,11 @@ function BookingContent() {
         </div>
 
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 pb-32">
+          {/* Animated route map */}
+          <div className="mb-4">
+            <RouteMap from={schedule.from} to={schedule.to} />
+          </div>
+
           {/* Schedule summary */}
           <div className="bg-white rounded-2xl p-5 mb-4"
             style={{ border: "1.5px solid #e0f2fe", boxShadow: "0 2px 12px rgba(2,132,199,0.07)" }}>
